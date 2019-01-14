@@ -10,8 +10,6 @@
          '[io.perun :as perun]
          '[pandeiro.boot-http :refer [serve]])
 
-(def out-dir "")
-
 (deftask clean
   [])
 
@@ -20,7 +18,7 @@
   []
   (comp
         (perun/global-metadata)
-        (perun/markdown :out-dir out-dir :md-exts {:all true})
+        (perun/markdown :md-exts {:all true})
         (perun/draft)
         (perun/print-meta)
         (perun/slug)
@@ -28,10 +26,10 @@
         (perun/word-count)
         (perun/build-date)
         (perun/gravatar :source-key :author-email :target-key :author-gravatar)
-        (perun/render :out-dir out-dir :renderer 'eccentric-j.site.post/render)
-        (perun/collection :out-dir out-dir :renderer 'eccentric-j.site.index/render :page "index.html")
-        (perun/tags :out-dir out-dir :renderer 'eccentric-j.site.tags/render)
-        (perun/paginate :out-dir out-dir :renderer 'eccentric-j.site.paginate/render)
+        (perun/render :renderer 'eccentric-j.site.post/render)
+        (perun/collection :renderer 'eccentric-j.site.index/render :page "index.html")
+        (perun/tags :renderer 'eccentric-j.site.tags/render)
+        (perun/paginate :renderer 'eccentric-j.site.paginate/render)
         ; (perun/assortment :renderer 'eccentric-j.site.assortment/render
         ;                   :grouper (fn [entries]
         ;                              (->> entries
@@ -45,11 +43,11 @@
         ;                                                   (update-in [path :entries] conj entry)
         ;                                                   (assoc-in [path :entry :keyword] kw))))
         ;                                           {}))))
-        (perun/static :out-dir out-dir :renderer 'eccentric-j.site.about/render :page "about.html")
+        (perun/static :renderer 'eccentric-j.site.about/render :page "about.html")
         (perun/inject-scripts :scripts #{"start.js"})
-        (perun/sitemap :out-dir ".")
-        (perun/rss :out-dir "." :description "Hashobject blog")
-        (perun/atom-feed :out-dir "")
+        (perun/sitemap)
+        (perun/rss :description "Hashobject blog")
+        (perun/atom-feed)
         (target :no-clean true)
         (notify)))
 
@@ -57,4 +55,4 @@
   []
   (comp (watch)
         (build)
-        (serve :resource-root "." :port 9000)))
+        (serve :resource-root "public" :port 9000)))
