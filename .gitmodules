@@ -1,0 +1,4 @@
+[submodule "target"]
+	path = target
+	url = git@github.com:eccentric-j/eccentric-j.github.io.git
+	branch = master
