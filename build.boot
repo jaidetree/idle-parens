@@ -49,7 +49,7 @@
         (perun/inject-scripts :scripts #{"start.js"})
         (perun/sitemap :out-dir ".")
         (perun/rss :out-dir "." :description "Hashobject blog")
-        (perun/atom-feed :out-dir "." :filterer :original)
+        (perun/atom-feed :out-dir "")
         (target :no-clean true)
         (notify)))
 
