@@ -88,6 +88,9 @@ a, a:hover {
   transition: all 250ms ease-in-out;
   content: '\f105';
 }
+.navbar__active a, .navbar__active::before {
+  color: $teal;
+}
 .navbar__item:hover {
   opacity: 1.0;
   padding-left: rems(24px);
@@ -113,6 +116,19 @@ a, a:hover {
 
 /* Blocks
 -------------------------------------------------------------------------- */
+
+.bg-teal {
+  background: $teal;
+  &::after {
+    background: $teal;
+  }
+}
+.bg-slate {
+  background: $slate;
+  &::after {
+    background: $slate;
+  }
+}
 
 .borders {
   width: 100%;
@@ -176,12 +192,23 @@ a, a:hover {
   right: rems(-1px);
 }
 
+.profile__logo {
+  display: block;
+  width: rems(140px);
+  margin: auto;
+  margin-bottom: rems(16px);
+  transition: all 250ms ease-in-out;
+  filter:  brightness(40%) grayscale(100%);
+}
 .profile__title {
   @extend %script;
   font-size: rems(55px);
   a {
     color: $teal;
   }
+}
+.profile__title:hover .profile__logo {
+  filter: brightness(100%) grayscale(0%);
 }
 
 .profile__trades {
@@ -204,7 +231,6 @@ a, a:hover {
 
 .drip {
   position: absolute;
-  background: $teal;
   width: rems(12px);
   height: rems(10px);
   transition: height 1500ms ease-in-out;
@@ -217,19 +243,6 @@ a, a:hover {
   width: 100%;
   padding-top: 100%;
   bottom: rems(-3px);
-  background: $teal;
   content: '';
   border-radius: 50%;
-}
-.bg-teal {
-  background: $teal;
-  &::after {
-    background: $teal;
-  }
-}
-.bg-slate {
-  background: $slate;
-  &::after {
-    background: $slate;
-  }
 }

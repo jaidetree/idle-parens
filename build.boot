@@ -3,6 +3,7 @@
   :resource-paths #{"resources"}
   :dependencies '[[perun "0.4.2-SNAPSHOT"]
                   [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
+                  [org.clojure/clojurescript "1.10.439"]
                   [pandeiro/boot-http "0.6.3-SNAPSHOT"]
                   [deraen/boot-livereload "0.2.1"]
                   [deraen/boot-sass "0.3.1"]

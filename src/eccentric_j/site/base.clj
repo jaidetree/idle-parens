@@ -4,50 +4,64 @@
 
 (defn rems
   [px]
-  (double (/ px 16)))
+  (if (string? px)
+    px
+    (str (double (/ px 16)) "rem")))
 
 (defn drip
   [{:keys [top left right bottom width height class max-height]} & args]
-  [:i.drip {:style (str (when right (str "right:" (rems right) "rem;"))
-                        (when left (str "left:" (rems left) "rem;"))
-                        (when top (str "top:" (rems top) "rem;"))
-                        (when bottom (str "bottom:" (rems bottom) "rem;"))
-                        (when max-height (str "max-height:" (rems max-height) "rem;"))
-                        "width:" (rems width) "rem;"
-                        "height:" (rems height) "rem;")
+  [:i.drip {:style (str (when right (str "right:" (rems right) ";"))
+                        (when left (str "left:" (rems left) ";"))
+                        (when top (str "top:" (rems top) ";"))
+                        (when bottom (str "bottom:" (rems bottom) ";"))
+                        (when max-height (str "max-height:" (rems max-height) ";"))
+                        "width:" (rems width) ";"
+                        "height:" (rems height) ";")
             :class (if class class "")}])
 
 (defn profile
   [{:keys [title]}]
   [:section.profile.text-center.mb-5
-   [:h1.profile__title [:a {:href "/"} title]]
+   [:h1.profile__title [:a {:href "/"}
+                        [:img.profile__logo {:src "/img/eccentric-j-logo.svg"
+                                             :alt "Eccentric J's Logo"}]
+                        title]]
    [:ul.profile__trades [:li.profile__trade "Artist"]
                         [:li.profile__trade "Designer"]
                         [:li.profile__trade "Engineer"]]])
 
 (defn navbar
-  []
+  [{:keys [current]}]
   [:section.navbar.mb-3
    [:nav.navbar__nav.borders
      (drip {:width 5
             :right 5
             :height 5
             :max-height 30
-            :class "bg-slate"})
+            :class "bg-slate"
+            :top 0})
      (drip {:width 3
             :right 12
             :height 8
             :max-height 48
-            :class "bg-slate"})
+            :class "bg-slate"
+            :top 0})
      (drip {:width 8
             :right 20
             :height 4
             :max-height 60
-            :class "bg-slate"})
+            :class "bg-slate"
+            :top 0})
      [:ul.navbar__list
-      [:li.navbar__item [:a {:href "/"} "Blog"]]
-      [:li.navbar__item [:a {:href "/about.html"} "About"]]
-      [:li.navbar__item [:a {:href "/projects.html"} "Projects"]]]]])
+      [:li.navbar__item {:class (when (= current :blog) "navbar__active")}
+                        [:a {:href "/"}
+                            "Blog"]]
+      [:li.navbar__item {:class (when (= current :about) "navbar__active")}
+                        [:a {:href "/about.html"}
+                            "About"]]
+      [:li.navbar__item {:class (when (= current :projects) "navbar__active")}
+                        [:a {:href "/projects.html"}
+                            "Projects"]]]]])
 
 (defn media-links
   []
@@ -65,7 +79,7 @@
                            [:i.icon.fa.fa-envelope]
                            [:span.media-links__label "Email"]]]])
 
-(defn render [& {:keys [title subtitle content]}]
+(defn render [& {:keys [title subtitle content current]}]
   (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
     [:head
       [:title (str (when subtitle (str subtitle " | ")) title)]
@@ -85,13 +99,16 @@
     [:body [:div.page
             (drip {:right 40
                    :width 10
-                   :height 10})
+                   :height 10
+                   :class "bg-teal"})
             (drip {:right 66
                    :width 8
-                   :height 8})
+                   :height 8
+                   :class "bg-teal"})
             (drip {:right 52
                    :width 5
-                   :height 10})
+                   :height 10
+                   :class "bg-teal"})
             [:div.container.inline-block
              [:header.container
               [:div.row
@@ -99,7 +116,7 @@
                 content]
                [:aside.sidebar.col-lg-3
                 (profile {:title title})
-                (navbar)
+                (navbar {:current current})
                 (media-links)]]]]]
 
            [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
