@@ -1,0 +1,234 @@
+/* Utils
+-------------------------------------------------------------------------- */
+@function rems ($px) {
+  @return $px/16px * 1rem;
+}
+
+/* Colors
+ -------------------------------------------------------------------------- */
+$slate: #353d3b;
+$light-slate: lighten(#353d3b, 50%);
+$gray: #ebecf2;
+$teal: #1FC3A0;
+$gray-teal: #6f7f7b;
+
+/* Extendables
+--------------------------------------------------------------------------- */
+%icon {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+%mono {
+  font-family: 'Anonymous Pro', monospace;
+}
+%script {
+  font-family: 'Seaweed Script', cursive;
+}
+
+/* BASE
+-------------------------------------------------------------------------- */
+body {
+  /* background: #F9F8F6; */
+  background: $gray;
+  // background: $gray url(/img/concrete-texture.png);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cutive Mono', monospace;
+}
+
+a, a:hover {
+  color: $teal;
+}
+
+/* Layout
+-------------------------------------------------------------------------- */
+.page {
+  border-top: rems(10px) solid $teal;
+}
+.sidebar {
+  position: fixed;
+  right: 8vw;
+  bottom: 0;
+  padding-bottom: rems(60px);
+}
+.sidebar a {
+  text-decoration: none;
+  color: $gray-teal;
+}
+.main {
+  padding-top: rems(250px);
+}
+.navbar {
+  padding: 0;
+}
+.navbar__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navbar__item {
+  @extend %mono;
+  position: relative;
+  padding: rems(8px);
+  opacity: 0.75;
+  color: $gray-teal;
+  font-size: rems(18px);
+  font-weight: 600;
+  transition: all 250ms ease-in-out;
+}
+.navbar__item::before {
+  @extend %icon;
+  position: absolute;
+  top: rems(8px);
+  left: rems(8px);
+  font-size: #{rems(30px)};
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(#{rems(-20px)});
+  transition: all 250ms ease-in-out;
+  content: '\f105';
+}
+.navbar__item:hover {
+  opacity: 1.0;
+  padding-left: rems(24px);
+}
+.navbar__item:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+.navbar__item:active {
+  background: $gray-teal;
+  &, a {
+    color: $gray;
+  }
+}
+.navbar__item a {
+  display: block;
+  padding: rems(4px);
+  transition: all 250ms ease-in-out;
+}
+.navbar__item:not(:last-child) {
+  border-bottom: 1px solid $light-slate;
+}
+
+/* Blocks
+-------------------------------------------------------------------------- */
+
+.borders {
+  width: 100%;
+  margin-bottom: rems(16px);
+  border-top: 1px solid $slate;
+  border-bottom: 2px solid $slate;
+}
+
+.icon {
+  margin-right: rems(3px);
+}
+
+.media-links {
+  display: block;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  padding: 0 rems(8px);
+}
+.media-links__item {
+  font-size: rems(10px);
+  letter-spacing: rems(0.35px);
+  text-transform: uppercase;
+  color: $light-slate;
+}
+.media-links__item .icon {
+  display: block;
+  text-align: center;
+  font-size: rems(28px);
+  color: $light-slate;
+  transition: all 250ms ease-in-out;
+}
+.media-links__label {
+  display: none;
+}
+.media-links__item:hover .icon {
+  color: $teal;
+}
+
+.page__title {
+  position: relative;
+  padding: rems(16px);
+}
+.page__title::before,
+.page__title::after {
+  @extend %mono;
+  display: inline-block;
+  position: relative;
+  top: rems(1px);
+  color: lighten($slate, 30%);
+  font-size: rems(40px);
+  font-style: normal;
+  line-height: 1;
+}
+.page__title::before {
+  left: rems(-1px);
+  content: '(';
+}
+.page__title::after {
+  content: ')';
+  right: rems(-1px);
+}
+
+.profile__title {
+  @extend %script;
+  font-size: rems(55px);
+  a {
+    color: $teal;
+  }
+}
+
+.profile__trades {
+  @extend %mono;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  color: $gray-teal;
+}
+.profile__trade:not(:first-child):before {
+  @extend %icon;
+  content: "\f067";
+  margin-left: rems(10px);
+  margin-right: rems(10px);
+  font-size: rems(10px);
+  line-height: 1;
+  color: $light-slate;
+}
+
+.drip {
+  position: absolute;
+  background: $teal;
+  width: rems(12px);
+  height: rems(10px);
+  transition: height 1500ms ease-in-out;
+}
+.drip::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 100%;
+  bottom: rems(-3px);
+  background: $teal;
+  content: '';
+  border-radius: 50%;
+}
+.bg-teal {
+  background: $teal;
+  &::after {
+    background: $teal;
+  }
+}
+.bg-slate {
+  background: $slate;
+  &::after {
+    background: $slate;
+  }
+}

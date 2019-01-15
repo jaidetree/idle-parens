@@ -3,12 +3,18 @@
   :resource-paths #{"resources"}
   :dependencies '[[perun "0.4.2-SNAPSHOT"]
                   [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
-                  [pandeiro/boot-http "0.6.3-SNAPSHOT"]])
+                  [pandeiro/boot-http "0.6.3-SNAPSHOT"]
+                  [deraen/boot-livereload "0.2.1"]
+                  [deraen/boot-sass "0.3.1"]
+                  [adzerk/boot-cljs "2.1.5" :scope "test"]])
 
 (require '[boot.core :as boot]
          '[clojure.string :as str]
          '[io.perun :as perun]
-         '[pandeiro.boot-http :refer [serve]])
+         '[pandeiro.boot-http :refer [serve]]
+         '[deraen.boot-livereload :refer [livereload]]
+         '[deraen.boot-sass :refer [sass]]
+         '[adzerk.boot-cljs :refer [cljs]])
 
 (deftask clean
   [])
@@ -48,6 +54,8 @@
         (perun/sitemap)
         (perun/rss :description "Hashobject blog")
         (perun/atom-feed)
+        (sass)
+        (cljs)
         (target :no-clean true)
         (notify)))
 
@@ -55,4 +63,5 @@
   []
   (comp (watch)
         (build)
+        (livereload :snippet true)
         (serve :resource-root "public" :port 9000)))
