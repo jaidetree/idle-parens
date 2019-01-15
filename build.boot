@@ -11,16 +11,36 @@
 
 (require '[boot.core :as boot]
          '[clojure.string :as str]
+         '[clojure.java.io :as io]
          '[io.perun :as perun]
+         '[io.perun.core :refer [report-info]]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-livereload :refer [livereload]]
          '[deraen.boot-sass :refer [sass]]
          '[adzerk.boot-cljs :refer [cljs]])
 
-(deftask clean
-  [])
+(defn match-any
+  [patterns s]
+  (some #(re-find % s) patterns))
 
+(deftask clean!
+  [d dir      DIR     str       "Directory to clean defaults to target/public"
+   e excludes RE-LIST #{regex}  "Regexps to exclude from cleaning"
+   i included RE-LIST #{regex}  "Regexps to include for cleaning"]
+  (clojure.pprint/pprint *opts*)
+  (let [excluder (if (some? excludes)
+                   #(match-any excludes (str %))
+                   (constantly false))
+        includer (if (some? included)
+                   #(match-any included (str %))
+                   (constantly true))
+        dir (or dir "target/public")]
 
+    (doseq [file (->> (file-seq (io/file dir))
+                      (remove excluder)
+                      (filter includer))]
+      (.delete file))
+    (report-info "clean!" "Cleaned %s" dir)))
 
 (deftask build
   "Build test blog. This task is just for testing different plugins together."
