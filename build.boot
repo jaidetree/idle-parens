@@ -20,9 +20,11 @@
 (deftask clean
   [])
 
+
+
 (deftask build
   "Build test blog. This task is just for testing different plugins together."
-  []
+  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"]
   (comp
         (perun/global-metadata)
         (perun/markdown :md-exts {:all true})
@@ -56,7 +58,7 @@
         (perun/rss :description "Hashobject blog")
         (perun/atom-feed)
         (sass)
-        (cljs)
+        (cljs :optimizations (if (= build-env :production) :advanced :none))
         (target :no-clean true)
         (notify)))
 
