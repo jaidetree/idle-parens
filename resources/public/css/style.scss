@@ -208,6 +208,7 @@ a, a:hover {
   width: rems(12px);
   height: rems(10px);
   transition: height 1500ms ease-in-out;
+  z-index: 100;
 }
 .drip::after {
   position: absolute;

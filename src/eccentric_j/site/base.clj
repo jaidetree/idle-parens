@@ -7,11 +7,12 @@
   (double (/ px 16)))
 
 (defn drip
-  [{:keys [top left right bottom width height class]} & args]
+  [{:keys [top left right bottom width height class max-height]} & args]
   [:i.drip {:style (str (when right (str "right:" (rems right) "rem;"))
                         (when left (str "left:" (rems left) "rem;"))
                         (when top (str "top:" (rems top) "rem;"))
                         (when bottom (str "bottom:" (rems bottom) "rem;"))
+                        (when max-height (str "max-height:" (rems max-height) "rem;"))
                         "width:" (rems width) "rem;"
                         "height:" (rems height) "rem;")
             :class (if class class "")}])
@@ -28,6 +29,21 @@
   []
   [:section.navbar.mb-3
    [:nav.navbar__nav.borders
+     (drip {:width 5
+            :right 5
+            :height 5
+            :max-height 30
+            :class "bg-slate"})
+     (drip {:width 3
+            :right 12
+            :height 8
+            :max-height 48
+            :class "bg-slate"})
+     (drip {:width 8
+            :right 20
+            :height 4
+            :max-height 60
+            :class "bg-slate"})
      [:ul.navbar__list
       [:li.navbar__item [:a {:href "/"} "Blog"]]
       [:li.navbar__item [:a {:href "/about.html"} "About"]]
