@@ -23,24 +23,37 @@
   [patterns s]
   (some #(re-find % s) patterns))
 
-(deftask clean!
-  [d dir      DIR     str       "Directory to clean defaults to target/public"
-   e excludes RE-LIST #{regex}  "Regexps to exclude from cleaning"
-   i included RE-LIST #{regex}  "Regexps to include for cleaning"]
-  (clojure.pprint/pprint *opts*)
-  (let [excluder (if (some? excludes)
-                   #(match-any excludes (str %))
-                   (constantly false))
-        includer (if (some? included)
-                   #(match-any included (str %))
-                   (constantly true))
-        dir (or dir "target/public")]
+(defn matcher
+  [regexps default]
+  (if (some? regexps)
+    #(match-any regexps (str %))
+    (constantly default)))
 
-    (doseq [file (->> (file-seq (io/file dir))
-                      (remove excluder)
-                      (filter includer))]
-      (.delete file))
-    (report-info "clean!" "Cleaned %s" dir)))
+(defn delete-files!
+  "Recursively deletes all files in a folder
+  Takes a included predicate, an excluded predicate, and an io/file dir.
+  Returns nil."
+  [included excluded dir]
+  (let [files (->> dir
+                   (file-seq)
+                   (drop 1)
+                   (remove excluded)
+                   (filter included))]
+    (doseq [file files]
+      (when (.isDirectory file)
+        (delete-files! included excluded file))
+      (.delete file))))
+
+(deftask clean
+  [d dir     DIR      str         "Directory to clean defaults to target/public"
+   e exclude PATTERNS #{regex}    "Regexps to exclude from cleaning"
+   i include PATTERNS #{regex}    "Regexps to include for cleaning"]
+  (let [dir (or dir "target/public")]
+    (boot/with-pass-thru _
+      (delete-files! (matcher include true)
+                     (matcher exclude false)
+                     (io/file dir))
+      (report-info "clean!" "Cleaned %s" dir))))
 
 (deftask build
   "Build test blog. This task is just for testing different plugins together."
@@ -79,6 +92,7 @@
         (perun/atom-feed)
         (sass)
         (cljs :optimizations (if (= build-env :production) :advanced :none))
+        (clean :exclude #{#".git"})
         (target :no-clean true)
         (notify)))
 

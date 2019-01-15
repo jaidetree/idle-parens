@@ -2,7 +2,6 @@
   (:require [eccentric-j.site.base :as base]))
 
 (defn render [{global-meta :meta posts :entries post :entry}]
-  (clojure.pprint/pprint posts)
   (base/render
    :title (:site-title global-meta)
    :current :blog
