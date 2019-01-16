@@ -29,6 +29,12 @@
     #(match-any regexps (str %))
     (constantly default)))
 
+(defn pipeline
+  [& steps]
+  (->> steps
+       (keep identity)
+       (apply comp)))
+
 (defn delete-files!
   "Recursively deletes all files in a folder
   Takes a included predicate, an excluded predicate, and an io/file dir.
@@ -55,50 +61,106 @@
                      (io/file dir))
       (report-info "clean!" "Cleaned %s" dir))))
 
+(defn html
+  [prod?]
+  (pipeline
+    (perun/markdown :md-exts {:all true})
+    (when prod? (perun/draft))))
+
+(defn blog?
+  [file]
+  (re-find #"/blog/" (:path file)))
+
+(defn project?
+  [file]
+  (re-find #"/projects/" (:path file)))
+
+(defn blog-pages
+  [prod?]
+  (pipeline
+    (perun/render :renderer 'eccentric-j.site.post/render :filterer blog?)
+    (perun/collection :renderer 'eccentric-j.site.index/render :page "index.html" :filterer blog?)
+    (perun/tags :renderer 'eccentric-j.site.tags/render :filterer blog?)
+    (perun/paginate :renderer 'eccentric-j.site.paginate/render :filterer blog? :out-dir "public/blog")))
+
+(defn project-pages
+  [prod?]
+  (pipeline
+    (perun/render :renderer 'eccentric-j.site.post/render :filterer project?)
+    (perun/collection :renderer 'eccentric-j.site.index/render :page "projects.html" :filterer project?)))
+    ; (perun/tags :renderer 'eccentric-j.site.tags/render :filterer project?)))
+    ; (perun/paginate :renderer 'eccentric-j.site.paginate/render :filterer project?)))
+
+(defn static-pages
+  [prod?]
+  (pipeline
+    (perun/static :renderer 'eccentric-j.site.about/render :page "about.html")))
+
+(defn seo-files
+  [prod?]
+  (pipeline
+    (perun/sitemap)
+    (perun/rss :description "Eccentric J's Blog")
+    (perun/atom-feed)))
+
+(defn build-meta
+  [prod?]
+  (pipeline
+    (perun/slug)
+    (perun/ttr)
+    (perun/word-count)
+    (perun/build-date)
+    (perun/gravatar :source-key :author-email :target-key :author-gravatar)))
+
+(defn styles
+  [prod?]
+  (pipeline
+   (sass)))
+
+(defn scripts
+  [prod?]
+  (pipeline
+    (cljs :optimizations (if prod? :advanced :none))))
+
 (deftask build
-  "Build test blog. This task is just for testing different plugins together."
-  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"]
-  (comp
-        (perun/global-metadata)
-        (perun/markdown :md-exts {:all true})
-        (perun/draft)
-        (perun/print-meta)
-        (perun/slug)
-        (perun/ttr)
-        (perun/word-count)
-        (perun/build-date)
-        (perun/gravatar :source-key :author-email :target-key :author-gravatar)
-        (perun/render :renderer 'eccentric-j.site.post/render)
-        (perun/collection :renderer 'eccentric-j.site.index/render :page "index.html")
-        (perun/tags :renderer 'eccentric-j.site.tags/render)
-        (perun/paginate :renderer 'eccentric-j.site.paginate/render)
-        ; (perun/assortment :renderer 'eccentric-j.site.assortment/render
-        ;                   :grouper (fn [entries]
-        ;                              (->> entries
-        ;                                   (mapcat (fn [entry]
-        ;                                             (if-let [kws (:keywords entry)]
-        ;                                               (map #(-> [% entry]) (str/split kws #"\s*,\s*"))
-        ;                                               [])))
-        ;                                   (reduce (fn [result [kw entry]]
-        ;                                             (let [path (str kw ".html")]
-        ;                                               (-> result
-        ;                                                   (update-in [path :entries] conj entry)
-        ;                                                   (assoc-in [path :entry :keyword] kw))))
-        ;                                           {}))))
-        (perun/static :renderer 'eccentric-j.site.about/render :page "about.html")
-        (perun/inject-scripts :scripts #{"start.js"})
-        (perun/sitemap)
-        (perun/rss :description "Hashobject blog")
-        (perun/atom-feed)
-        (sass)
-        (cljs :optimizations (if (= build-env :production) :advanced :none))
-        (clean :exclude #{#".git"})
-        (target :no-clean true)
-        (notify)))
+  "Build the blog source and output to target/public"
+  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"
+   j js                  bool  "Build cljs"
+   c css                 bool  "Build css"
+   s seo                 bool  "Build SEO pages"]
+  (let [prod? (= build-env :prod)]
+    (pipeline
+      (perun/global-metadata)
+      (html prod?)
+      (build-meta prod?)
+      (blog-pages prod?)
+      (project-pages prod?)
+      (static-pages prod?)
+      (when-not prod? (sift :move {#"public" "dev"}))
+      (target :no-clean true)
+      (notify))))
 
 (deftask dev
   []
-  (comp (watch)
-        (build)
-        (livereload :snippet true)
-        (serve :resource-root "public" :port 9000)))
+  (pipeline
+    (watch)
+    (build :env :dev)
+    (livereload :snippet true)
+    (serve :resource-root "public" :port 9000)))
+
+(deftask server
+  []
+  (pipeline
+    (serve :dir "target/dev" :port 9000)
+    (watch :verbose true)
+    (livereload :snippet true)))
+
+(deftask watch-css
+  []
+  (pipeline
+    (sift :include [#"\.scss"])
+    (watch :verbose true)
+    (styles false)
+    (sift :move {#"public" "dev"} :include [#"\.css"])
+    (target :no-clean true)
+    (livereload :snippet true)))

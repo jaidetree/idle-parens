@@ -74,6 +74,7 @@ a, a:hover {
   color: $gray-teal;
   font-size: rems(18px);
   font-weight: 600;
+  letter-spacing: rems(3px);
   transition: all 250ms ease-in-out;
 }
 .navbar__item::before {
