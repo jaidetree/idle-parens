@@ -3,7 +3,6 @@
             [idle-parens.post :refer [render-entry]]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
-  (clojure.pprint/pprint posts)
   (base/render
    :title (:site-title global-meta)
    :subtitle "idle-parens/blog"

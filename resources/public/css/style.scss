@@ -269,7 +269,7 @@ a, a:hover {
   @extend %copy;
   position: relative;
   margin-top: rems(32px);
-  padding-left: rems(42px);
+  padding-left: rems(32px);
   margin-right: rems(10px);
   text-align: left;
   color: black(80%);
@@ -280,12 +280,12 @@ a, a:hover {
   @extend %icon;
   position: absolute;
   left: rems(0px);
-  top: rems(-10px);
+  top: rems(-16px);
   padding-right: rems(10px);
   color: $teal;
-  font-size: rems(60px);
+  font-size: rems(50px);
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.2;
   content: "\f10d";
 }
 

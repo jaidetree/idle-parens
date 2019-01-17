@@ -95,8 +95,8 @@
 (defn project-pages
   [prod?]
   (pipeline
-    (perun/render :renderer 'idle-parens.post/render :filterer project?)
-    (perun/collection :renderer 'idle-parens.index/render :page "projects.html" :filterer project?)))
+    (perun/collection :renderer 'idle-parens.index/render :page "projects.html" :filterer project?)
+    (perun/render :renderer 'idle-parens.post/render :filterer project?)))
     ; (perun/tags :renderer 'idle-parens.tags/render :filterer project?)))
     ; (perun/paginate :renderer 'idle-parens.paginate/render :filterer project?)))
 
@@ -127,9 +127,8 @@
     (perun/global-metadata)
     (html prod?)
     (build-meta prod?)
-    (copy-markdown-meta)
     (blog-pages prod?)
-    ; (project-pages prod?)
+    (project-pages prod?)
     (static-pages prod?)))
 
 (deftask build
