@@ -14,6 +14,7 @@
          '[clojure.java.io :as io]
          '[io.perun :as perun]
          '[io.perun.core :refer [report-info]]
+         '[io.perun.meta :as pm]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-livereload :refer [livereload]]
          '[deraen.boot-sass :refer [sass]]
@@ -61,6 +62,14 @@
                      (io/file dir))
       (report-info "clean!" "Cleaned %s" dir))))
 
+(deftask copy-markdown-meta
+  []
+  (boot/with-pre-wrap fileset
+    (doseq [meta (pm/get-meta fileset)]
+      (clojure.pprint/pprint meta))
+    fileset))
+    ; (boot/commit! fileset)))
+
 (defn html
   [prod?]
   (pipeline
@@ -78,8 +87,8 @@
 (defn blog-pages
   [prod?]
   (pipeline
-    (perun/render :renderer 'idle-parens.post/render :filterer blog?)
     (perun/collection :renderer 'idle-parens.index/render :page "index.html" :filterer blog?)
+    (perun/render :renderer 'idle-parens.post/render :filterer blog?)
     (perun/tags :renderer 'idle-parens.tags/render :filterer blog?)
     (perun/paginate :renderer 'idle-parens.paginate/render :filterer blog? :out-dir "public/blog")))
 
@@ -118,8 +127,9 @@
     (perun/global-metadata)
     (html prod?)
     (build-meta prod?)
+    (copy-markdown-meta)
     (blog-pages prod?)
-    (project-pages prod?)
+    ; (project-pages prod?)
     (static-pages prod?)))
 
 (deftask build
