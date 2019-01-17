@@ -131,7 +131,7 @@
      (seo-files prod?)
      (cljs :ids ["prod"])
      (sass :output-style :compressed :source-map false)
-     (clean)
+     (clean :exclude [#".git"])
      (target :no-clean true)
      (notify))))
 
