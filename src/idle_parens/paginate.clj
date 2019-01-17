@@ -1,12 +1,12 @@
-(ns eccentric-j.site.paginate
+(ns idle-parens.paginate
   (:require [hiccup.page :refer [html5]]
-            [eccentric-j.site.base :as base]))
-
+            [idle-parens.base :as base]))
 
 (defn render [{global-meta :meta posts :entries entry :entry}]
   (base/render
    :title (:site-title global-meta)
-   :subtitle (:tag entry)
+   :subtitle (format "idle-parens/blog/page-%s" (:page entry))
+   :current :archive
    :content [:ul.items.columns.small-12
              (for [post posts]
                [:li (:title post)])]))

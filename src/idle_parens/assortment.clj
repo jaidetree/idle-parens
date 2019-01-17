@@ -1,6 +1,6 @@
-(ns eccentric-j.site.assortment
+(ns idle-parens.assortment
   (:require [hiccup.page :refer [html5]]
-            [eccentric-j.site.base :as base]))
+            [idle-parens.base :as base]))
 
 (defn render [{global-meta :meta posts :entries entry :entry}]
   (base/render

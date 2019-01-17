@@ -78,23 +78,23 @@
 (defn blog-pages
   [prod?]
   (pipeline
-    (perun/render :renderer 'eccentric-j.site.post/render :filterer blog?)
-    (perun/collection :renderer 'eccentric-j.site.index/render :page "index.html" :filterer blog?)
-    (perun/tags :renderer 'eccentric-j.site.tags/render :filterer blog?)
-    (perun/paginate :renderer 'eccentric-j.site.paginate/render :filterer blog? :out-dir "public/blog")))
+    (perun/render :renderer 'idle-parens.post/render :filterer blog?)
+    (perun/collection :renderer 'idle-parens.index/render :page "index.html" :filterer blog?)
+    (perun/tags :renderer 'idle-parens.tags/render :filterer blog?)
+    (perun/paginate :renderer 'idle-parens.paginate/render :filterer blog? :out-dir "public/blog")))
 
 (defn project-pages
   [prod?]
   (pipeline
-    (perun/render :renderer 'eccentric-j.site.post/render :filterer project?)
-    (perun/collection :renderer 'eccentric-j.site.index/render :page "projects.html" :filterer project?)))
-    ; (perun/tags :renderer 'eccentric-j.site.tags/render :filterer project?)))
-    ; (perun/paginate :renderer 'eccentric-j.site.paginate/render :filterer project?)))
+    (perun/render :renderer 'idle-parens.post/render :filterer project?)
+    (perun/collection :renderer 'idle-parens.index/render :page "projects.html" :filterer project?)))
+    ; (perun/tags :renderer 'idle-parens.tags/render :filterer project?)))
+    ; (perun/paginate :renderer 'idle-parens.paginate/render :filterer project?)))
 
 (defn static-pages
   [prod?]
   (pipeline
-    (perun/static :renderer 'eccentric-j.site.about/render :page "about.html")))
+    (perun/static :renderer 'idle-parens.about/render :page "about.html")))
 
 (defn seo-files
   [prod?]

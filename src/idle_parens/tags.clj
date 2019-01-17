@@ -1,5 +1,5 @@
-(ns eccentric-j.site.tags
-  (:require [eccentric-j.site.base :as base]))
+(ns idle-parens.tags
+  (:require [idle-parens.base :as base]))
 
 
 (defn render [{global-meta :meta posts :entries entry :entry}]

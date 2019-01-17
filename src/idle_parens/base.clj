@@ -1,6 +1,6 @@
-(ns eccentric-j.site.base
+(ns idle-parens.base
   (:require [hiccup.page :refer [html5]]
-            [clojure.string :refer [join]]))
+            [clojure.string :refer [join split]]))
 
 (defn rems
   [px]
@@ -29,7 +29,7 @@
    [:ul.profile__trades [:li.profile__trade "Artist"]
                         [:li.profile__trade "Designer"]
                         [:li.profile__trade "Engineer"]]
-   [:blockquote.profile__quote "Idle parentheses are the devil&rsquo;s favorite playthings."]])
+   [:blockquote.profile__quote "Idle parentheses become the devil's playlists."]])
 
 (defn navbar
   [{:keys [current]}]
@@ -117,16 +117,17 @@
                      :width 5
                      :height 10
                      :class "bg-teal"})
-              [:div.container.inline-block
-               [:header.container
+              (comment [:div.hero])
+              [:div.container
                 [:div.row
                  [:div.main.col-md-8
-                  [:h1.page__title subtitle]
+                  [:h1.page__title (for [part (split (or subtitle "") #"/")]
+                                    [:span.page__path part])]
                   content]
                  [:aside.sidebar
                   (profile {:title title})
                   (navbar {:current current})
-                  (media-links)]]]]]
+                  (media-links)]]]]
 
              [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
              [:script {:src "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}]
