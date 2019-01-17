@@ -28,7 +28,8 @@
                         title]]
    [:ul.profile__trades [:li.profile__trade "Artist"]
                         [:li.profile__trade "Designer"]
-                        [:li.profile__trade "Engineer"]]])
+                        [:li.profile__trade "Engineer"]]
+   [:blockquote.profile__quote "Idle parentheses are the devil&rsquo;s favorite playthings."]])
 
 (defn navbar
   [{:keys [current]}]
@@ -55,13 +56,16 @@
      [:ul.navbar__list
       [:li.navbar__item {:class (when (= current :blog) "navbar__active")}
                         [:a {:href "/"}
-                            "Blog"]]
-      [:li.navbar__item {:class (when (= current :about) "navbar__active")}
-                        [:a {:href "/about.html"}
-                            "About"]]
+                            "idle-parens"
+                            [:span.navbar__label "(blog)"]]]
       [:li.navbar__item {:class (when (= current :projects) "navbar__active")}
                         [:a {:href "/projects.html"}
-                            "Projects"]]]]])
+                            "active-parens"
+                            [:span.navbar__label "(projects)"]]]
+      [:li.navbar__item {:class (when (= current :about) "navbar__active")}
+                        [:a {:href "/about.html"}
+                            "meta"
+                            [:span.navbar__label "(about)"]]]]]])
 
 (defn media-links
   []
@@ -79,49 +83,54 @@
                            [:i.icon.fa.fa-envelope]
                            [:span.media-links__label "Email"]]]])
 
-(defn render [& {:keys [title subtitle content current]}]
-  (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
-    [:head
-      [:title (str (when subtitle (str subtitle " | ")) title)]
-      [:meta {:charset "utf-8"}]
-      [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
-      [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]
-      [:link {:rel "stylesheet"
-              :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
-      [:link {:rel "stylesheet"
-              :href "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"}]
-      [:link {:rel "stylesheet"
-              :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark-reasonable.min.css"}]
-      [:link {:rel "stylesheet"
-              :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro"}]
-      [:link {:rel "stylesheet"
-              :href "/css/style.css"}]]
-    [:body [:div.page
-            (drip {:right 40
-                   :width 10
-                   :height 10
-                   :class "bg-teal"})
-            (drip {:right 66
-                   :width 8
-                   :height 8
-                   :class "bg-teal"})
-            (drip {:right 52
-                   :width 5
-                   :height 10
-                   :class "bg-teal"})
-            [:div.container.inline-block
-             [:header.container
-              [:div.row
-               [:div.main.col-md-8
-                content]
-               [:aside.sidebar.col-lg-3
-                (profile {:title title})
-                (navbar {:current current})
-                (media-links)]]]]]
+(defn head
+  [title]
+  [:head [:title title]
+         [:meta {:charset "utf-8"}]
+         [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
+         [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]
+         [:link {:rel "stylesheet"
+                 :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
+         [:link {:rel "stylesheet"
+                 :href "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"}]
+         [:link {:rel "stylesheet"
+                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark-reasonable.min.css"}]
+         [:link {:rel "stylesheet"
+                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Thasadith|Quicksand"}]
+         [:link {:rel "stylesheet"
+                 :href "/css/style.css"}]])
 
-           [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
-           [:script {:src "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}]
-           [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"}]
-           [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js"}]
-           [:script {:src "/js/app.js"}]
-           [:script "hljs.initHighlightingOnLoad();"]]))
+(defn render [& {:keys [title subtitle content current]}]
+  (let [home? (= current :blog)]
+    (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
+      (head (str (when (and subtitle (not home?)) (str subtitle " | ")) title))
+      [:body [:div.page
+              (drip {:right 40
+                     :width 10
+                     :height 10
+                     :class "bg-teal"})
+              (drip {:right 66
+                     :width 8
+                     :height 8
+                     :class "bg-teal"})
+              (drip {:right 52
+                     :width 5
+                     :height 10
+                     :class "bg-teal"})
+              [:div.container.inline-block
+               [:header.container
+                [:div.row
+                 [:div.main.col-md-8
+                  [:h1.page__title subtitle]
+                  content]
+                 [:aside.sidebar
+                  (profile {:title title})
+                  (navbar {:current current})
+                  (media-links)]]]]]
+
+             [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
+             [:script {:src "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}]
+             [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"}]
+             [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js"}]
+             [:script {:src "/js/eccentric-app.js"}]
+             [:script "hljs.initHighlightingOnLoad();"]])))

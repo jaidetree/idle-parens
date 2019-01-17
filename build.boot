@@ -112,55 +112,38 @@
     (perun/build-date)
     (perun/gravatar :source-key :author-email :target-key :author-gravatar)))
 
-(defn styles
-  [prod?]
+(deftask generate-site
+  [_ prod? bool "Production build?"]
   (pipeline
-   (sass)))
-
-(defn scripts
-  [prod?]
-  (pipeline
-    (cljs :optimizations (if prod? :advanced :none))))
+    (perun/global-metadata)
+    (html prod?)
+    (build-meta prod?)
+    (blog-pages prod?)
+    (project-pages prod?)
+    (static-pages prod?)))
 
 (deftask build
   "Build the blog source and output to target/public"
-  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"
-   j js                  bool  "Build cljs"
-   c css                 bool  "Build css"
-   s seo                 bool  "Build SEO pages"]
+  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"]
   (let [prod? (= build-env :prod)]
-    (pipeline
-      (perun/global-metadata)
-      (html prod?)
-      (build-meta prod?)
-      (blog-pages prod?)
-      (project-pages prod?)
-      (static-pages prod?)
-      (when-not prod? (sift :move {#"public" "dev"}))
-      (target :no-clean true)
-      (notify))))
+   (pipeline
+     (generate-site :prod? prod?)
+     (seo-files prod?)
+     (cljs :ids ["prod"])
+     (sass :output-style :compressed :source-map false)
+     (clean)
+     (target :no-clean true)
+     (notify))))
 
 (deftask dev
   []
   (pipeline
+    (clean :dir "target/dev")
     (watch)
-    (build :env :dev)
+    (generate-site :prod? false)
+    (cljs :ids ["dev"])
+    (sass :output-style :expanded :source-map true)
+    (sift :move {#"public" "dev"})
     (livereload :snippet true)
-    (serve :resource-root "public" :port 9000)))
-
-(deftask server
-  []
-  (pipeline
-    (serve :dir "target/dev" :port 9000)
-    (watch :verbose true)
-    (livereload :snippet true)))
-
-(deftask watch-css
-  []
-  (pipeline
-    (sift :include [#"\.scss"])
-    (watch :verbose true)
-    (styles false)
-    (sift :move {#"public" "dev"} :include [#"\.css"])
     (target :no-clean true)
-    (livereload :snippet true)))
+    (serve :dir "target/dev" :port 9000)))

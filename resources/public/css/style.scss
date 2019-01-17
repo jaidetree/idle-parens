@@ -1,19 +1,23 @@
-/* Utils
--------------------------------------------------------------------------- */
+// Utils
+// --------------------------------------------------------------------------
 @function rems ($px) {
   @return $px/16px * 1rem;
 }
 
-/* Colors
- -------------------------------------------------------------------------- */
+@function black ($percent) {
+  @return darken(white, $percent);
+}
+
+// Colors
+// ---------------------------------------------------------------------------
 $slate: #353d3b;
 $light-slate: lighten(#353d3b, 50%);
 $gray: #ebecf2;
 $teal: #1FC3A0;
 $gray-teal: #6f7f7b;
 
-/* Extendables
---------------------------------------------------------------------------- */
+// Extendables
+// ---------------------------------------------------------------------------
 %icon {
   font: normal normal normal 14px/1 FontAwesome;
 }
@@ -23,13 +27,16 @@ $gray-teal: #6f7f7b;
 %script {
   font-family: 'Seaweed Script', cursive;
 }
+%copy {
+  font-family: 'Thasadith', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
 
-/* BASE
--------------------------------------------------------------------------- */
+// BASE
+// ---------------------------------------------------------------------------
 body {
   /* background: #F9F8F6; */
   background: $gray;
-  // background: $gray url(/img/concrete-texture.png);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,8 +47,8 @@ a, a:hover {
   color: $teal;
 }
 
-/* Layout
--------------------------------------------------------------------------- */
+// Layout
+// ---------------------------------------------------------------------------
 .page {
   border-top: rems(10px) solid $teal;
 }
@@ -49,6 +56,7 @@ a, a:hover {
   position: fixed;
   right: 8vw;
   bottom: 0;
+  width: rems(320px);
   padding-bottom: rems(60px);
 }
 .sidebar a {
@@ -74,13 +82,13 @@ a, a:hover {
   color: $gray-teal;
   font-size: rems(18px);
   font-weight: 600;
-  letter-spacing: rems(3px);
+  letter-spacing: rems(2px);
   transition: all 250ms ease-in-out;
 }
 .navbar__item::before {
   @extend %icon;
   position: absolute;
-  top: rems(8px);
+  top: rems(18px);
   left: rems(8px);
   font-size: #{rems(30px)};
   line-height: 1;
@@ -114,10 +122,14 @@ a, a:hover {
 .navbar__item:not(:last-child) {
   border-bottom: 1px solid $light-slate;
 }
+.navbar__label {
+  @extend %copy;
+  display: block;
+  font-size: rems(15px);
+}
 
-/* Blocks
--------------------------------------------------------------------------- */
-
+// Blocks
+// ---------------------------------------------------------------------------
 .bg-teal {
   background: $teal;
   &::after {
@@ -228,6 +240,27 @@ a, a:hover {
   font-size: rems(10px);
   line-height: 1;
   color: $light-slate;
+}
+.profile__quote {
+  @extend %copy;
+  position: relative;
+  margin-top: rems(32px);
+  padding-left: rems(42px);
+  margin-right: rems(10px);
+  text-align: left;
+  color: black(60%);
+  font-style: italic;
+  font-size: rems(18px);
+}
+.profile__quote::before {
+  @extend %icon;
+  position: absolute;
+  left: rems(0px);
+  top: rems(-10px);
+  padding-right: rems(10px);
+  color: $teal;
+  font-size: rems(80px);
+  content: "\201C";
 }
 
 .drip {

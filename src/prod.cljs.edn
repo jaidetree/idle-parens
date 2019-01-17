@@ -1,6 +1,6 @@
 {:require [app.core]
  :init-fns [app.core/init]
- :compiler-options {:optimizations :none
+ :compiler-options {:optimizations :advanced
                     :asset-path "js"
                     :output-dir "public/js"
-                    :output-to "public/js/app.js"}}
+                    :output-to "public/js/eccentric-app.js"}}
