@@ -55,19 +55,32 @@ a, a:hover {
 .sidebar {
   position: fixed;
   right: 8vw;
-  bottom: 0;
+  bottom: rems(30px);
   width: rems(320px);
-  padding-bottom: rems(60px);
+  overflow: auto;
+  z-index: 4;
 }
 .sidebar a {
   text-decoration: none;
   color: $gray-teal;
 }
+.hero {
+  position: absolute;
+  top: rems(10px);
+  left: 0;
+  right: 0;
+  height: rems(450px);
+  // background: desaturate(lighten($teal, 30%), 30%);
+  background: $slate;
+  z-index: 1;
+}
 .main {
   padding-top: rems(250px);
+  z-index: 2;
 }
 .navbar {
   padding: 0;
+  z-index: 3;
 }
 .navbar__list {
   margin: 0;
@@ -88,7 +101,7 @@ a, a:hover {
 .navbar__item::before {
   @extend %icon;
   position: absolute;
-  top: rems(18px);
+  top: rems(20px);
   left: rems(8px);
   font-size: #{rems(30px)};
   line-height: 1;
@@ -97,9 +110,9 @@ a, a:hover {
   transition: all 250ms ease-in-out;
   content: '\f105';
 }
-.navbar__active a, .navbar__active::before {
-  color: $teal;
-}
+// .navbar__active::before {
+//   color: $teal;
+// }
 .navbar__item:hover {
   opacity: 1.0;
   padding-left: rems(24px);
@@ -107,6 +120,9 @@ a, a:hover {
 .navbar__item:hover::before {
   opacity: 1;
   transform: translateX(0);
+}
+.navbar__active, .navbar__active a {
+  color: $teal;
 }
 .navbar__item:active {
   background: $gray-teal;
@@ -204,6 +220,14 @@ a, a:hover {
   content: ')';
   right: rems(-1px);
 }
+.page__path:not(:last-child)::after {
+  position: relative;
+  top: rems(8px);
+  color: $gray-teal;
+  margin-left: rems(2px);
+  font-size: rems(60px);
+  content: '/';
+}
 
 .profile__logo {
   display: block;
@@ -248,9 +272,9 @@ a, a:hover {
   padding-left: rems(42px);
   margin-right: rems(10px);
   text-align: left;
-  color: black(60%);
+  color: black(80%);
   font-style: italic;
-  font-size: rems(18px);
+  font-size: rems(22px);
 }
 .profile__quote::before {
   @extend %icon;
@@ -259,8 +283,10 @@ a, a:hover {
   top: rems(-10px);
   padding-right: rems(10px);
   color: $teal;
-  font-size: rems(80px);
-  content: "\201C";
+  font-size: rems(60px);
+  z-index: -1;
+  opacity: 0.3;
+  content: "\f10d";
 }
 
 .drip {
