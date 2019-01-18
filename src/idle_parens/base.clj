@@ -77,7 +77,7 @@
                            [:i.icon.fa.fa-rss-square]
                            [:span.media-links__label "Atom"]]]
    [:li.media-links__item [:a {:href "https://github.com/eccentric-j"}
-                           [:i.icon.fa.fa-github]
+                           [:i.icon.fab.fa-github-square]
                            [:span.media-links__label "Github"]]]
    [:li.media-links__item [:a {:href "mailto:jayzawrotny@gmail.com"}
                            [:i.icon.fa.fa-envelope]
@@ -92,7 +92,7 @@
          [:link {:rel "stylesheet"
                  :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
          [:link {:rel "stylesheet"
-                 :href "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"}]
+                 :href "https://use.fontawesome.com/releases/v5.6.3/css/all.css"}]
          [:link {:rel "stylesheet"
                  :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark-reasonable.min.css"}]
          [:link {:rel "stylesheet"
@@ -120,10 +120,11 @@
               (comment [:div.hero])
               [:div.container
                 [:div.row
-                 [:div.main.col-md-8
+                 [:div.main.col-9
                   [:h1.page__title (for [part (split (or subtitle "") #"/")]
                                     [:span.page__path part])]
-                  content]
+                  [:div.content
+                    content]]
                  [:aside.sidebar
                   (profile {:title title})
                   (navbar {:current current})

@@ -8,7 +8,7 @@
    :subtitle "idle-parens/blog"
    :current :blog
    :content [:div.blog
-             [:ul.items.columns.small-12
+             [:ul.posts
               (for [post posts]
-                [:li
+                [:li.posts__item
                  (render-entry (assoc data :entry post))])]]))

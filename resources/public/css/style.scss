@@ -19,7 +19,7 @@ $gray-teal: #6f7f7b;
 // Extendables
 // ---------------------------------------------------------------------------
 %icon {
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal 900 14px/1 "Font Awesome 5 Free";
 }
 %mono {
   font-family: 'Anonymous Pro', monospace;
@@ -36,11 +36,12 @@ $gray-teal: #6f7f7b;
 // ---------------------------------------------------------------------------
 body {
   /* background: #F9F8F6; */
+  @extend %copy;
   background: $gray;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cutive Mono', monospace;
+  @extend %mono;
 }
 
 a, a:hover {
@@ -115,7 +116,7 @@ a, a:hover {
 // }
 .navbar__item:hover {
   opacity: 1.0;
-  padding-left: rems(24px);
+  padding-left: rems(32px);
 }
 .navbar__item:hover::before {
   opacity: 1;
@@ -166,8 +167,26 @@ a, a:hover {
   border-bottom: 2px solid $slate;
 }
 
+.drip {
+  position: absolute;
+  width: rems(12px);
+  height: rems(10px);
+  transition: height 1500ms ease-in-out;
+  z-index: 100;
+}
+.drip::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 100%;
+  bottom: rems(-3px);
+  content: '';
+  border-radius: 50%;
+}
+
 .icon {
-  margin-right: rems(3px);
+  margin-right: rems(5px);
 }
 
 .media-links {
@@ -229,6 +248,29 @@ a, a:hover {
   content: '/';
 }
 
+.posts {
+  margin: rems(32px);
+  padding: 0;
+  list-style: none;
+}
+
+.post__header {
+  margin-bottom: rems(32px);
+}
+.post__title {
+  padding: rems(16px) 0;
+  font-size: rems(24px);
+}
+.post__title a {
+  color: $slate;
+}
+.post__content {
+  padding: rems(16px);
+}
+.post__date {
+  color: $gray-teal;
+}
+
 .profile__logo {
   display: block;
   width: rems(140px);
@@ -287,22 +329,4 @@ a, a:hover {
   z-index: -1;
   opacity: 0.2;
   content: "\f10d";
-}
-
-.drip {
-  position: absolute;
-  width: rems(12px);
-  height: rems(10px);
-  transition: height 1500ms ease-in-out;
-  z-index: 100;
-}
-.drip::after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding-top: 100%;
-  bottom: rems(-3px);
-  content: '';
-  border-radius: 50%;
 }

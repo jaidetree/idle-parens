@@ -1,12 +1,18 @@
 (ns idle-parens.post
-  (:require [idle-parens.base :as base]))
+  (:require [idle-parens.base :as base]
+            [idle-parens.formats :refer [format-date]]))
 
 (defn render-entry
   [{global-meta :meta posts :entries post :entry}]
   [:article.post
-   [:header.post__header.bordered
-    [:h1.post__title [:a.post__link {:href (:permalink post)}
-                                    (:title post)]]]
+   [:header.post__header
+    [:h1.post__title.borders
+     [:a.post__link {:href (:permalink post)}
+       (:title post)]]
+    [:div.post__fields
+     [:span.post__date
+      [:i.icon.fa.fa-calendar-day]
+      (format-date (:date-published post))]]]
    [:section.post__content
      (:content post)]])
 
