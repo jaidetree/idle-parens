@@ -11,4 +11,4 @@
              [:ul.posts
               (for [post posts]
                 [:li.posts__item
-                 (render-entry (assoc data :entry post))])]]))
+                 (render-entry (assoc data :entry post) :description)])]]))

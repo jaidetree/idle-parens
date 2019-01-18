@@ -1,13 +1,23 @@
 (ns idle-parens.formats
-  (:import [java.time Instant]
-           [java.time.format DateTimeFormatter]))
+  (:require [clojure.string :refer [join lower-case]])
+  (:import [java.text SimpleDateFormat]))
 
 (defn format-date
   [inst]
-  (-> (DateTimeFormatter/ofPattern "LLL d, YYYY h:m a")
-      ; (.withZone (ZoneId/systemDefault))
+  (-> (SimpleDateFormat. "MMMM d, yyyy")
       (.format inst)))
 
-; DateTimeFormatter formatter =
-;   DateTimeFormatter.ofPattern("yyyyMMddHHmmss").withZone(ZoneId.systemDefault());
-; return formatter.format(instant);
+(defn format-time
+  [inst]
+  (-> (SimpleDateFormat. "hh:mm a")
+      (.format inst)))
+
+(defn slugify
+  [s]
+  (->> s
+       (lower-case)
+       (re-seq #"[a-z0-9]+")
+       (join "-")))
+
+(comment
+ (slugify "hello_my_dirty_123--file.txt.whatever"))

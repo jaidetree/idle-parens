@@ -29,7 +29,8 @@
    [:ul.profile__trades [:li.profile__trade "Artist"]
                         [:li.profile__trade "Designer"]
                         [:li.profile__trade "Engineer"]]
-   [:blockquote.profile__quote "Idle parentheses become the devil's playlists."]])
+   [:blockquote.profile__quote
+    "Idle parentheses form the devil's playlists."]])
 
 (defn navbar
   [{:keys [current]}]
@@ -70,17 +71,13 @@
 (defn media-links
   []
   [:ul.media-links.d-flex.flex-row.justify-content-between
-   [:li.media-links__item [:a {:href "/feed.rss"}
-                           [:i.icon.fa.fa-rss]
+   [:li.media-links__item [:a.icon.fa-rss. {:href "/feed.rss"}
                            [:span.media-links__label "RSS"]]]
-   [:li.media-links__item [:a {:href "/atom.xml"}
-                           [:i.icon.fa.fa-rss-square]
+   [:li.media-links__item [:a.icon.fa-rss-square. {:href "/atom.xml"}
                            [:span.media-links__label "Atom"]]]
-   [:li.media-links__item [:a {:href "https://github.com/eccentric-j"}
-                           [:i.icon.fab.fa-github-square]
+   [:li.media-links__item [:a.brand.fa-github-square {:href "https://github.com/eccentric-j"}
                            [:span.media-links__label "Github"]]]
-   [:li.media-links__item [:a {:href "mailto:jayzawrotny@gmail.com"}
-                           [:i.icon.fa.fa-envelope]
+   [:li.media-links__item [:a.icon.fa-envelope {:href "mailto:jayzawrotny@gmail.com"}
                            [:span.media-links__label "Email"]]]])
 
 (defn head
@@ -117,18 +114,17 @@
                      :width 5
                      :height 10
                      :class "bg-teal"})
-              (comment [:div.hero])
-              [:div.container
-                [:div.row
-                 [:div.main.col-9
-                  [:h1.page__title (for [part (split (or subtitle "") #"/")]
-                                    [:span.page__path part])]
-                  [:div.content
-                    content]]
-                 [:aside.sidebar
-                  (profile {:title title})
-                  (navbar {:current current})
-                  (media-links)]]]]
+              ; [:div.hero]
+              [:div.layout
+               [:div.main
+                [:h1.page__title (for [part (split (or subtitle "") #"/")]
+                                  [:span.page__path part])]
+                [:div.content
+                  content]]
+               [:aside.sidebar
+                (profile {:title title})
+                (navbar {:current current})
+                (media-links)]]]
 
              [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
              [:script {:src "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}]

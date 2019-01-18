@@ -89,7 +89,7 @@
   (pipeline
     (perun/collection :renderer 'idle-parens.index/render :page "index.html" :filterer blog?)
     (perun/render :renderer 'idle-parens.post/render :filterer blog?)
-    (perun/tags :renderer 'idle-parens.tags/render :filterer blog?)
+    (perun/tags :renderer 'idle-parens.tags/render :filterer blog? :out-dir "public/blog/tags")
     (perun/paginate :renderer 'idle-parens.paginate/render :filterer blog? :out-dir "public/blog")))
 
 (defn project-pages
@@ -156,3 +156,12 @@
     (livereload :snippet true)
     (target :no-clean true)
     (serve :dir "target/dev" :port 9000)))
+
+(deftask nrepl
+  []
+  (set-env!
+   :init-ns 'user
+   :dependencies #(into % '[[proto-repl "0.3.1"]
+                            [proto-repl-charts "0.3.2"]
+                            [org.clojure/tools.namespace "0.2.11"]]))
+  (repl))

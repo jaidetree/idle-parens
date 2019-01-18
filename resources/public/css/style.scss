@@ -18,8 +18,20 @@ $gray-teal: #6f7f7b;
 
 // Extendables
 // ---------------------------------------------------------------------------
+%icon, %brand {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
 %icon {
-  font: normal normal 900 14px/1 "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+%brand {
+  font-family: "Font Awesome 5 Brands";
 }
 %mono {
   font-family: 'Anonymous Pro', monospace;
@@ -50,20 +62,8 @@ a, a:hover {
 
 // Layout
 // ---------------------------------------------------------------------------
-.page {
-  border-top: rems(10px) solid $teal;
-}
-.sidebar {
-  position: fixed;
-  right: 8vw;
-  bottom: rems(30px);
-  width: rems(320px);
-  overflow: auto;
-  z-index: 4;
-}
-.sidebar a {
-  text-decoration: none;
-  color: $gray-teal;
+.content {
+  margin: rems(32px);
 }
 .hero {
   position: absolute;
@@ -76,6 +76,9 @@ a, a:hover {
   z-index: 1;
 }
 .main {
+  max-width: rems(760px);
+  margin-left: auto;
+  margin-right: calc(9vw + #{rems(320px)});
   padding-top: rems(250px);
   z-index: 2;
 }
@@ -145,6 +148,23 @@ a, a:hover {
   font-size: rems(15px);
 }
 
+.page {
+  border-top: rems(10px) solid $teal;
+}
+
+.sidebar {
+  position: fixed;
+  right: 8vw;
+  bottom: rems(30px);
+  width: rems(320px);
+  overflow: auto;
+  z-index: 4;
+}
+.sidebar a {
+  text-decoration: none;
+  color: $gray-teal;
+}
+
 // Blocks
 // ---------------------------------------------------------------------------
 .bg-teal {
@@ -185,8 +205,14 @@ a, a:hover {
   border-radius: 50%;
 }
 
-.icon {
+.icon::before, .brand::before {
   margin-right: rems(5px);
+}
+.brand::before {
+  @extend %brand;
+}
+.icon::before {
+  @extend %icon;
 }
 
 .media-links {
@@ -202,7 +228,8 @@ a, a:hover {
   text-transform: uppercase;
   color: $light-slate;
 }
-.media-links__item .icon {
+.media-links__item .icon,
+.media-links__item .brand {
   display: block;
   text-align: center;
   font-size: rems(28px);
@@ -212,13 +239,16 @@ a, a:hover {
 .media-links__label {
   display: none;
 }
-.media-links__item:hover .icon {
+.media-links__item:hover .icon,
+.media-links__item:hover .brand {
   color: $teal;
 }
 
 .page__title {
   position: relative;
   padding: rems(16px);
+  color: $slate;
+  font-size: rems(30px);
 }
 .page__title::before,
 .page__title::after {
@@ -226,8 +256,8 @@ a, a:hover {
   display: inline-block;
   position: relative;
   top: rems(1px);
-  color: lighten($slate, 30%);
-  font-size: rems(40px);
+  color: $gray-teal;
+  font-size: rems(30px);
   font-style: normal;
   line-height: 1;
 }
@@ -241,20 +271,24 @@ a, a:hover {
 }
 .page__path:not(:last-child)::after {
   position: relative;
-  top: rems(8px);
+  top: rems(0px);
   color: $gray-teal;
-  margin-left: rems(2px);
-  font-size: rems(60px);
+  margin-left: rems(4px);
+  margin-right: rems(4px);
+  font-size: rems(33px);
   content: '/';
 }
 
 .posts {
-  margin: rems(32px);
   padding: 0;
   list-style: none;
 }
+.posts__item {
+  margin-bottom: rems(96px);
+}
 
 .post__header {
+  position: relative;
   margin-bottom: rems(32px);
 }
 .post__title {
@@ -265,12 +299,39 @@ a, a:hover {
   color: $slate;
 }
 .post__content {
-  padding: rems(16px);
+  color: black(50%);
 }
-.post__date {
+.post__full {
+  padding: 0 rems(16px);
+}
+.post__attrs {
+  display: flex;
+  justify-content: space-between;
+  font-size: rems(13px);
+}
+.post__meta {
   color: $gray-teal;
 }
-
+.post__meta > * {
+  margin-right: rems(16px);
+}
+.post__tags {
+  padding: 0;
+  margin-top: rems(16px);
+}
+.post__summary {
+  font-size: rems(20px);
+}
+.post__permalink {
+  position: absolute;
+  top: rems(20px);
+  left: rems(-30px);
+  bottom: 0;
+  margin: auto;
+  color: $light-slate;
+}
+.profile {
+}
 .profile__logo {
   display: block;
   width: rems(140px);
@@ -309,6 +370,7 @@ a, a:hover {
 }
 .profile__quote {
   @extend %copy;
+  background: rgba($gray, 0.9);
   position: relative;
   margin-top: rems(32px);
   padding-left: rems(32px);
@@ -326,7 +388,7 @@ a, a:hover {
   padding-right: rems(10px);
   color: $teal;
   font-size: rems(50px);
-  z-index: -1;
+  z-index: 1;
   opacity: 0.2;
   content: "\f10d";
 }
