@@ -1,4 +1,4 @@
-(ns idle-parens.assortment
+(ns idle-parens.blog.assortment
   (:require [hiccup.page :refer [html5]]
             [idle-parens.base :as base]))
 

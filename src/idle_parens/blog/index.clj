@@ -1,6 +1,6 @@
-(ns idle-parens.index
+(ns idle-parens.blog.index
   (:require [idle-parens.base :as base]
-            [idle-parens.post :refer [render-entry]]))
+            [idle-parens.blog.post :refer [render-entry]]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
   (let [[first-post & posts] posts]

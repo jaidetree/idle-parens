@@ -87,16 +87,16 @@
 (defn blog-pages
   [prod?]
   (pipeline
-    (perun/collection :renderer 'idle-parens.index/render :page "index.html" :filterer blog?)
-    (perun/render :renderer 'idle-parens.post/render :filterer blog?)
-    (perun/tags :renderer 'idle-parens.tags/render :filterer blog? :out-dir "public/blog/tags")
-    (perun/paginate :renderer 'idle-parens.paginate/render :filterer blog? :out-dir "public/blog")))
+    (perun/collection :renderer 'idle-parens.blog.index/render :page "index.html" :filterer blog?)
+    (perun/render :renderer 'idle-parens.blog.post/render :filterer blog?)
+    (perun/tags :renderer 'idle-parens.blog.tags/render :filterer blog? :out-dir "public/blog/tags")
+    (perun/paginate :renderer 'idle-parens.blog.paginate/render :filterer blog? :out-dir "public/blog")))
 
 (defn project-pages
   [prod?]
   (pipeline
-    (perun/collection :renderer 'idle-parens.index/render :page "projects.html" :filterer project?)
-    (perun/render :renderer 'idle-parens.post/render :filterer project?)))
+    (perun/collection :renderer 'idle-parens.blog.index/render :page "projects.html" :filterer project?)
+    (perun/render :renderer 'idle-parens.blog.post/render :filterer project?)))
     ; (perun/tags :renderer 'idle-parens.tags/render :filterer project?)))
     ; (perun/paginate :renderer 'idle-parens.paginate/render :filterer project?)))
 
@@ -128,13 +128,13 @@
     (html prod?)
     (build-meta prod?)
     (blog-pages prod?)
-    (project-pages prod?)
+    ; (project-pages prod?)
     (static-pages prod?)))
 
 (deftask build
   "Build the blog source and output to target/public"
-  [e build-env BUILD-ENV kw    "Environment keyword like :dev or :production"]
-  (let [prod? (= build-env :prod)]
+  []
+  (let [prod? true]
    (pipeline
      (generate-site :prod? prod?)
      (seo-files prod?)

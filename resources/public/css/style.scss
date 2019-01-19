@@ -182,6 +182,47 @@ p {
 
 // Blocks
 // ---------------------------------------------------------------------------
+.author {
+  margin: rems(16px);
+  margin-top: rems(64px);
+  padding: rems(16px);
+  background: $slate;
+  color: #fff;
+}
+.author__intro {
+  font-style: italic;
+  color: black(30%);
+}
+.author__avatar {
+  margin-right: rems(16px);
+}
+.author__profile {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: rems(32px) 0 rems(16px);
+}
+.author__bio {
+  @extend %mono;
+  color: black(10%);
+  font-size: rems(18px);
+}
+.author__website {
+  @extend %mono;
+  font-style: italic;
+  font-size: rems(16px);
+}
+.author__links {
+  margin: 0;
+  margin-top: rems(8px);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.author__links-item + .author__links-item {
+  margin-left: rems(32px);
+}
+
 .bg-teal {
   background: $teal;
   &::after {

@@ -1,4 +1,4 @@
-(ns idle-parens.tags
+(ns idle-parens.blog.tags
   (:require [idle-parens.base :as base]))
 
 

@@ -1,4 +1,4 @@
-(ns idle-parens.paginate
+(ns idle-parens.blog.paginate
   (:require [hiccup.page :refer [html5]]
             [idle-parens.base :as base]))
 
