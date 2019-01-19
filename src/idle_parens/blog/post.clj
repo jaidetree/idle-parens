@@ -103,17 +103,16 @@
          [:a {:href (str "/blog/tags/" tag ".html")} tag]])])])
 
 (defn render-entry
-  [{global-meta :meta posts :entries post :entry} content]
+  [{global-meta :meta posts :entries post :entry} content & {:keys [context]}]
   (let [full? (= content :content)
         author (resolve-author (:authors global-meta) post)]
-    (clojure.pprint/pprint author)
     [:article.post
      (render-header post author full?)
      (when content
        [:section.post__content
          {:class (if full? "post__full" "post__summary")}
          (content post)])
-     (when (and full? (:bio author))
+     (when (and (= context :post) (:bio author))
        [:footer.post__footer
         (render-author post author)])]))
 
@@ -122,4 +121,5 @@
    :title (:site-title global-meta)
    :subtitle (:title post)
    :page-title "idle-parens/blog"
-   :content (render-entry data :content)))
+   :content (render-entry data :content
+                          :context :post)))
