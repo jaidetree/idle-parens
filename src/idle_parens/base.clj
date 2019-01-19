@@ -20,8 +20,9 @@
             :class (if class class "")}])
 
 (defn profile
-  [{:keys [title]}]
+  [{:keys [title class]}]
   [:section.profile.text-center.pb-5
+   {:class class}
    [:h1.profile__title [:a {:href "/"}
                         [:img.profile__logo {:src "/img/eccentric-j-logo.svg"
                                              :alt "Eccentric J's Logo"}]
@@ -93,11 +94,11 @@
          [:link {:rel "stylesheet"
                  :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/obsidian.min.css"}]
          [:link {:rel "stylesheet"
-                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Titillium+Web"}]
+                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro"}]
          [:link {:rel "stylesheet"
                  :href "/css/style.css"}]])
 
-(defn render [& {:keys [title subtitle content current]}]
+(defn render [& {:keys [title subtitle page-title content current]}]
   (let [home? (= current :blog)]
     (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
       (head (str (when (and subtitle (not home?)) (str subtitle " | ")) title))
@@ -114,10 +115,12 @@
                      :width 5
                      :height 10
                      :class "bg-teal"})
-              [:div.hero]
+              [:div.hero
+               [:div.sidebar
+                (profile {:title title :class "profile--bg_dark"})]]
               [:div.layout
                [:div.main
-                [:h1.page__title (for [part (split (or subtitle "") #"/")]
+                [:h1.page__title (for [part (split (or page-title subtitle "") #"/")]
                                   [:span.page__path part])]
                 [:div.content
                   content]]

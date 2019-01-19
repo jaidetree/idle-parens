@@ -3,12 +3,15 @@
             [idle-parens.post :refer [render-entry]]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
-  (base/render
-   :title (:site-title global-meta)
-   :subtitle "idle-parens/blog"
-   :current :blog
-   :content [:div.blog
-             [:ul.posts
-              (for [post posts]
+  (let [[first-post & posts] posts]
+    (base/render
+     :title (:site-title global-meta)
+     :subtitle "idle-parens/blog"
+     :current :blog
+     :content [:div.blog
+               [:ul.posts
                 [:li.posts__item
-                 (render-entry (assoc data :entry post) :description)])]]))
+                 (render-entry (assoc data :entry first-post) :content)]
+                (for [post posts]
+                  [:li.posts__item
+                   (render-entry (assoc data :entry post) :description)])]])))

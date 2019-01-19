@@ -9,7 +9,7 @@
      [:header.post__header
       [:a.post__permalink {:href (:permalink post)}
        [:i.fa.fa-link]]
-      [:div.borders.position-relative
+      [:div.borders.post__headline
        [:h1.post__title
         [:a.post__link {:href (:permalink post)}
           (:title post)]]
@@ -17,21 +17,21 @@
         [:div.drips
          (base/drip
           {:width 5
-           :right 182
+           :right 24
            :height 5
            :max-height 60
            :class "bg-slate"
            :top "100%"})
          (base/drip
           {:width 3
-           :right 175
+           :right 19
            :height 8
            :max-height 50
            :class "bg-slate"
            :top "100%"})
          (base/drip
           {:width 8
-           :right 165
+           :right 10
            :height 8
            :max-height 40
            :class "bg-slate"
@@ -43,9 +43,12 @@
          (format-date (:date-published post))]
         [:span.post__time.icon.fa-clock
          (format-time (:date-published post))]]
-       [:span.post__meta.post__author.icon.fa-user
-        [:a {:href (:author-url post) :target "_blank"}
-         (:author post)]]]
+       [:span.post__meta.pr-5
+         [:span.post__ttr.icon.fa-stopwatch
+          (str (:ttr post) " min. read")]
+         [:span.post__author.icon.fa-user
+          [:a {:href (:author-url post) :target "_blank"}
+           (:author post)]]]]
       (when full?
         [:ul.post__meta.post__tags.d-inline-block
          (for [tag (:tags post)]
@@ -60,5 +63,6 @@
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
   (base/render
    :title (:site-title global-meta)
-   :subtitle "idle-parens/blog"
+   :subtitle (:title post)
+   :page-title "idle-parens/blog"
    :content (render-entry data :content)))

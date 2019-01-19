@@ -14,7 +14,8 @@ $slate: #353d3b;
 $light-slate: lighten(#353d3b, 50%);
 $gray: #ebecf2;
 $teal: #1FC3A0;
-$gray-teal: #6f7f7b;
+$light-teal: lighten(desaturate($teal, 50%), 10%);
+$gray-teal: #3c4744;
 
 // Extendables
 // ---------------------------------------------------------------------------
@@ -43,6 +44,8 @@ $gray-teal: #6f7f7b;
   font-family: 'Thasadith', sans-serif;
   font-family: 'Quicksand', sans-serif;
   font-family: 'Titillium Web', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 100;
 }
 
 // BASE
@@ -80,14 +83,17 @@ p {
   // background: desaturate(lighten($teal, 30%), 30%);
   background: $slate url(/img/hero-bg.png) 50% 50% no-repeat;
   background-size: cover;
-  z-index: -1;
+  z-index: 2;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
 }
 .main {
+  position: relative;
   max-width: rems(760px);
   margin-left: auto;
   margin-right: calc(9vw + #{rems(320px)});
   padding-top: rems(250px);
-  z-index: 2;
+  z-index: 3;
 }
 .navbar {
   padding: 0;
@@ -162,9 +168,12 @@ p {
 .sidebar {
   position: fixed;
   right: 8vw;
-  top: rems(199px);
+  top: 0;
+  bottom: 0;
   width: rems(320px);
-  z-index: 4;
+  padding-top: rems(199px);
+  z-index: 1;
+  overflow: auto;
 }
 .sidebar a {
   text-decoration: none;
@@ -263,7 +272,7 @@ p {
   display: inline-block;
   position: relative;
   top: rems(1px);
-  color: $gray-teal;
+  color: $light-teal;
   font-size: rems(50px);
   font-style: normal;
   line-height: 1;
@@ -279,7 +288,7 @@ p {
 .page__path:not(:last-child)::after {
   position: relative;
   top: rems(0px);
-  color: $gray-teal;
+  color: $light-teal;
   margin-left: rems(4px);
   margin-right: rems(4px);
   font-size: rems(60px);
@@ -298,6 +307,12 @@ p {
   position: relative;
   margin-bottom: rems(32px);
 }
+.post__headline {
+  position: relative;
+  width: auto;
+  margin-left: rems(16px);
+  margin-right: rems(16px);
+}
 .post__title {
   margin: 0;
   padding: rems(16px) 0;
@@ -306,8 +321,11 @@ p {
 .post__title a {
   color: $slate;
 }
+.post__title a:hover {
+  color: $teal;
+}
 .post__content {
-  color: black(50%);
+  color: $slate;
 }
 .post__content h1,
 .post__content h2,
@@ -362,8 +380,8 @@ p {
 }
 .post__permalink {
   position: absolute;
-  top: rems(20px);
-  left: rems(-30px);
+  top: rems(21px);
+  left: rems(-10px);
   bottom: 0;
   margin: auto;
   color: $light-slate;
@@ -373,23 +391,8 @@ p {
   padding: rems(24px);
   border-top-left-radius: rems(10px);
   border-top-right-radius: rems(10px);
-  background: $gray;
-  background: rgba($gray, 0.8);
-}
-.profile::after {
-  position: absolute;
-  top: rems(-160px);
-  left: 0;
-  right: 0;
-  width: rems(180px);
-  height: rems(160px);
-  margin: auto;
-  border-radius: 50%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  background: rgba($gray, 0.8);
-  z-index: 2;
-  content: "";
+  // background: $gray;
+  // background: rgba($gray, 0.8);
 }
 .profile__logo {
   display: block;
@@ -413,6 +416,7 @@ p {
 }
 .profile__title:hover .profile__logo {
   filter: brightness(100%) grayscale(0%);
+  opacity: 1.0;
 }
 
 .profile__trades {
@@ -454,4 +458,25 @@ p {
   z-index: 1;
   opacity: 0.2;
   content: "\f10d";
+}
+.profile--bg_dark {
+  position: absolute;
+}
+.profile--bg_dark .profile__trades {
+  color: $gray;
+}
+.profile--bg_dark .profile__quote {
+  color: black(20%);
+}
+.profile--bg_dark .profile__quote::before {
+  opacity: 0.5;
+  z-index: -1;
+}
+.profile--bg_dark .profile__logo {
+  filter: grayscale(100%);
+  opacity: 0.4;
+}
+.profile--bg_dark .profile__title:hover .profile__logo {
+  filter: grayscale(100%);
+  opacity: 0.9;
 }
