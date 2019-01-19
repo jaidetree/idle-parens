@@ -27,7 +27,8 @@
     (:url author)]
    [:div.author__profile
     [:div.author__avatar
-     [:img.author__img {:src (:avatar-url author)}]]
+     [:img.author__img {:src (:avatar-url author)
+                        :alt (str "Avatar of " (:name author))}]]
     [:div.author__story
      [:p.author__bio (:bio author)]]]
    [:ul.author__links
