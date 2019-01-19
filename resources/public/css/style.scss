@@ -42,6 +42,7 @@ $gray-teal: #6f7f7b;
 %copy {
   font-family: 'Thasadith', sans-serif;
   font-family: 'Quicksand', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 // BASE
@@ -58,6 +59,9 @@ h1, h2, h3, h4, h5, h6 {
 
 a, a:hover {
   color: $teal;
+}
+
+p {
 }
 
 // Layout
@@ -301,6 +305,36 @@ a, a:hover {
 .post__content {
   color: black(50%);
 }
+.post__content h1,
+.post__content h2,
+.post__content h3,
+.post__content h4,
+.post__content h5 {
+  margin-bottom: rems(32px);
+  &:not(:first-child) {
+    margin-top: rems(64px);
+  }
+}
+.post__content h1 {
+  font-size: rems(36px);
+}
+.post__content h2 {
+  font-size: rems(30px);
+}
+.post__content h3 {
+  font-size: rems(26px);
+}
+.post__content h4 {
+  font-size: rems(22px);
+}
+.post__content h5 {
+  font-size: rems(20px);
+}
+.post__content p {
+  color: $slate;
+  font-size: rems(20px);
+  line-height: 2;
+}
 .post__full {
   padding: 0 rems(16px);
 }
@@ -329,8 +363,6 @@ a, a:hover {
   bottom: 0;
   margin: auto;
   color: $light-slate;
-}
-.profile {
 }
 .profile__logo {
   display: block;

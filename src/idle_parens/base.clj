@@ -91,9 +91,9 @@
          [:link {:rel "stylesheet"
                  :href "https://use.fontawesome.com/releases/v5.6.3/css/all.css"}]
          [:link {:rel "stylesheet"
-                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark-reasonable.min.css"}]
+                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/obsidian.min.css"}]
          [:link {:rel "stylesheet"
-                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Thasadith|Quicksand"}]
+                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Titillium+Web"}]
          [:link {:rel "stylesheet"
                  :href "/css/style.css"}]])
 
