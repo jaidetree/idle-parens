@@ -21,14 +21,14 @@
 
 (defn profile
   [{:keys [title]}]
-  [:section.profile.text-center.mb-5
+  [:section.profile.text-center.pb-5
    [:h1.profile__title [:a {:href "/"}
                         [:img.profile__logo {:src "/img/eccentric-j-logo.svg"
                                              :alt "Eccentric J's Logo"}]
                         title]]
-   [:ul.profile__trades [:li.profile__trade "Artist"]
+   [:ul.profile__trades [:li.profile__trade "Engineer"]
                         [:li.profile__trade "Designer"]
-                        [:li.profile__trade "Engineer"]]
+                        [:li.profile__trade "Artist"]]
    [:blockquote.profile__quote
     "Idle parentheses form the devil's playlists."]])
 
@@ -114,7 +114,7 @@
                      :width 5
                      :height 10
                      :class "bg-teal"})
-              ; [:div.hero]
+              [:div.hero]
               [:div.layout
                [:div.main
                 [:h1.page__title (for [part (split (or subtitle "") #"/")]

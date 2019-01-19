@@ -67,7 +67,9 @@ p {
 // Layout
 // ---------------------------------------------------------------------------
 .content {
+  position: relative;
   margin: rems(32px);
+  z-index: 6;
 }
 .hero {
   position: absolute;
@@ -76,8 +78,9 @@ p {
   right: 0;
   height: rems(450px);
   // background: desaturate(lighten($teal, 30%), 30%);
-  background: $slate;
-  z-index: 1;
+  background: $slate url(/img/hero-bg.png) 50% 50% no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 .main {
   max-width: rems(760px);
@@ -159,9 +162,8 @@ p {
 .sidebar {
   position: fixed;
   right: 8vw;
-  bottom: rems(30px);
+  top: rems(199px);
   width: rems(320px);
-  overflow: auto;
   z-index: 4;
 }
 .sidebar a {
@@ -250,9 +252,10 @@ p {
 
 .page__title {
   position: relative;
+  margin-bottom: rems(144px);
   padding: rems(16px);
-  color: $slate;
-  font-size: rems(30px);
+  color: $gray;
+  font-size: rems(60px);
 }
 .page__title::before,
 .page__title::after {
@@ -261,7 +264,7 @@ p {
   position: relative;
   top: rems(1px);
   color: $gray-teal;
-  font-size: rems(30px);
+  font-size: rems(50px);
   font-style: normal;
   line-height: 1;
 }
@@ -279,7 +282,7 @@ p {
   color: $gray-teal;
   margin-left: rems(4px);
   margin-right: rems(4px);
-  font-size: rems(33px);
+  font-size: rems(60px);
   content: '/';
 }
 
@@ -296,6 +299,7 @@ p {
   margin-bottom: rems(32px);
 }
 .post__title {
+  margin: 0;
   padding: rems(16px) 0;
   font-size: rems(24px);
 }
@@ -364,13 +368,41 @@ p {
   margin: auto;
   color: $light-slate;
 }
+.profile {
+  position: relative;
+  padding: rems(24px);
+  border-top-left-radius: rems(10px);
+  border-top-right-radius: rems(10px);
+  background: $gray;
+  background: rgba($gray, 0.8);
+}
+.profile::after {
+  position: absolute;
+  top: rems(-160px);
+  left: 0;
+  right: 0;
+  width: rems(180px);
+  height: rems(160px);
+  margin: auto;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: rgba($gray, 0.8);
+  z-index: 2;
+  content: "";
+}
 .profile__logo {
   display: block;
+  position: absolute;
+  top: rems(-140px);
+  left: 0;
+  right: 0;
   width: rems(140px);
   margin: auto;
   margin-bottom: rems(16px);
   transition: all 250ms ease-in-out;
   filter:  brightness(40%) grayscale(100%);
+  z-index: 3;
 }
 .profile__title {
   @extend %script;
@@ -402,13 +434,12 @@ p {
 }
 .profile__quote {
   @extend %copy;
-  background: rgba($gray, 0.9);
   position: relative;
   margin-top: rems(32px);
   padding-left: rems(32px);
   margin-right: rems(10px);
   text-align: left;
-  color: black(80%);
+  color: black(50%);
   font-style: italic;
   font-size: rems(22px);
 }

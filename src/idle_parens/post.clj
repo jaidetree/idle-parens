@@ -9,9 +9,33 @@
      [:header.post__header
       [:a.post__permalink {:href (:permalink post)}
        [:i.fa.fa-link]]
-      [:h1.post__title.borders
-       [:a.post__link {:href (:permalink post)}
-         (:title post)]]
+      [:div.borders.position-relative
+       [:h1.post__title
+        [:a.post__link {:href (:permalink post)}
+          (:title post)]]
+       (when full?
+        [:div.drips
+         (base/drip
+          {:width 5
+           :right 182
+           :height 5
+           :max-height 60
+           :class "bg-slate"
+           :top "100%"})
+         (base/drip
+          {:width 3
+           :right 175
+           :height 8
+           :max-height 50
+           :class "bg-slate"
+           :top "100%"})
+         (base/drip
+          {:width 8
+           :right 165
+           :height 8
+           :max-height 40
+           :class "bg-slate"
+           :top "100%"})])]
       [:div.post__attrs
        [:time.post__meta.post__date-time
         {:datetime (:date-published post)}
