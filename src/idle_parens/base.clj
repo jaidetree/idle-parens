@@ -92,7 +92,7 @@
          [:link {:rel "stylesheet"
                  :href "https://use.fontawesome.com/releases/v5.6.3/css/all.css"}]
          [:link {:rel "stylesheet"
-                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/obsidian.min.css"}]
+                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css"}]
          [:link {:rel "stylesheet"
                  :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro"}]
          [:link {:rel "stylesheet"

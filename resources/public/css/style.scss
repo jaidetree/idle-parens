@@ -310,7 +310,7 @@ p {
 .post__headline {
   position: relative;
   width: auto;
-  margin-left: rems(16px);
+  margin-left: rems(18px);
   margin-right: rems(16px);
 }
 .post__title {
@@ -359,6 +359,7 @@ p {
 }
 .post__full {
   padding: 0 rems(16px);
+  padding-left: rems(19px);
 }
 .post__attrs {
   display: flex;
