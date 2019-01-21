@@ -2,6 +2,7 @@
 
 // Layout
 // ---------------------------------------------------------------------------
+
 .content {
   position: relative;
   margin: rems(32px);
@@ -15,25 +16,45 @@
 .layout {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-left: rems(32px);
   margin-right: rems(360px);
 }
 .main {
   position: relative;
-  width: 100%;
   flex: 0 1 auto;
+  width: 100%;
   max-width: rems(720px);
   padding-top: rems(304px);
   z-index: 3;
 }
 .sidebar {
-  position: fixed;
-  left: calc(100% - #{rems(360px)});
-  top: 0;
+  left: rems(32px);
   bottom: 0;
-  width: rems(320px);
+  right: rems(32px);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  @media (max-height: #{rems(739px)}) {
+    position: absolute;
+    top: 0;
   padding-top: rems(192px);
+  }
+  @media (min-height: #{rems(740px)}) {
+    position: fixed;
+    top: rems(10px);
+    padding-top: rems(182px);
+  }
+}
+.sidebar__margin {
+  width: 100%;
+  max-width: rems(720px);
+  flex: 0 1 auto;
+}
+.sidebar__inner {
+  width: rems(320px);
+  flex: 0 0 auto;
 }
 
 // Blocks
@@ -44,6 +65,7 @@
 }
 
 .navbar {
+  margin-bottom: rems(16px);
   padding: 0;
   border-top: 1px solid $slate;
   border-bottom: 2px solid $slate;
@@ -144,5 +166,6 @@
   margin-top: rems(32px);
   margin-bottom: rems(32px);
   margin-right: rems(10px);
+  margin-left: rems(16px);
   padding-left: rems(32px);
 }

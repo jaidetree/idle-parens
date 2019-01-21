@@ -30,6 +30,12 @@
   margin: auto;
   padding-top: rems(176px);
 }
+.sidebar__inner {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
 
 .layout .sidebar {
   position: absolute;
@@ -54,9 +60,6 @@
   background: $gray;
   z-index: 4;
   overflow: hidden;
-}
-.navbar__nav {
-  width: 100%;
 }
 .navbar__list {
   display: flex;
@@ -134,6 +137,7 @@
 }
 
 .media-links {
+  max-width: rems(400px);
   padding: 0 rems(16px);
 }
 

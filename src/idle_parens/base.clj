@@ -127,7 +127,9 @@
                      :class "bg-teal"})
               [:div.hero
                [:div.sidebar
-                (profile {:title title :class "profile--bg_dark"})]]
+                [:div.sidebar__margin]
+                [:div.sidebar__inner
+                 (profile {:title title :class "profile--bg_dark"})]]]
               [:div.layout
                [:div.main
                 [:h1.page__title (for [part (split (or page-title subtitle "") #"/")]
@@ -135,9 +137,11 @@
                 [:div.content
                   content]]
                [:aside.sidebar
-                (profile {:title title :class "not-mobile"})
-                (navbar {:current current})
-                (media-links)]]]
+                [:div.sidebar__margin]
+                [:div.sidebar__inner
+                 (profile {:title title :class "not-mobile"})
+                 (navbar {:current current})
+                 (media-links)]]]]
 
              [:script {:src "//code.jquery.com/jquery-3.3.1.slim.min.js"}]
              [:script {:src "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}]
