@@ -1,57 +1,8 @@
-// Utils
-// --------------------------------------------------------------------------
-@function rems ($px) {
-  @return $px/16px * 1rem;
-}
-
-@function black ($percent) {
-  @return darken(white, $percent);
-}
-
-// Colors
-// ---------------------------------------------------------------------------
-$slate: #353d3b;
-$light-slate: lighten(#353d3b, 50%);
-$gray: #ebecf2;
-$teal: #1FC3A0;
-$light-teal: lighten(desaturate($teal, 50%), 10%);
-$gray-teal: #3c4744;
-
-// Extendables
-// ---------------------------------------------------------------------------
-%icon, %brand {
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-}
-%icon {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-}
-%brand {
-  font-family: "Font Awesome 5 Brands";
-}
-%mono {
-  font-family: 'Anonymous Pro', monospace;
-}
-%script {
-  font-family: 'Seaweed Script', cursive;
-}
-%copy {
-  font-family: 'Thasadith', sans-serif;
-  font-family: 'Quicksand', sans-serif;
-  font-family: 'Titillium Web', sans-serif;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 100;
-}
+@import "_shared";
 
 // BASE
 // ---------------------------------------------------------------------------
 body {
-  /* background: #F9F8F6; */
   @extend %copy;
   background: $gray;
 }
@@ -70,121 +21,34 @@ p {
 // Layout
 // ---------------------------------------------------------------------------
 .content {
-  position: relative;
-  margin: rems(32px);
-  z-index: 6;
+  margin: rems(32px) rems(16px);
+}
+.page {
+  border-top: rems(10px) solid $teal;
 }
 .hero {
   position: absolute;
   top: rems(10px);
   left: 0;
   right: 0;
-  height: rems(450px);
-  // background: desaturate(lighten($teal, 30%), 30%);
+  height: rems(544px);
   background: $slate url(/img/hero-bg.png) 50% 50% no-repeat;
   background-size: cover;
   z-index: 2;
-  overflow: hidden;
-  clip-path: inset(0 0 0 0);
 }
 .main {
   position: relative;
-  width: 100%;
-  max-width: rems(780px);
-  margin-left: auto;
-  margin-right: calc(9vw + #{rems(320px)});
-  padding-top: rems(250px);
+  padding-top: rems(480px);
   z-index: 3;
 }
-.navbar {
-  padding: 0;
-  z-index: 3;
-}
-.navbar__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.navbar__item {
-  @extend %mono;
-  position: relative;
-  padding: rems(8px);
-  opacity: 0.75;
-  color: $gray-teal;
-  font-size: rems(18px);
-  font-weight: 600;
-  letter-spacing: rems(2px);
-  transition: all 250ms ease-in-out;
-}
-.navbar__item::before {
-  @extend %icon;
-  position: absolute;
-  top: rems(20px);
-  left: rems(8px);
-  font-size: #{rems(30px)};
-  line-height: 1;
-  opacity: 0;
-  transform: translateX(#{rems(-20px)});
-  transition: all 250ms ease-in-out;
-  content: '\f105';
-}
-// .navbar__active::before {
-//   color: $teal;
-// }
-.navbar__item:hover {
-  opacity: 1.0;
-  padding-left: rems(32px);
-}
-.navbar__item:hover::before {
-  opacity: 1;
-  transform: translateX(0);
-}
-.navbar__active, .navbar__active a {
-  color: $teal;
-}
-.navbar__item:active {
-  background: $gray-teal;
-  &, a {
-    color: $gray;
-  }
-}
-.navbar__item a {
-  display: block;
-  padding: rems(4px);
-  transition: all 250ms ease-in-out;
-}
-.navbar__item:not(:last-child) {
-  border-bottom: 1px solid $light-slate;
-}
-.navbar__label {
-  @extend %copy;
-  display: block;
-  font-size: rems(15px);
-}
-
-.page {
-  border-top: rems(10px) solid $teal;
-}
-
 .sidebar {
-  position: fixed;
-  right: 8vw;
-  top: 0;
-  bottom: 0;
-  width: rems(320px);
-  padding-top: rems(199px);
+  position: relative;
   z-index: 1;
-  overflow: auto;
-}
-.sidebar a {
-  text-decoration: none;
-  color: $gray-teal;
 }
 
 // Blocks
 // ---------------------------------------------------------------------------
 .author {
-  margin: rems(16px);
   margin-top: rems(64px);
   padding: rems(16px);
   background: $slate;
@@ -206,7 +70,7 @@ p {
 }
 .author__profile {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   margin: rems(32px) 0 rems(16px);
 }
 .author__bio {
@@ -225,10 +89,10 @@ p {
   padding: 0;
   list-style: none;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
 }
-.author__links-item + .author__links-item {
-  margin-left: rems(32px);
+.author__links-item:not(:last-child) {
+  margin-right: rems(32px);
 }
 
 .bg-teal {
@@ -310,10 +174,9 @@ p {
 
 .page__title {
   position: relative;
-  margin-bottom: rems(144px);
   padding: rems(16px);
   color: $gray;
-  font-size: rems(60px);
+  font-size: rems(24px);
 }
 .page__title::before,
 .page__title::after {
@@ -322,7 +185,7 @@ p {
   position: relative;
   top: rems(1px);
   color: $light-teal;
-  font-size: rems(50px);
+  font-size: rems(24px);
   font-style: normal;
   line-height: 1;
 }
@@ -340,7 +203,7 @@ p {
   color: $light-teal;
   margin-left: rems(4px);
   margin-right: rems(4px);
-  font-size: rems(60px);
+  font-size: rems(24px);
   content: '/';
 }
 
@@ -407,28 +270,25 @@ p {
 .post__attrs {
   display: flex;
   justify-content: space-between;
+  flex-flow: row wrap;
   font-size: rems(13px);
 }
 .post__meta {
   color: $gray-teal;
 }
-.post__meta > * {
+.post__meta > span {
+  white-space: nowrap;
   margin-right: rems(16px);
 }
 .post__tags {
   padding: 0;
   margin-top: rems(16px);
 }
+.post__tag + .post__tag {
+  margin-left: rems(16px);
+}
 .post__summary {
   font-size: rems(20px);
-}
-.post__permalink {
-  position: absolute;
-  top: rems(21px);
-  left: rems(-24px);
-  bottom: 0;
-  margin: auto;
-  color: $light-slate;
 }
 .profile {
   position: relative;
@@ -453,9 +313,11 @@ p {
 }
 .profile__title {
   @extend %script;
+  margin: 0;
   font-size: rems(55px);
   a {
     color: $teal;
+    text-decoration: none;
   }
 }
 .profile__title:hover .profile__logo {
@@ -483,9 +345,7 @@ p {
 .profile__quote {
   @extend %copy;
   position: relative;
-  margin-top: rems(32px);
   padding-left: rems(32px);
-  margin-right: rems(10px);
   text-align: left;
   color: black(50%);
   font-style: italic;
@@ -494,11 +354,11 @@ p {
 .profile__quote::before {
   @extend %icon;
   position: absolute;
-  left: rems(0px);
-  top: rems(-16px);
+  left: rems(-3px);
+  top: rems(-4px);
   padding-right: rems(10px);
   color: $teal;
-  font-size: rems(50px);
+  font-size: rems(30px);
   z-index: 1;
   opacity: 0.2;
   content: "\f10d";

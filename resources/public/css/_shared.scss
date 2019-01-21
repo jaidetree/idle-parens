@@ -1,0 +1,73 @@
+// Utils
+// --------------------------------------------------------------------------
+@function rems ($px) {
+  @return $px/16px * 1rem;
+}
+
+@function black ($percent) {
+  @return darken(white, $percent);
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin lg-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Colors
+// ---------------------------------------------------------------------------
+$slate: #353d3b;
+$light-slate: lighten(#353d3b, 50%);
+$gray: #ebecf2;
+$teal: #1FC3A0;
+$light-teal: lighten(desaturate($teal, 50%), 10%);
+$gray-teal: #3c4744;
+
+// Extendables
+// ---------------------------------------------------------------------------
+%icon, %brand {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+%icon {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+%brand {
+  font-family: "Font Awesome 5 Brands";
+}
+%mono {
+  font-family: 'Anonymous Pro', monospace;
+}
+%script {
+  font-family: 'Seaweed Script', cursive;
+}
+%copy {
+  font-family: 'Thasadith', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 100;
+}

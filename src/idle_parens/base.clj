@@ -21,7 +21,7 @@
 
 (defn profile
   [{:keys [title class]}]
-  [:section.profile.text-center.pb-5
+  [:section.profile.text-center
    {:class class}
    [:h1.profile__title [:a {:href "/"}
                         [:img.profile__logo {:src "/img/eccentric-j-logo.svg"
@@ -35,26 +35,27 @@
 
 (defn navbar
   [{:keys [current]}]
-  [:section.navbar.mb-3
-   [:nav.navbar__nav.borders
-     (drip {:width 5
-            :right 5
-            :height 5
-            :max-height 30
-            :class "bg-slate"
-            :top 0})
-     (drip {:width 3
-            :right 12
-            :height 8
-            :max-height 48
-            :class "bg-slate"
-            :top 0})
-     (drip {:width 8
-            :right 20
-            :height 4
-            :max-height 60
-            :class "bg-slate"
-            :top 0})
+  [:section.navbar
+   [:nav.navbar__nav
+     [:div.not-mobile
+      (drip {:width 5
+             :right 5
+             :height 5
+             :max-height 30
+             :class "bg-slate"
+             :top 0})
+      (drip {:width 3
+             :right 12
+             :height 8
+             :max-height 48
+             :class "bg-slate"
+             :top 0})
+      (drip {:width 8
+             :right 20
+             :height 4
+             :max-height 60
+             :class "bg-slate"
+             :top 0})]
      [:ul.navbar__list
       [:li.navbar__item {:class (when (= current :blog) "navbar__active")}
                         [:a {:href "/"}
@@ -96,22 +97,31 @@
          [:link {:rel "stylesheet"
                  :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro"}]
          [:link {:rel "stylesheet"
-                 :href "/css/style.css"}]])
+                 :href "/css/style.css"}]
+         [:link {:rel "stylesheet"
+                 :media "screen and (max-width: 929px)"
+                 :href "/css/mobile.css"}]
+         [:link {:rel "stylesheet"
+                 :media "screen and (min-width: 768px) and (max-width: 929px)"
+                 :href "/css/tablet.css"}]
+         [:link {:rel "stylesheet"
+                 :media "screen and (min-width: 930px)"
+                 :href "/css/desktop.css"}]])
 
 (defn render [& {:keys [title subtitle page-title content current]}]
   (let [home? (= current :blog)]
     (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
       (head (str (when (and subtitle (not home?)) (str subtitle " | ")) title))
       [:body [:div.page
-              (drip {:right 40
+              (drip {:right 30
                      :width 10
                      :height 10
                      :class "bg-teal"})
-              (drip {:right 66
+              (drip {:right 56
                      :width 8
                      :height 8
                      :class "bg-teal"})
-              (drip {:right 52
+              (drip {:right 42
                      :width 5
                      :height 10
                      :class "bg-teal"})
@@ -125,7 +135,7 @@
                 [:div.content
                   content]]
                [:aside.sidebar
-                (profile {:title title})
+                (profile {:title title :class "not-mobile"})
                 (navbar {:current current})
                 (media-links)]]]
 

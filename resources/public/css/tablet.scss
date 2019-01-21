@@ -1,0 +1,30 @@
+@import "_shared";
+
+// Layout
+// ---------------------------------------------------------------------------
+
+.hero {
+  height: rems(592px);
+}
+.main {
+  padding-top: rems(480px);
+}
+
+
+// Blocks
+// ---------------------------------------------------------------------------
+.media-links {
+  width: rems(400px);
+}
+
+.page__title {
+  margin-bottom: rems(64px);
+  font-size: rems(42px);
+}
+.page__title::before,
+.page__title::after {
+  font-size: rems(42px);
+}
+.page__path:not(:last-child)::after {
+  font-size: rems(42px);
+}

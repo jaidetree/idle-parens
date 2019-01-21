@@ -67,7 +67,8 @@
 (defn render-header
   [post author full?]
   [:header.post__header
-   [:a.post__permalink {:href (:permalink post)}
+   [:a.post__permalink.not-mobile
+    {:href (:permalink post)}
     [:i.fa.fa-link]]
    [:div.borders.post__headline
     [:h1.post__title
