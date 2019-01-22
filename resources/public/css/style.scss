@@ -550,12 +550,13 @@ p {
 .skill__keyword {
   @extend %mono;
   display: inline-block;
-  padding: rems(4px) rems(16px);
-  border-radius: rems(3px);
-  background: $slate;
-  color: #fff;
-  font-size: rems(14px);
-  letter-spacing: rems(0.8px);
+  padding: rems(1px) rems(16px);
+  border-radius: rems(24px);
+  border: rems(2px) solid $slate;
+  color: $slate;
+  font-size: rems(15px);
+  font-weight: 800;
+  letter-spacing: rems(0.4px);
   white-space: nowrap;
 }
 .skill__keyword:not(:last-child) {
