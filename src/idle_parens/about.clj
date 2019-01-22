@@ -8,7 +8,7 @@
   (let [slug (slugify title)]
     [:li.interest
      [:header.interest__header
-      [:h3.interest__title title]
+      [:h4.interest__title title]
       [:button.toggle
        {:type "button"
         :data-toggle "collapse"
@@ -60,7 +60,7 @@
    :title (:site-title global-meta)
    :subtitle "^meta/about"
    :content [:div.about
-             [:h1 "About Eccentric J"]
+             [:h1.borders.padding "About Eccentric J"]
              [:p.text-copy
               "I've been designing and developing personal and commercial projects for about a decade now. I got started by learning how to hack online computer games by rewriting values to known memory addresses, since then I've found my passion in web app development. Currently, I live in New York City employed as a lead engineer at "
               [:a {:href "https://venuebook.com"}
@@ -134,14 +134,14 @@
                 :value 70
                 :years 1
                 :keywords ["lein" "boot" "luminus"]
-                :content "")
+                :content "Currently my favorite language of choice. Clojure is productive, rewarding, and has a great community.")
 
                (skill
                 :title "ClojureScript"
                 :value 40
                 :years 0.5
                 :keywords ["figwheel-main" "lein-figwheel" "shadow-cljs"]
-                :content "")
+                :content "Currently learning the ropes. I&rsquo;m familiar enough in both Clojure and JavaScript to get work done in ClojureScript but I am not certain what &ldquo;idiomatic&rdquo; ClojureScript that scales looks like.")
 
                (skill
                 :title "JavaScript"
@@ -156,21 +156,23 @@
                            "Vue"
                            "Angular"
                            "Node"
-                           "babel"]
-                :content "")
+                           "Babel"
+                           "ES6"]
+                :content "JavaScript is my strongest language to date. I have put more than a decade into learning it from the days of jQuery to creating robust web apps with React, Angular, or View. I do however much prefer React with Redux and RxJS over Angular or Vue, React follows the functional programming ideas that I think make software much more maintainable.")
 
                (skill
-                :title "HTML/CSS"
+                :title "HTML\\CSS"
                 :value 90
                 :years 10
-                :keywords ["html5"
+                :keywords ["HTML 5"
                            "responsive"
                            "grids"
                            "bootstrap"
                            "SMACSS"
                            "atomic"
-                           "BEM"]
-                :content "")
+                           "BEM"
+                           "SEO"]
+                :content "One of my first, and strongest languages. I am experienced in writing reusable, semantic, standards-compliant, SEO-friendly HTML for both desktops and mobile devices.")
 
                (skill
                 :title "Design"
@@ -180,29 +182,29 @@
                            "websites"
                            "UI\\UX"
                            "Collateral"]
-                :content "")
+                :content "Design to me is less about the final presentation but more finding the right questions to ask and the right way to answer them through research, artistic expression, and empathy. I enjoy crafting work to create meaningful stories for people to explore, and I pride myself on doing so with a strong sense of craftsmanship leaving projects better than when I found it.")
 
                (skill
                 :title "Python"
                 :value 60
                 :years 5
-                :keywords ["django" "python 2.7" "flask"]
-                :content "")
+                :keywords ["django" "python 2.7" "flask" "OOP"]
+                :content "Not my strongest or favorite language but it is a robust, widely used language that I am glad I took the time to get comfortable with.")
 
                (skill
                 :title "Ruby"
                 :value 30
                 :years 1
                 :keywords ["rails 3" "ruby 2"]
-                :content "")
+                :content "A brief stint before moving to Django and Python. The design of the language felt pleasant at first but the nuances became taxing to me early on.")
 
                (skill
                 :title "PHP"
                 :value 50
                 :years 9
                 :keywords ["php5"]
-                :content "")]]
+                :content "The first language I really took the time to learn. Looking back I can&rsquo;t say I made anything worthwhile in it but I did explore a lot of possibilities from database wrappers, template engines, to fully-featured frameworks and even a socket-based chat system.")]]
 
              [:div.section
               [:h2 "Education"]
-              [:p.text-copy "I have a Bachelors in Digital Media from Kendall College of Art &amp; Design located in Grand Rapids, Michigan. I am a self-taught programmer and chose to focus on design in college to improve my weakest skill."]]]))
+              [:p.text-copy "I have a Bachelors in Digital Media from Kendall College of Art &amp; Design located in Grand Rapids, Michigan. I am a self-taught programmer but chose to study design in college to improve my weakest skill."]]]))

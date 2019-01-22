@@ -160,10 +160,14 @@ p {
   position: relative;
   margin: rems(64px) 0;
   padding: rems(32px);
-  background: darken($gray, 10%);
+  border-radius: rems(4px);
+  background: #e3e1e1;
   color: black(60%);
   font-size: rems(22px);
   line-height: 2;
+}
+.callout p:last-child {
+  margin: 0;
 }
 .callout.quote {
   text-indent: rems(48px);
