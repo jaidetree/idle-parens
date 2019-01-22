@@ -16,6 +16,9 @@ a, a:hover {
 }
 
 p {
+  color: $slate;
+  font-size: rems(20px);
+  line-height: 2;
 }
 
 // Layout
@@ -55,6 +58,8 @@ p {
   color: #fff;
 }
 .author__intro {
+  padding-bottom: rems(8px);
+  border-bottom: 1px solid $gray;
   font-style: italic;
   color: black(30%);
 }
@@ -141,6 +146,36 @@ p {
 }
 .icon::before {
   @extend %icon;
+}
+
+.callout {
+  position: relative;
+  margin: rems(32px) 0;
+  padding: rems(16px);
+  background: darken($gray, 10%);
+  color: black(60%);
+  font-size: rems(22px);
+  line-height: 2;
+  text-indent: rems(48px);
+}
+.callout::before {
+  top: rems(14px);
+  left: rems(16px);
+  font-size: rems(36px);
+  text-indent: 0;
+}
+
+.interests {
+  margin: rems(32px) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interest__media {
+  margin: rems(24px) 0;
+}
+.interest + .interest {
+  margin-top: rems(128px);
 }
 
 .media-links {
@@ -266,11 +301,6 @@ p {
 .post__content h5 {
   font-size: rems(20px);
 }
-.post__content p {
-  color: $slate;
-  font-size: rems(20px);
-  line-height: 2;
-}
 .post__attrs {
   display: flex;
   justify-content: space-between;
@@ -355,17 +385,20 @@ p {
   font-style: italic;
   font-size: rems(22px);
 }
-.profile__quote::before {
+.profile__quote::before,
+.callout::before {
   @extend %icon;
   position: absolute;
-  left: rems(-3px);
-  top: rems(-4px);
   padding-right: rems(10px);
   color: $teal;
-  font-size: rems(30px);
   z-index: 1;
-  opacity: 0.2;
+  opacity: 0.3;
   content: "\f10d";
+}
+.profile__quote::before {
+  left: rems(-3px);
+  top: rems(-4px);
+  font-size: rems(30px);
 }
 .profile--bg_dark .profile__trades {
   color: $gray;
