@@ -220,6 +220,11 @@ p {
   color: $teal;
 }
 
+.navbar {
+  position: relative;
+  z-index: 6;
+}
+
 .navbar__nav {
   width: 100%;
 }
