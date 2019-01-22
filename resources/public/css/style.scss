@@ -123,6 +123,9 @@ p {
   border-top: 1px solid $slate;
   border-bottom: 2px solid $slate;
 }
+.borders.padding {
+  padding: rems(16px) 0;
+}
 
 .drip {
   position: absolute;
@@ -153,16 +156,19 @@ p {
 }
 
 .callout {
+  @extend %mono;
   position: relative;
-  margin: rems(32px) 0;
-  padding: rems(16px);
+  margin: rems(64px) 0;
+  padding: rems(32px);
   background: darken($gray, 10%);
   color: black(60%);
   font-size: rems(22px);
   line-height: 2;
+}
+.callout.quote {
   text-indent: rems(48px);
 }
-.callout::before {
+.callout.quote::before {
   top: rems(14px);
   left: rems(16px);
   font-size: rems(36px);
@@ -177,18 +183,33 @@ p {
 .interests {
   margin: rems(32px) 0;
   padding: 0;
+  padding-top: rems(16px);
   list-style: none;
 }
 
+.interest {
+  padding-bottom: rems(8px);
+}
+.interest:not(:last-child) {
+  border-bottom: 1px solid black(20%);
+}
+
+.interest__header {
+  display: flex;
+  justify-content: space-between;
+}
 .interest__media {
   margin: rems(24px) 0;
+}
+.interest__content {
+  overflow: hidden;
 }
 .interest .interest__book {
   width: auto;
   height: rems(256px);
 }
 .interest + .interest {
-  margin-top: rems(64px);
+  margin-top: rems(16px);
 }
 
 .media-links {
@@ -404,7 +425,7 @@ p {
   font-size: rems(22px);
 }
 .profile__quote::before,
-.callout::before {
+.callout.quote::before {
   @extend %icon;
   position: absolute;
   padding-right: rems(10px);
@@ -435,4 +456,145 @@ p {
 .profile--bg_dark .profile__title:hover .profile__logo {
   filter: grayscale(100%);
   opacity: 0.9;
+}
+
+.section {
+  margin: rems(64px) 0;
+}
+
+.skills {
+  list-style: none;
+  margin: rems(32px) 0;
+  padding: 0;
+}
+
+.skill {
+  padding: rems(16px) 0;
+}
+.skill:not(:last-child) {
+  border-bottom: 1px solid black(20%);
+}
+
+.skill__header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.skill__progress {
+  display: block;
+  flex: 1 1 100%;
+  height: rems(24px);
+  margin-top: rems(8px);
+  margin-bottom: rems(8px);
+  border-radius: rems(24px);
+  background: $slate;
+}
+.skill__value {
+  @extend %mono;
+  display: block;
+  position: relative;
+  height: rems(18px);
+  margin: rems(3px);
+  padding: 0;
+  border: none;
+  border-radius: rems(16px);
+  background: $teal;
+  color: #fff;
+  padding-right: rems(10px);
+  text-align: right;
+}
+.skill__label {
+  position: absolute;
+  top: rems(32px);
+  right: rems(-40px);
+  width: rems(100px);
+  padding: rems(8px);
+  border-radius: rems(3px);
+  background: rgba(black, 0.5);
+  text-align: center;
+  font-size: rems(16px);
+  opacity: 0;
+  transform: translateY(#{rems(24px)});
+  transition: all 250ms ease-in-out;
+  pointer-events: none;
+}
+.skill__label::before {
+  position: absolute;
+  top: rems(-16px);
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 1px;
+  height: 1px;
+  border: rems(8px) solid transparent;
+  border-bottom-color: rgba(black, 0.5);
+  content: '';
+}
+.skill__value:focus {
+  outline: none;
+}
+.skill__value:focus .skill__label,
+.skill__value:hover .skill__label {
+  transform: translateY(0);
+  opacity: 1.0;
+}
+.skill__keywords {
+  list-style: none;
+  margin: rems(16px) 0;
+  padding: 0;
+}
+.skill__keyword {
+  @extend %mono;
+  display: inline-block;
+  padding: rems(4px) rems(16px);
+  border-radius: rems(3px);
+  background: $slate;
+  color: #fff;
+  font-size: rems(14px);
+  letter-spacing: rems(0.8px);
+  white-space: nowrap;
+}
+.skill__keyword:not(:last-child) {
+  margin-right: rems(16px);
+  margin-bottom: rems(8px);
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: rems(32px);
+  height: rems(32px);
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+.toggle:focus {
+  outline: none;
+}
+.toggle::before,
+.toggle::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: rems(24px);
+  height: rems(5px);
+  margin: auto;
+  background: black(60%);
+  transition: all 800ms ease-in-out;
+  content: '';
+}
+.toggle[aria-expanded="false"]::before {
+  transform: rotateZ(90deg);
+}
+.toggle[aria-expanded="false"]::after {
+  transform: rotateZ(0deg);
+}
+.toggle[aria-expanded="true"]::before {
+  transform: rotateZ(360deg);
+}
+.toggle[aria-expanded="true"]::after {
+  transform: rotateZ(360deg);
 }
