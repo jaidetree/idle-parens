@@ -26,6 +26,10 @@ p {
 .content {
   margin: rems(32px) rems(16px);
 }
+.content img {
+  max-width: 100%;
+  height: auto;
+}
 .page {
   border-top: rems(10px) solid $teal;
 }
@@ -165,6 +169,11 @@ p {
   text-indent: 0;
 }
 
+.instagram-media {
+  width: 100%;
+  height: rems(700px);
+}
+
 .interests {
   margin: rems(32px) 0;
   padding: 0;
@@ -174,8 +183,12 @@ p {
 .interest__media {
   margin: rems(24px) 0;
 }
+.interest .interest__book {
+  width: auto;
+  height: rems(256px);
+}
 .interest + .interest {
-  margin-top: rems(128px);
+  margin-top: rems(64px);
 }
 
 .media-links {
