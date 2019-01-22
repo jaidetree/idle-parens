@@ -4,7 +4,6 @@
 
 (defn render
   [{global-meta :meta posts :entries}]
-  (clojure.pprint/pprint posts)
   (base/render
    :current :about
    :title (:site-title global-meta)

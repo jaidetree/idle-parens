@@ -128,7 +128,7 @@
     (html prod?)
     (build-meta prod?)
     (blog-pages prod?)
-    (project-pages prod?)
+    ; (project-pages prod?)
     (static-pages prod?)))
 
 (deftask build
