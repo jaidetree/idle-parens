@@ -128,7 +128,7 @@
                :content "An interest I accquired later in life. I enjoy discovering artists through social media, going to art gallery openings in NYC, drawing youtube channels, and the occasional doodle. Admittedly, I'm not very good at drawing but I do enjoy learning it in waves every once in a while.")]
              [:div.section
               [:h2 "Experience"]
-              [:ul.skills.borders
+              [:ul.skills.borders.scrolling
                (skill
                 :title "Clojure"
                 :value 70

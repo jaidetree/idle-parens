@@ -1,5 +1,14 @@
 @import "_shared";
 
+@keyframes max-width {
+  0% {
+    max-width: 0%;
+  }
+  100% {
+    max-width: 100%;
+  }
+}
+
 // BASE
 // ---------------------------------------------------------------------------
 body {
@@ -471,6 +480,9 @@ p {
   margin: rems(32px) 0;
   padding: 0;
 }
+.skills.within-view .skill__value {
+  max-width: 100%;
+}
 
 .skill {
   padding: rems(16px) 0;
@@ -506,6 +518,8 @@ p {
   color: #fff;
   padding-right: rems(10px);
   text-align: right;
+  max-width: 0;
+  transition: max-width 3000ms ease-out;
 }
 .skill__label {
   position: absolute;
