@@ -9,7 +9,7 @@
                   [deraen/boot-livereload "0.2.1"]
                   [deraen/boot-sass "0.3.1"]
                   [adzerk/boot-cljs "2.1.5" :scope "test"]
-                  [org.clojure/tools.namespace "0.3.0-alpha3"]])
+                  [org.clojure/tools.namespace "0.3.0-alpha4"]])
 
 (require '[boot.core :as boot]
          '[clojure.string :as str]

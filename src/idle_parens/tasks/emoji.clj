@@ -1,7 +1,6 @@
 (ns idle-parens.tasks.emoji
   {:boot/export-tasks true}
   (:require [boot.core :as boot :refer [deftask]]
-            [boot.pod :as pod]
             [clojure.java.io :as io]
             [clojure.string :as s]
             [io.perun :refer [content-task
