@@ -8,14 +8,16 @@
   (let [slug (slugify title)]
     [:li.interest
      [:header.interest__header
-      [:h4.interest__title title]
-      [:button.toggle
-       {:type "button"
-        :data-toggle "collapse"
-        :data-target (str "#" slug)
-        :aria-expanded "false"
-        :aria-controls slug}
-       [:span.d-none "Toggle Interest"]]]
+      [:h4.interest__title
+       [:button.interest__toggle.toggle
+        {:type "button"
+         :data-toggle "collapse"
+         :data-target (str "#" slug)
+         :aria-expanded "false"
+         :aria-controls slug}
+        title
+        [:span.toggle__icon
+         [:span.d-none "Toggle Interest"]]]]]
      [:div.interest__content.collapse
       {:class (when columns "row") :id slug}
       (when media
@@ -31,14 +33,16 @@
   (let [slug (slugify title)]
    [:li.skill
     [:header.skill__header
-     [:h4.skill__title title]
-     [:button.toggle
-      {:type "button"
-       :data-toggle "collapse"
-       :data-target (str "#" slug)
-       :aria-expanded "false"
-       :aria-controls slug}
-      [:span.d-none "Toggle Interest"]]
+     [:h4.skill__title
+      [:button.skill__toggle.toggle
+       {:type "button"
+        :data-toggle "collapse"
+        :data-target (str "#" slug)
+        :aria-expanded "false"
+        :aria-controls slug}
+       title
+       [:span.toggle__icon
+        [:span.d-none "Toggle Interest"]]]]
      [:div.skill__progress
       [:button.skill__value
        {:style (str "width:" value "%;")
@@ -181,7 +185,13 @@
                 :keywords ["logos"
                            "websites"
                            "UI\\UX"
-                           "Collateral"]
+                           "wireframes"
+                           "collateral"
+                           "Sketch"
+                           "Photoshop"
+                           "Illustrator"
+                           "Moqups"
+                           "Balsamiq"]
                 :content "Design to me is less about the final presentation but more finding the right questions to ask and the right way to answer them through research, artistic expression, and empathy. I enjoy crafting work to create meaningful stories for people to explore, and I pride myself on doing so with a strong sense of craftsmanship leaving projects better than when I found it.")
 
                (skill

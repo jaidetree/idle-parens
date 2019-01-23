@@ -207,9 +207,12 @@ p {
   border-bottom: 1px solid black(20%);
 }
 
-.interest__header {
+.interest__toggle {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: none;
 }
 .interest__media {
   margin: rems(24px) 0;
@@ -491,17 +494,22 @@ p {
   border-bottom: 1px solid black(20%);
 }
 
-.skill__header {
+.skill__toggle {
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: none;
+}
+.skill__content {
+  overflow: hidden;
 }
 .skill__progress {
   display: block;
-  flex: 1 1 100%;
   height: rems(24px);
   margin-top: rems(8px);
   margin-bottom: rems(8px);
+  padding: rems(3px);
   border-radius: rems(24px);
   background: $slate;
 }
@@ -510,8 +518,6 @@ p {
   display: block;
   position: relative;
   height: rems(18px);
-  margin: rems(3px);
-  padding: 0;
   border: none;
   border-radius: rems(16px);
   background: $teal;
@@ -578,7 +584,7 @@ p {
   margin-bottom: rems(8px);
 }
 
-.toggle {
+.toggle__icon {
   position: relative;
   display: inline-block;
   width: rems(32px);
@@ -591,8 +597,8 @@ p {
 .toggle:focus {
   outline: none;
 }
-.toggle::before,
-.toggle::after {
+.toggle__icon::before,
+.toggle__icon::after {
   position: absolute;
   left: 0;
   top: 0;
@@ -602,18 +608,25 @@ p {
   height: rems(5px);
   margin: auto;
   background: black(60%);
-  transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out, background 250ms ease-in-out;
   content: '';
 }
-.toggle[aria-expanded="false"]::before {
+
+.toggle:focus .toggle__icon::before,
+.toggle:focus .toggle__icon::after,
+.toggle:hover .toggle__icon::before,
+.toggle:hover .toggle__icon::after {
+  background: $teal;
+}
+.toggle[aria-expanded="false"] .toggle__icon::before {
   transform: rotateZ(90deg);
 }
-.toggle[aria-expanded="false"]::after {
+.toggle[aria-expanded="false"] .toggle__icon::after {
   transform: rotateZ(0deg);
 }
-.toggle[aria-expanded="true"]::before {
+.toggle[aria-expanded="true"] .toggle__icon::before {
   transform: rotateZ(360deg);
 }
-.toggle[aria-expanded="true"]::after {
+.toggle[aria-expanded="true"] .toggle__icon::after {
   transform: rotateZ(360deg);
 }
