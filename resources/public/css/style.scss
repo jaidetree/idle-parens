@@ -13,6 +13,7 @@
 // ---------------------------------------------------------------------------
 body {
   @extend %copy;
+  color: $slate;
   background: $gray;
 }
 
@@ -25,7 +26,6 @@ a, a:hover {
 }
 
 p {
-  color: $slate;
   font-size: rems(20px);
   line-height: 2;
 }
@@ -136,6 +136,33 @@ p {
   padding: rems(16px) 0;
 }
 
+.callout {
+  @extend %mono;
+  position: relative;
+  margin: rems(64px) 0;
+  padding: rems(32px);
+  border-radius: rems(4px);
+  background: $slate;
+  color: #fff;
+  font-size: rems(22px);
+  line-height: 2;
+}
+.callout p:last-child {
+  margin: 0;
+}
+.callout.quote {
+  text-indent: rems(48px);
+}
+.callout.quote::before {
+  top: rems(14px);
+  left: rems(16px);
+  font-size: rems(36px);
+  text-indent: 0;
+}
+.callout .borders {
+  border-color: #fff;
+}
+
 .drip {
   position: absolute;
   width: rems(12px);
@@ -162,30 +189,6 @@ p {
 }
 .icon::before {
   @extend %icon;
-}
-
-.callout {
-  @extend %mono;
-  position: relative;
-  margin: rems(64px) 0;
-  padding: rems(32px);
-  border-radius: rems(4px);
-  background: #e3e1e1;
-  color: black(60%);
-  font-size: rems(22px);
-  line-height: 2;
-}
-.callout p:last-child {
-  margin: 0;
-}
-.callout.quote {
-  text-indent: rems(48px);
-}
-.callout.quote::before {
-  top: rems(14px);
-  left: rems(16px);
-  font-size: rems(36px);
-  text-indent: 0;
 }
 
 .instagram-media {
