@@ -51,7 +51,7 @@
     (let [classes (update-classes visible? (split-classes el))]
       (set! (.-className el) (join " " classes)))))
 
-(defn update-scroll-elements
+(defn update-scroll-elements!
   "Looks for a list of elements with .scrolling and adds .within-view if
   el is partially visible. If .reset is present will remove .within-view when
   scrolled out of view."
