@@ -10,9 +10,10 @@
      :current :blog
      :content [:div.blog
                [:ul.posts
-                [:li.posts__item
-                 (render-entry (assoc data :entry first-post) :content
-                               :context :featured)]
+                (when first-post
+                  [:li.posts__item
+                   (render-entry (assoc data :entry first-post) :content
+                                 :context :featured)])
                 (for [post posts]
                   [:li.posts__item
                    (render-entry (assoc data :entry post) :description)])]])))
