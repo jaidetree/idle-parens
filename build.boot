@@ -1,74 +1,31 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"resources"}
-  :dependencies '[[perun "0.4.2-SNAPSHOT"]
+  :dependencies '[[boot/core "2.8.2" :scope "provided"]
+                  [perun "0.4.2-SNAPSHOT"]
                   [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
                   [org.clojure/clojurescript "1.10.439"]
                   [pandeiro/boot-http "0.6.3-SNAPSHOT"]
                   [deraen/boot-livereload "0.2.1"]
                   [deraen/boot-sass "0.3.1"]
-                  [adzerk/boot-cljs "2.1.5" :scope "test"]])
+                  [adzerk/boot-cljs "2.1.5" :scope "test"]
+                  [org.clojure/tools.namespace "0.3.0-alpha3"]])
 
 (require '[boot.core :as boot]
          '[clojure.string :as str]
-         '[clojure.java.io :as io]
          '[io.perun :as perun]
-         '[io.perun.core :refer [report-info]]
-         '[io.perun.meta :as pm]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-livereload :refer [livereload]]
          '[deraen.boot-sass :refer [sass]]
-         '[adzerk.boot-cljs :refer [cljs]])
-
-(defn match-any
-  [patterns s]
-  (some #(re-find % s) patterns))
-
-(defn matcher
-  [regexps default]
-  (if (some? regexps)
-    #(match-any regexps (str %))
-    (constantly default)))
+         '[adzerk.boot-cljs :refer [cljs]]
+         '[idle-parens.tasks.emoji :refer [emoji]]
+         '[idle-parens.tasks.clean :refer [clean]])
 
 (defn pipeline
   [& steps]
   (->> steps
        (keep identity)
        (apply comp)))
-
-(defn delete-files!
-  "Recursively deletes all files in a folder
-  Takes a included predicate, an excluded predicate, and an io/file dir.
-  Returns nil."
-  [included excluded dir]
-  (let [files (->> dir
-                   (file-seq)
-                   (drop 1)
-                   (remove excluded)
-                   (filter included))]
-    (doseq [file files]
-      (when (.isDirectory file)
-        (delete-files! included excluded file))
-      (.delete file))))
-
-(deftask clean
-  [d dir     DIR      str         "Directory to clean defaults to target/public"
-   e exclude PATTERNS #{regex}    "Regexps to exclude from cleaning"
-   i include PATTERNS #{regex}    "Regexps to include for cleaning"]
-  (let [dir (or dir "target/public")]
-    (boot/with-pass-thru _
-      (delete-files! (matcher include true)
-                     (matcher exclude false)
-                     (io/file dir))
-      (report-info "clean!" "Cleaned %s" dir))))
-
-(deftask copy-markdown-meta
-  []
-  (boot/with-pre-wrap fileset
-    (doseq [meta (pm/get-meta fileset)]
-      (clojure.pprint/pprint meta))
-    fileset))
-    ; (boot/commit! fileset)))
 
 (defn html
   [prod?]
@@ -129,7 +86,8 @@
     (build-meta prod?)
     (blog-pages prod?)
     ; (project-pages prod?)
-    (static-pages prod?)))
+    (static-pages prod?)
+    (emoji)))
 
 (deftask build
   "Build the blog source and output to target/public"
