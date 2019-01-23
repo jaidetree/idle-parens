@@ -151,7 +151,9 @@
                 "Angular"
                 "Node"
                 "Babel"
-                "ES6"]
+                "Gulp"
+                "Webpack"
+                "ES2015+"]
      :content "JavaScript is my strongest language to date. I have put more than a decade into learning it from the days of jQuery to creating robust web apps with React, Angular, or View. I do however much prefer React with Redux and RxJS over Angular or Vue, React follows the functional programming ideas that I think make software much more maintainable.")
 
     (skill
