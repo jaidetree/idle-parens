@@ -4,9 +4,9 @@ description: A brief introduction to this blog, development process, and goals.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
-date-created: 2013-12-27
-date-modified: 2013-12-30
-date-published: 2019-01-18T18:20:33.948Z
+date-created: 2019-01-18T13:20:00-5:00
+date-modified: 2019-01-23T13:35:00-5:00
+date-published: 2019-01-25T18:00:00-5:00
 headline:
 in-language: en
 keywords: a,b,c
