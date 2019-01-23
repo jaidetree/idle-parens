@@ -2,7 +2,8 @@
   (:require [goog.events :as events]
             [app.fx.drip :refer [animate-drips]]
             [app.ui.scroll :refer [update-scroll-elements!]]
-            [app.util :refer [log query-all]]))
+            [app.util :refer [log query-all]]
+            [clojure.pprint]))
 
 (defn init
   []

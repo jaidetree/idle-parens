@@ -1,5 +1,5 @@
 ---
-title: Idle Parens Blog Launch
+title: "&#x1F389; Site Launch"
 description: A brief introduction to this blog, development process, and goals.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
