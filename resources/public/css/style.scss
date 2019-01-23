@@ -336,6 +336,7 @@ p {
 .post__content h3,
 .post__content h4,
 .post__content h5 {
+  padding: rems(3px);
   margin-bottom: rems(32px);
   &:not(:first-child) {
     margin-top: rems(64px);
