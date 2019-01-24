@@ -18,3 +18,5 @@ tags:
 draft: true
 ---
 # Discovering Functional Programming
+
+https://docs.google.com/spreadsheets/d/1gk-rN7HGe_92fdwQSLkomAknIixsgc4JktK31_C8OKM/edit#gid=0
