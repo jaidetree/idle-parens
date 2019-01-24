@@ -125,14 +125,14 @@
    [:ul.skills.borders.scrolling
     (skill
      :title "Clojure"
-     :value 70
+     :value 60
      :years 1
      :keywords ["lein" "boot" "luminus"]
      :content "Currently my favorite language of choice. Clojure is productive, rewarding, and has a great community.")
 
     (skill
      :title "ClojureScript"
-     :value 40
+     :value 30
      :years 0.5
      :keywords ["figwheel-main" "lein-figwheel" "shadow-cljs"]
      :content "Currently learning the ropes. I&rsquo;m familiar enough in both Clojure and JavaScript to get work done in ClojureScript but I am not certain what &ldquo;idiomatic&rdquo; ClojureScript that scales looks like.")
@@ -154,10 +154,10 @@
                 "Gulp"
                 "Webpack"
                 "ES2015+"]
-     :content "JavaScript is my strongest language to date. I have put more than a decade into learning it from the days of jQuery to creating robust web apps with React, Angular, or View. I do however much prefer React with Redux and RxJS over Angular or Vue, React follows the functional programming ideas that I think make software much more maintainable.")
+     :content "JavaScript is my strongest language to date. I have put more than a decade into learning it from the days of jQuery to creating robust web apps with React, Angular, or Vue. I do however much prefer React with Redux and RxJS over Angular or Vue, React follows the functional programming ideas that I think make software much more maintainable.")
 
     (skill
-     :title "HTML\\CSS"
+     :title "HTML &amp; CSS"
      :value 90
      :years 10
      :keywords ["HTML 5"
@@ -168,11 +168,11 @@
                 "atomic"
                 "BEM"
                 "SEO"]
-     :content "One of my first, and strongest languages. I am experienced in writing reusable, semantic, standards-compliant, SEO-friendly HTML for both desktops and mobile devices.")
+     :content "One of my first, and strongest languages. I am experienced in writing reusable, semantic, valid, and SEO-friendly HTML for both desktop and mobile devices.")
 
     (skill
      :title "Design"
-     :value 80
+     :value 75
      :years 8
      :keywords ["logos"
                 "websites"
@@ -188,7 +188,7 @@
 
     (skill
      :title "Python"
-     :value 60
+     :value 50
      :years 5
      :keywords ["django" "python 2.7" "flask" "OOP"]
      :content "Not my strongest or favorite language but it is a robust, widely used language that I am glad I took the time to get comfortable with.")
@@ -202,7 +202,7 @@
 
     (skill
      :title "PHP"
-     :value 50
+     :value 40
      :years 9
      :keywords ["php5"]
      :content "The first language I really took the time to learn. Looking back I can&rsquo;t say I made anything worthwhile in it but I did explore a lot of possibilities from database wrappers, template engines, to fully-featured frameworks and even a socket-based chat system.")]])
@@ -227,8 +227,9 @@
                "VenueBook"]
               " where I am responsible for software architecture, development, and product design."]
              [:div.callout
-              [:h3.borders.padding "Looking for Engineers"]
-              [:p "VenueBook is hiring both a senior Clojure developer and a senior Python\\Devops engineer. Please reach out if you are interested or know someone who might be."]]
+              [:div.borders.padding.mb-0
+                [:h3 "Looking for Engineers"]
+                [:p "VenueBook is hiring both a senior Clojure developer and a senior Python\\Devops engineer. Please reach out if you are interested or know someone who might be."]]]
              (interests)
              (skills)
              (education)]))
