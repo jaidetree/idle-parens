@@ -59,7 +59,7 @@
 
 (defn interests
   []
-  [:section.section]
+  [:section.section
    [:h2 "Interests"]
    [:ul.interests.borders
     (interest
@@ -116,7 +116,7 @@
               :data-instgrm-payload-id "instagram-media-payload-0"
               :scrolling "no"
               :height "700"}]
-     :content "An interest I accquired later in life. I enjoy discovering artists through social media, going to art gallery openings in NYC, drawing youtube channels, and the occasional doodle. Admittedly, I'm not very good at drawing but I do enjoy learning it in waves every once in a while.")])
+     :content "An interest I accquired later in life. I enjoy discovering artists through social media, going to art gallery openings in NYC, drawing youtube channels, and the occasional doodle. Admittedly, I'm not very good at drawing but I do enjoy learning it in waves every once in a while.")]])
 
 (defn skills
   []
