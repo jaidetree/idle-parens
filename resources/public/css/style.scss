@@ -136,6 +136,25 @@ p {
   padding: rems(16px) 0;
 }
 
+// .btn {
+//   border: none;
+// }
+// .btn.btn-primary {
+//   padding: rems(8px) rems(32px);
+//   background: $teal;
+//   border-color: $teal;
+//   font-size: rems(18px);
+// }
+// .btn.btn-primary:not(:disabled):not(.disabled):active {
+//   background-color: darken($teal, 10%);
+// }
+// .btn.btn-primary:focus {
+//   box-shadow:  0 0 0 0.2rem rgba($teal, 0.25);
+// }
+// .btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+//   box-shadow:  0 0 0 0.2rem rgba(darken($teal, 10%), 0.25);
+// }
+
 .callout {
   @extend %mono;
   position: relative;
@@ -383,6 +402,30 @@ p {
 .post__summary {
   font-size: rems(20px);
 }
+
+.projects__list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.project__meta {
+  margin: rems(16px) 0;
+}
+.project__field {
+  font-size: rems(13px);
+}
+.project__actions {
+  margin-top: rems(32px);
+}
+.project__link {
+  display: block;
+  color: $slate;
+}
+.project__link:hover {
+  text-decoration: none;
+}
+
 .profile {
   position: relative;
   padding: rems(24px);

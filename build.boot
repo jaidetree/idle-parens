@@ -52,8 +52,8 @@
 (defn project-pages
   [prod?]
   (pipeline
-    (perun/collection :renderer 'idle-parens.blog.index/render :page "projects.html" :filterer project?)
-    (perun/render :renderer 'idle-parens.blog.post/render :filterer project?)))
+    (perun/collection :renderer 'idle-parens.projects.index/render :page "projects.html" :filterer project?)
+    (perun/render :renderer 'idle-parens.projects.project/render :filterer project?)))
     ; (perun/tags :renderer 'idle-parens.tags/render :filterer project?)))
     ; (perun/paginate :renderer 'idle-parens.paginate/render :filterer project?)))
 
