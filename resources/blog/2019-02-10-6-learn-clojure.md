@@ -1,6 +1,6 @@
 ---
-title: "Learning Alternatives vs. Finishing Projects"
-description: How do you decide between learning and finishing projects?
+title: "Learn Clojure in 2019: Curated Learning Collection"
+description: How to get started learning Clojure.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
@@ -11,10 +11,10 @@ headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: cd4c1ba3-32f1-4363-8c9f-49a80f3e8b03
 tags:
  - lorem
  - ipsum
 draft: true
 ---
-# Learning Alternatives vs. Finishing Projects
+# Why Learn Clojure?

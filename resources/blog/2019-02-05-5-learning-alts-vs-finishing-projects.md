@@ -1,6 +1,6 @@
 ---
-title: "My Functional Programming Experience"
-description: My journey climbing the functional programming mountain.
+title: "Learning Alternatives vs. Finishing Projects"
+description: How do you decide between learning and finishing projects?
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
@@ -11,10 +11,10 @@ headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: 3c111950-fd0e-48a1-8907-f8445601db04
 tags:
  - lorem
  - ipsum
 draft: true
 ---
-# Discovering Functional Programming
+# Learning Alternatives vs. Finishing Projects

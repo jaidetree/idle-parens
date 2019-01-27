@@ -1,6 +1,6 @@
 ---
-title: "Learn Clojure in 2019: Curated Learning Collection"
-description: How to get started learning Clojure.
+title: "Why do I enjoy ClojureScript?"
+description: Exploration and comparison of why I am beginning to prefer ClojureScript over JavaScript
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
@@ -11,10 +11,10 @@ headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: e46eaeb3-d5d5-4fc8-ba4d-de37cf869a07
 tags:
  - lorem
  - ipsum
 draft: true
 ---
-# Why Learn Clojure?
+# Why ClojureScript?

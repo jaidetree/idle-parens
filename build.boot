@@ -46,7 +46,7 @@
   (pipeline
     (perun/collection :renderer 'idle-parens.blog.index/render :page "index.html" :filterer blog?)
     (perun/render :renderer 'idle-parens.blog.post/render :filterer blog?)
-    (perun/paginate :renderer 'idle-parens.blog.paginate/render :filterer blog? :out-dir "blog" :page-size 2)
+    (perun/paginate :renderer 'idle-parens.blog.paginate/render :filterer blog? :out-dir "blog")
     (perun/tags :renderer 'idle-parens.blog.tags/render :filterer blog? :out-dir "blog/tags")))
 
 (defn project-pages
@@ -66,8 +66,8 @@
   [prod?]
   (pipeline
     (perun/sitemap)
-    (perun/rss :description "Eccentric J's Blog")
-    (perun/atom-feed)))
+    (perun/rss :filterer blog?)
+    (perun/atom-feed :filterer blog?)))
 
 (defn build-meta
   [prod?]

@@ -7,15 +7,13 @@ location: New York, USA
 date-created: 2019-01-18T13:20:00-5:00
 date-modified: 2019-01-23T13:35:00-5:00
 date-published: 2019-01-25T18:00:00-5:00
-headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: a811549b-242e-46dc-8813-27c9d20e5a9d
 tags:
- - lorem
- - ipsum
-draft: true
+ - blog
+ - projects
 ---
 # Why even make a blog in 2019?
 
@@ -50,4 +48,4 @@ For example the production build pipeline looks like this:
 
 # Are you really _eccentric_?
 
-No. Probably not. It felt like a nice word to embody my love of programming, awkwardness, cats, atmospheric black metal, skulls, and occult imagery.
+No. Probably not. It felt like a nice word to embody my awkwardness along with my love of programming, cats, atmospheric black metal, skulls, and occult imagery.

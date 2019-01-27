@@ -66,15 +66,20 @@ p {
 // ---------------------------------------------------------------------------
 .author {
   margin-top: rems(64px);
-  padding: rems(16px);
   background: $slate;
   color: #fff;
 }
 .author__intro {
+  margin: 0;
+  padding: rems(16px);
   padding-bottom: rems(8px);
-  border-bottom: 1px solid $gray;
+  border: 1px solid lighten($slate, 15%);
+  background: lighten($slate, 5%);
   font-style: italic;
   color: black(30%);
+}
+.author__content {
+  padding: rems(32px);
 }
 .author__avatar {
   margin-right: rems(16px);
@@ -95,6 +100,7 @@ p {
   @extend %mono;
   color: black(10%);
   font-size: rems(18px);
+  line-height: 1.5;
 }
 .author__website {
   @extend %mono;
@@ -577,6 +583,10 @@ p {
 .project-summary__field {
   font-size: rems(13px);
 }
+.project-summary__img {
+  opacity: 1.0;
+  transition: all 250ms ease-in-out;
+}
 .project-summary:active .project-summary__link,
 .project-summary:focus-within .project-summary__link,
 .project-summary:focus .project-summary__link,
@@ -584,6 +594,9 @@ p {
   transform: scale(1.0);
   opacity: 0.8;
   z-index: 3;
+}
+.project-summary:hover .project-summary__img {
+  opacity: 0.4;
 }
 .project-summary__link:active {
   background: $slate !important;

@@ -11,7 +11,7 @@ headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: 46d1ee7b-422b-4ca9-be46-90d11b68e1e6
 tags:
  - lorem
  - ipsum

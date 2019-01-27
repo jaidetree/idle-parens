@@ -20,30 +20,31 @@
   [post author]
   [:section.author
    [:p.author__intro (str "About the author")]
-   [:h2.author__name
-    (:name author)]
-   [:a.author__website
-    {:href (:url author) :target "_blank"}
-    (:url author)]
-   [:div.author__profile
-    [:div.author__avatar
-     [:img.author__img {:src (:avatar-url author)
-                        :alt (str "Avatar of " (:name author))}]]
-    [:div.author__story
-     [:p.author__bio (:bio author)]]]
-   [:ul.author__links
-    [:li.author__links-item
-     [:a.author__link.brand.fa-github
-      {:href (str "https://github.com/" (:github author))}
-      (:github author)]]
-    [:li.author__links-item
-     [:a.author__link.brand.fa-twitter
-      {:href (str "https://twitter.com/" (:twitter author))}
-      (str "@" (:twitter author))]]
-    [:li.author__links-item
-     [:a.author__link.brand.fa-instagram
-      {:href (str "https://instagram.com/" (:instagram author))}
-      (str "@" (:instagram author))]]]])
+   [:div.author__content
+    [:h2.author__name
+     (:name author)]
+    [:a.author__website
+     {:href (:url author) :target "_blank"}
+     (:url author)]
+    [:div.author__profile
+     [:div.author__avatar
+      [:img.author__img {:src (:avatar-url author)
+                         :alt (str "Avatar of " (:name author))}]]
+     [:div.author__story
+      [:p.author__bio (:bio author)]]]
+    [:ul.author__links
+     [:li.author__links-item
+      [:a.author__link.brand.fa-github
+       {:href (str "https://github.com/" (:github author))}
+       (:github author)]]
+     [:li.author__links-item
+      [:a.author__link.brand.fa-twitter
+       {:href (str "https://twitter.com/" (:twitter author))}
+       (str "@" (:twitter author))]]
+     [:li.author__links-item
+      [:a.author__link.brand.fa-instagram
+       {:href (str "https://instagram.com/" (:instagram author))}
+       (str "@" (:instagram author))]]]]])
 
 (defn render-meta
   [post author full?]

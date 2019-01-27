@@ -1,6 +1,6 @@
 ---
-title: "Why do I enjoy ClojureScript?"
-description: Exploration and comparison of why I am beginning to prefer ClojureScript over JavaScript
+title: "My Functional Programming Experience"
+description: My journey climbing the functional programming mountain.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
@@ -11,10 +11,10 @@ headline:
 in-language: en
 keywords: a,b,c
 canonical-url: http://blog.hashobject.com/celebrare-gutture
-uuid:
+uuid: db151ec4-50b8-42f9-b20e-2153cb5d93f2
 tags:
  - lorem
  - ipsum
 draft: true
 ---
-# Why ClojureScript?
+# Discovering Functional Programming

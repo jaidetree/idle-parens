@@ -14,10 +14,10 @@
                   [:li.posts__item
                    (render-entry (assoc data :entry first-post) :content
                                  :context :featured)])
-                (for [post (take 9 posts)]
+                (for [post (take 2 posts)]
                   [:li.posts__item
                    (render-entry (assoc data :entry post) :description)])]
-               (when (>= (count posts) 9)
+               (when (>= (count posts) 3)
                  [:div.pagination
                   [:a.pagination__link
                    {:href (str "/blog/page-1.html")}

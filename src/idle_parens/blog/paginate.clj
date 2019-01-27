@@ -8,8 +8,9 @@
   (base/render
    :title (:site-title global-meta)
    :subtitle (format "idle-parens.blog/page-%s" (:page entry))
-   :current :archive
+   :current :blog
    :content [:div.blog
+             [:h2.mb-5 (str "Page: " (:page entry))]
              [:ul.posts
               (for [post posts]
                   [:li.posts__item
