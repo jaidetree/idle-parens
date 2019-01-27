@@ -35,11 +35,13 @@
 
 (defn blog?
   [file]
-  (re-find #"/blog/" (:path file)))
+  (= (:type file) "post"))
+  ; (re-find #"/blog/" (:path file)))
 
 (defn project?
   [file]
-  (re-find #"/projects/" (:path file)))
+  (= (:type file) "project"))
+  ;; (re-find #"/projects/" (:path file)))
 
 (defn blog-pages
   [prod?]
@@ -124,3 +126,9 @@
    :dependencies #(into % '[[proto-repl "0.3.1"]
                             [proto-repl-charts "0.3.2"]
                             [org.clojure/tools.namespace "0.2.11"]])))
+
+(deftask uuid
+  [n count COUNT int "How many UUIDs to generate?"]
+  (let [gen-uuid #(str (java.util.UUID/randomUUID))
+        uuids (repeatedly (or count 5) gen-uuid)]
+    (dorun (map println uuids))))

@@ -110,9 +110,6 @@
   transition: all 250ms ease-in-out;
   content: '\f105';
 }
-// .navbar__active::before {
-//   color: $teal;
-// }
 .navbar__item:hover {
   opacity: 1.0;
   padding-left: rems(32px);
@@ -175,9 +172,12 @@
   margin-left: rems(16px);
   padding-left: rems(32px);
 }
-
+.projects__list {
+  justify-content: space-between;
+}
 .projects__item {
   flex: 0 1 48%;
+  margin-bottom: rems(32px);
 }
 
 

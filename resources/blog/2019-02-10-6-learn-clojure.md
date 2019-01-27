@@ -1,4 +1,5 @@
 ---
+type: post
 title: "Learn Clojure in 2019: Curated Learning Collection"
 description: How to get started learning Clojure.
 author: Eccentric J

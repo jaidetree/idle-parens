@@ -1,4 +1,5 @@
 ---
+type: post
 title: "Learning Alternatives vs. Finishing Projects"
 description: How do you decide between learning and finishing projects?
 author: Eccentric J

@@ -1,4 +1,5 @@
 ---
+type: post
 title: "Site Launch :tada:"
 description: A brief introduction to this blog, development process, and goals.
 author: Eccentric J

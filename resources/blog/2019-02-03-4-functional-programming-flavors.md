@@ -1,4 +1,5 @@
 ---
+type: post
 title: "My Functional Programming Experience"
 description: My journey climbing the functional programming mountain.
 author: Eccentric J

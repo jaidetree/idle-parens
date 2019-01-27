@@ -548,6 +548,21 @@ p {
 .project__field:not(:last-child) {
   margin-right: rems(16px);
 }
+.project__blurb {
+  @extend p;
+}
+.project__langs {
+  display: block;
+  margin-top: rems(8px);
+  flex: 0 0 100%;
+}
+.project__langs .tags {
+  margin: 0;
+}
+.project__langs .tag {
+  color: inherit;
+  border-color: inherit;
+}
 
 .project-summary {
   position: relative;
@@ -574,6 +589,7 @@ p {
 }
 .project-summary__title {
   display: block;
+  border-color: inherit;
   font-size: rems(24px);
 }
 .project-summary__meta {
@@ -600,13 +616,10 @@ p {
 }
 .project-summary__link:active {
   background: $slate !important;
-  color: #fff;
+  color: #fff !important;
 }
 .project-summary__link:active .borders {
-  border-color: #fff;
-}
-.project-summary__blurb {
-  @extend p;
+  border-color: #fff !important;
 }
 
 .section {
@@ -701,13 +714,14 @@ p {
   transform: translateY(0);
   opacity: 1.0;
 }
-.skill__keywords {
-  list-style: none;
+
+.tags {
+  display: block;
   margin: rems(16px) 0;
   padding: 0;
+  list-style: none;
 }
-.skill__keyword {
-  @extend %mono;
+.tag {
   display: inline-block;
   padding: rems(1px) rems(16px);
   border-radius: rems(24px);
@@ -718,7 +732,7 @@ p {
   letter-spacing: rems(0.4px);
   white-space: nowrap;
 }
-.skill__keyword:not(:last-child) {
+.tag:not(:last-child) {
   margin-right: rems(16px);
   margin-bottom: rems(8px);
 }

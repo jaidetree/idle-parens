@@ -51,9 +51,9 @@
         (str value "%")]]]]
     [:div.skill__content.collapse
      {:id slug}
-     [:ul.skill__keywords
+     [:ul.skill__keywords.tags
       (for [kw keywords]
-        [:li.skill__keyword kw])]
+        [:li.skill__keyword.tag kw])]
      [:p.text-copy.skill__copy
       content]]]))
 

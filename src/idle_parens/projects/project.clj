@@ -56,7 +56,11 @@
          {:datetime (str (:date-published project))}
          (str "Released " (format-date (:date-published project)))]
         (project-github (:github project))
-        (project-website (:website project))]
+        (project-website (:website project))
+        [:div.project__langs
+         [:ul.tags
+          (for [lang (:languages project)]
+            [:li.tag lang])]]]
        [:p.project__blurb.text-copy
         (:description project)]]]
      [:div.post__content.project__content

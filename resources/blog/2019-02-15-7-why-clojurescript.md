@@ -1,4 +1,5 @@
 ---
+type: post
 title: "Why do I enjoy ClojureScript?"
 description: Exploration and comparison of why I am beginning to prefer ClojureScript over JavaScript
 author: Eccentric J
