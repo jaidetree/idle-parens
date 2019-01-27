@@ -103,7 +103,7 @@
      (target :no-clean true)
      (notify))))
 
-(deftask dev
+(deftask develop
   []
   (pipeline
     (clean :dir "target/dev")
@@ -117,11 +117,10 @@
     (target :no-clean true)
     (serve :dir "target/dev" :port 9000)))
 
-(deftask nrepl
+(deftask dev
   []
   (set-env!
    :init-ns 'user
    :dependencies #(into % '[[proto-repl "0.3.1"]
                             [proto-repl-charts "0.3.2"]
-                            [org.clojure/tools.namespace "0.2.11"]]))
-  (repl))
+                            [org.clojure/tools.namespace "0.2.11"]])))
