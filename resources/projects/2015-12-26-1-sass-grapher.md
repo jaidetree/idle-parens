@@ -20,8 +20,15 @@ languages:
 ---
 # <i class="fa fa-trophy icon"></i> Goal
 
-This is content describing a project.
+When creating the front-end build tooling for VenueBook we needed a smarter build system that would watch for changes to partial SASS files and only compile the root SASS files that imported them.
 
 ## <i class="fa fa-list-ol icon"></i> Process
+1. Study how node-sass&rsquo;s watch command was implemented
+2. Find a library that could parse a sass file and return imports.
+3. Write software to keep a tree map of the relationships between all SASS files in our project.
+4. Leverage gulp watch stream to look up files in the tree to find their root parent files.
 
 ## <i class="fa fa-lightbulb icon"></i> Discoveries
+- One of my first introductions to streams which is what lead me to functional programming.
+- Learned how to graph dependencies for quick lookups.
+- Gained experience writing complex front-end build pipelines from scratch.
