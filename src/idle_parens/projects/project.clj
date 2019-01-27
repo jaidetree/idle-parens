@@ -21,16 +21,18 @@
   [github-str]
   (when github-str
     (let [url (str "https://github.com/" github-str)]
-      [:a.project__field.brand.fa-github
-       {:href url}
-       github-str])))
+      [:span.project__field.brand.fa-github
+       [:a.project__meta-link
+        {:href url}
+        github-str]])))
 
 (defn project-website
   [website-url]
   (when website-url
-    [:a.project__field.icon.fa-external-link-alt
-     {:href website-url}
-     website-url]))
+    [:span.project__field.icon.fa-external-link-alt
+     [:a.project__meta-link
+      {:href website-url}
+      website-url]]))
 
 (defn render-entry
   [{global-meta :meta projects :entries project :entry} & {:keys [context]}]
