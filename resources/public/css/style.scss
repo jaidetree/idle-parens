@@ -291,6 +291,7 @@ p {
 .page__header {
   position: relative;
   height: rems(416px);
+  margin-bottom: rems(3px);
 }
 
 .page__title {
@@ -409,10 +410,6 @@ p {
 .profile {
   position: relative;
   padding: rems(24px);
-  border-top-left-radius: rems(10px);
-  border-top-right-radius: rems(10px);
-  // background: $gray;
-  // background: rgba($gray, 0.8);
 }
 .profile__logo {
   display: block;
@@ -523,8 +520,17 @@ p {
   margin-bottom: rems(32px);
 }
 .project__meta {
+  display: flex;
+  flex-flow: row wrap;
   margin: rems(16px) 0;
   font-size: rems(13px);
+}
+.project__field {
+  white-space: nowrap;
+  margin-bottom: rems(8px);
+}
+.project__field:not(:last-child) {
+  margin-right: rems(16px);
 }
 
 .project-summary {
@@ -555,6 +561,7 @@ p {
   font-size: rems(24px);
 }
 .project-summary__meta {
+  display: block;
   margin: rems(16px) 0;
 }
 .project-summary__field {
@@ -574,6 +581,9 @@ p {
 }
 .project-summary__link:active .borders {
   border-color: #fff;
+}
+.project-summary__blurb {
+  @extend p;
 }
 
 .section {

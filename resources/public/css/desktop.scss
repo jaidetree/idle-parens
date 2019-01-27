@@ -39,12 +39,12 @@
   @media (max-height: #{rems(739px)}) {
     position: absolute;
     top: 0;
-  padding-top: rems(192px);
+    padding-top: rems(190px);
   }
   @media (min-height: #{rems(740px)}) {
     position: fixed;
     top: rems(10px);
-    padding-top: rems(182px);
+    padding-top: rems(180px);
   }
 }
 .sidebar__margin {
@@ -180,6 +180,9 @@
 .project__header {
   display: flex;
   flex-flow: row nowrap;
+}
+.project__img {
+  flex: 0 0 48%;
 }
 .project__info {
   margin-left: rems(16px);

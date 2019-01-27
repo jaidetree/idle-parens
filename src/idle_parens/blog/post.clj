@@ -123,6 +123,6 @@
    :title (:site-title global-meta)
    :subtitle (:title post)
    :current :blog
-   :page-title "idle-parens/blog"
+   :page-title "idle-parens.blog/post"
    :content (render-entry data :content
                           :context :post)))

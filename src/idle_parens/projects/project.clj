@@ -17,6 +17,21 @@
     (when (img-exists? path)
       path)))
 
+(defn project-github
+  [github-str]
+  (when github-str
+    (let [url (str "https://github.com/" github-str)]
+      [:a.project__field.brand.fa-github
+       {:href url}
+       github-str])))
+
+(defn project-website
+  [website-url]
+  (when website-url
+    [:a.project__field.icon.fa-external-link-alt
+     {:href website-url}
+     website-url]))
+
 (defn render-entry
   [{global-meta :meta projects :entries project :entry} & {:keys [context]}]
   (let [img (project-img (:slug project))]
@@ -37,8 +52,10 @@
        [:div.project__meta
         [:time.project__field.icon.fa-calendar-day
          {:datetime (str (:date-published project))}
-         (str "Released " (format-date (:date-published project)))]]
-       [:span.project__blurb.text-copy
+         (str "Released " (format-date (:date-published project)))]
+        (project-github (:github project))
+        (project-website (:website project))]
+       [:p.project__blurb.text-copy
         (:description project)]]]
      [:div.post__content.project__content
       (:content project)]]))
