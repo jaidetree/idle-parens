@@ -25,7 +25,7 @@
   flex: 0 1 auto;
   width: 100%;
   max-width: rems(784px);
-  padding-top: rems(304px);
+  padding-top: 0;
   z-index: 3;
 }
 .sidebar {
@@ -141,8 +141,10 @@
 }
 
 .page__title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: rems(16px);
   font-size: rems(50px);
-  margin-bottom: rems(54px);
 }
 .page__title::before,
 .page__title::after {
@@ -168,4 +170,17 @@
   margin-right: rems(10px);
   margin-left: rems(16px);
   padding-left: rems(32px);
+}
+
+.projects__item {
+  flex: 0 1 48%;
+}
+
+
+.project__header {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.project__info {
+  margin-left: rems(16px);
 }

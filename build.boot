@@ -46,8 +46,8 @@
   (pipeline
     (perun/collection :renderer 'idle-parens.blog.index/render :page "index.html" :filterer blog?)
     (perun/render :renderer 'idle-parens.blog.post/render :filterer blog?)
-    (perun/tags :renderer 'idle-parens.blog.tags/render :filterer blog? :out-dir "public/blog/tags")
-    (perun/paginate :renderer 'idle-parens.blog.paginate/render :filterer blog? :out-dir "public/blog")))
+    (perun/paginate :renderer 'idle-parens.blog.paginate/render :filterer blog? :out-dir "blog")
+    (perun/tags :renderer 'idle-parens.blog.tags/render :filterer blog? :out-dir "blog/tags")))
 
 (defn project-pages
   [prod?]

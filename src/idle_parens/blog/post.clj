@@ -122,6 +122,7 @@
   (base/render
    :title (:site-title global-meta)
    :subtitle (:title post)
+   :current :blog
    :page-title "idle-parens/blog"
    :content (render-entry data :content
                           :context :post)))

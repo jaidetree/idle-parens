@@ -47,7 +47,7 @@ p {
   top: rems(10px);
   left: 0;
   right: 0;
-  height: rems(544px);
+  height: rems(576px);
   background: $slate url(/img/hero-bg.png) 50% 50% no-repeat;
   background-size: cover;
   z-index: 2;
@@ -131,6 +131,7 @@ p {
   margin-bottom: rems(16px);
   border-top: 1px solid $slate;
   border-bottom: 2px solid $slate;
+  transition: all 250ms ease;
 }
 .borders.padding {
   padding: rems(16px) 0;
@@ -287,6 +288,10 @@ p {
 .navbar__nav {
   width: 100%;
 }
+.page__header {
+  position: relative;
+  height: rems(416px);
+}
 
 .page__title {
   position: relative;
@@ -313,14 +318,12 @@ p {
   content: ')';
   right: rems(-1px);
 }
-.page__path:not(:last-child)::after {
+.page__sep {
   position: relative;
   top: rems(0px);
   color: $light-teal;
   margin-left: rems(4px);
   margin-right: rems(4px);
-  font-size: rems(24px);
-  content: '/';
 }
 
 .posts {
@@ -401,29 +404,6 @@ p {
 }
 .post__summary {
   font-size: rems(20px);
-}
-
-.projects__list {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.project__meta {
-  margin: rems(16px) 0;
-}
-.project__field {
-  font-size: rems(13px);
-}
-.project__actions {
-  margin-top: rems(32px);
-}
-.project__link {
-  display: block;
-  color: $slate;
-}
-.project__link:hover {
-  text-decoration: none;
 }
 
 .profile {
@@ -519,6 +499,81 @@ p {
 .profile--bg_dark .profile__title:hover .profile__logo {
   filter: grayscale(100%);
   opacity: 0.9;
+}
+
+.projects__list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.project__title {
+  font-size: rems(24px);
+}
+.project__link {
+  color: $slate;
+}
+.project__link:hover {
+  color: $slate;
+  text-decoration: none;
+}
+.project__header {
+  margin-bottom: rems(32px);
+}
+.project__meta {
+  margin: rems(16px) 0;
+  font-size: rems(13px);
+}
+
+.project-summary {
+  position: relative;
+  overflow: hidden;
+}
+.project-summary__link {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: rems(16px);
+  color: inherit;
+  text-align: left;
+  transform: scale(2);
+  opacity: 0;
+  transition: all 250ms ease-in-out;
+  z-index: -1;
+}
+.project-summary__link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.project-summary__title {
+  display: block;
+  font-size: rems(24px);
+}
+.project-summary__meta {
+  margin: rems(16px) 0;
+}
+.project-summary__field {
+  font-size: rems(13px);
+}
+.project-summary:active .project-summary__link,
+.project-summary:focus-within .project-summary__link,
+.project-summary:focus .project-summary__link,
+.project-summary:hover .project-summary__link {
+  transform: scale(1.0);
+  opacity: 0.8;
+  z-index: 3;
+}
+.project-summary__link:active {
+  background: $slate !important;
+  color: #fff;
+}
+.project-summary__link:active .borders {
+  border-color: #fff;
 }
 
 .section {

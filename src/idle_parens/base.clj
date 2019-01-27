@@ -108,6 +108,21 @@
                  :media "screen and (min-width: 930px)"
                  :href "/css/desktop.css"}]])
 
+(defn format-path
+  [title]
+  (let [parts (split title #"[/\.]")
+        dirs (butlast parts)
+        name (last parts)]
+    (concat
+     (interpose [:span.page__sep "."]
+                (map #(vector :span.page__path %) dirs))
+     [[:span.page__sep "/"]
+      [:span.page__path name]])))
+
+(comment
+ (clojure.pprint/pprint
+   (format-path "idle-parens.blog/post")))
+
 (defn render [& {:keys [title subtitle page-title content current]}]
   (let [home? (= current :blog)]
     (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
@@ -132,8 +147,9 @@
                  (profile {:title title :class "profile--bg_dark"})]]]
               [:div.layout
                [:div.main
-                [:h1.page__title (for [part (split (or page-title subtitle "") #"/")]
-                                  [:span.page__path part])]
+                [:header.page__header
+                  [:h1.page__title
+                   (format-path (or page-title subtitle ""))]]
                 [:div.content
                   content]]
                [:aside.sidebar
