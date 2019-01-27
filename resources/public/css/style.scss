@@ -327,6 +327,16 @@ p {
   margin-right: rems(4px);
 }
 
+.pagination {
+  display: block;
+  margin: rems(32px);
+  text-align: center;
+}
+.pagination__link {
+  display: inline-block;
+  margin: rems(16px);
+}
+
 .posts {
   padding: 0;
   list-style: none;
