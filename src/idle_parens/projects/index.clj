@@ -16,7 +16,8 @@
   [project]
   (let [img (project-img (:slug project))]
     [:article.project-summary
-     {:class (trim
+     {:id (:slug project)
+      :class (trim
               (join " "
                     [(str "project-summary--slug_" (:slug project))
                      (:class project "")]))}

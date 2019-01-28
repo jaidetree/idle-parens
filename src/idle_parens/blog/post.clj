@@ -117,7 +117,12 @@
          (content post)])
      (when (and (= context :post) (:bio author))
        [:footer.post__footer
-        (render-author post author)])]))
+        (render-author post author)
+        [:div.actions.mt-5.text-center
+         [:span.icon.fa-chevron-circle-left
+          [:a
+           {:href (str "/")}
+           "View more posts"]]]])]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
   (base/render

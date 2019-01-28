@@ -38,7 +38,8 @@
   [{global-meta :meta projects :entries project :entry} & {:keys [context]}]
   (let [img (project-img (:slug project))]
     [:article.project
-     {:class (trim
+     {:id (:slug project)
+      :class (trim
               (join " "
                     [(str "project--slug_" (:slug project))
                      (:class project "")]))}
@@ -65,7 +66,12 @@
        [:p.project__blurb.text-copy
         (:description project)]]]
      [:div.post__content.project__content
-      (:content project)]]))
+      (:content project)]
+     [:div.actions.mt-5.text-center
+      [:span.icon.fa-chevron-circle-left
+       [:a
+        {:href (str "/projects.html#" (:slug project))}
+        "Return to Projects"]]]]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as data}]
   (base/render
