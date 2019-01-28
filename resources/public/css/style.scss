@@ -34,6 +34,7 @@ p {
 // ---------------------------------------------------------------------------
 .content {
   margin: rems(32px) rems(16px);
+  margin-bottom: rems(64px);
 }
 .content img {
   max-width: 100%;
@@ -399,6 +400,12 @@ p {
 .post__content h5 {
   font-size: rems(20px);
 }
+.post__content ul, ol {
+  font-size: rems(18px);
+}
+.post__content li {
+  margin-bottom: rems(16px);
+}
 .post__attrs {
   display: flex;
   justify-content: space-between;
@@ -562,6 +569,31 @@ p {
 .project__langs .tag {
   color: inherit;
   border-color: inherit;
+}
+.project__img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: rems(32px);
+}
+.project__goal::before,
+.project__process::before,
+.project__discoveries::before {
+  @extend %icon;
+  display: inline-block;
+  position: relative;
+  top: rems(-3px);
+  margin-right: 0.5em;
+  color: $light-teal;
+  font-size: rems(24px);
+}
+.project__goal::before {
+  content: '\f091';
+}
+.project__process::before {
+  content: '\f46d';
+}
+.project__discoveries::before {
+  content: '\f0eb';
 }
 
 .project-summary {

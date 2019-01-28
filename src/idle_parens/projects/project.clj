@@ -43,9 +43,10 @@
                     [(str "project--slug_" (:slug project))
                      (:class project "")]))}
      [:header.project__header
-      [:img.project__img
-       {:src (str "/img/projects/" (:slug project) ".png")
-        :alt (str "Teaser image of " (:title project))}]
+      [:div.project__hero
+       [:img.project__img
+        {:src (str "/img/projects/" (:slug project) ".png")
+         :alt (str "Teaser image of " (:title project))}]]
       [:div.project__info
        [:h1.project__title.borders.padding
         [:a.project__link

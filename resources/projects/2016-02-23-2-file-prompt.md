@@ -18,17 +18,17 @@ website:
 languages:
  - JS
 ---
-# <i class="fa fa-trophy icon"></i> Goal
+# <span class="project__goal">Goal</span>
 
 In an early version of our front-end build system we were using browserify which was great but got slower as we added more build files. Before webpack became its successor I built a CLI tool to select files manually and return a stream of them in vinyl format to be compatible with the gulp library. Heavily inspired by `git add --interactive`.
 
-## <i class="fa fa-list-ol icon"></i> Process
+## <span class="project__process">Process</span>
 1. Study behavior of `git add -i`
 2. Studied redux, introduced by a coworker, to manage application state
 3. Replicate the behavior of `git add -i` in JS
 4. Take the selected output and return a stream of vinyl files.
 
-## <i class="fa fa-lightbulb icon"></i> Discoveries
+## <span class="project__discoveries">Discoveries</span>
 - First redux project
 - Learned how to write more complex CLI tools
 - Introduced to immutability from working with Redux

@@ -6,6 +6,7 @@
 .content {
   position: relative;
   margin: rems(32px);
+  margin-bottom: rems(64px);
   z-index: 6;
 }
 .hero {
@@ -184,11 +185,13 @@
 .project__header {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
 }
-.project__img {
-  flex: 0 0 48%;
+.project__hero {
+  flex: 1 1 48%;
 }
 .project__info {
+  flex: 0 1 48%;
   margin-left: rems(16px);
 }
 
