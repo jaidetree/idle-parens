@@ -18,17 +18,17 @@ tags:
 ---
 # Why even make a blog in 2019?
 
-Likely fruitless, I admit, but some of my lengthy functional programming subreddit comments earned encouragement to be published somewhere. Well, now I have a _somewhere_ to publish to.
+While fruitless, I admit, but after receiving some encouragement to publish my lengthy reddit comments in functional programming boards, I needed a place to publish them. I wanted a place to explore the topics of functional programming and professional software engineering. Medium could work but I found myself slowed down by their editing experience and since I do have some design experience I would rather have a stronger visual identity to color my words.
 
 # What will this blog cover?
 
-This blog covers functional programming topics in languages like Clojure, JavaScript, Elixir, Haskell, and Elm. However, since I enjoy Clojure and ClojureScript the most a lot of content will be focused there.
+This blog covers functional programming topics in languages like Clojure and ClojureScript. I may cover JavaScript, Elixir, Haskell, and Elm but I enjoy Clojure and ClojureScript the most.
 
-Additionally I will publish announcements of upcoming projects, tutorials\learning resources, open-ended ideas, and opinions on professional practices.
+I will also publish announcements of upcoming projects, tutorials\\learning resources, open-ended ideas, and opinions on professional practices.
 
 # What is this blog made with?
 
-This site is statically generated using the Clojure https://perun.io/ which runs on top of [Boot](https://github.com/boot-clj) build tasks. I really like the concept of breaking the generation process into a pipeline of reusable tasks or functions that generate each type of page and process my source files like ClojureScript, SASS, and Markdown. If I don't like the way any one part behaves I can replace it pretty painlessly leveraging Boot's composability and immutable fileset system.
+This is a statically generated site written in Clojure using https://perun.io/ which is based on [Boot](https://github.com/boot-clj) build tasks. I really like the concept of building functionality by composing small tasks together so it felt like a natural fit. Development moved fast and I am happy with the result so far.
 
 For example the production build pipeline looks like this:
 
@@ -49,4 +49,4 @@ For example the production build pipeline looks like this:
 
 # Are you really _eccentric_?
 
-No. Probably not. It felt like a nice word to embody my awkwardness along with my love of programming, cats, atmospheric black metal, skulls, and occult imagery.
+No. Probably not. It felt like a nice word to embody my awkwardness along with my love of programming, cats, atmospheric black metal, skulls, and occult imagery. While I&rsquo;m more of a straight arrow than someone riding the line between the accepted norms and taboos of society I can dream can&rsquo;t I? Who uses the internet to face the realities of who they actually are? That would be madness! :smiling_imp:
