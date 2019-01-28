@@ -373,6 +373,7 @@ p {
 }
 .post__content {
   color: $slate;
+  text-align: justify;
 }
 .post__content h1,
 .post__content h2,
@@ -405,6 +406,11 @@ p {
 }
 .post__content li {
   margin-bottom: rems(16px);
+}
+.post__content a.brand::before,
+.post__content a.icon::before {
+  text-decoration: none;
+  color: $slate;
 }
 .post__attrs {
   display: flex;

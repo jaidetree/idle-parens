@@ -18,9 +18,9 @@ languages:
 ---
 # <span class="project__goal">Goal</span>
 
-While learning Clojure from books I found myself struggling to find the right place to organize it. After trying different notebook services I found myself frustrated finding out that I followed an example accurately but the notebook app doesn&rquo;t support one specific aspect of Clojure&rsquo;s namespaces that the current chapter I&rsquo;m studying focuses on.
+When learning Clojure from books there is no best solution to organize the notes, exercises, and examples. The problem is notebook apps only offer a select subset of the Clojure language. For instance I ended up sinking an hour on the first few examples from a chapter on namespaces only to find out the notebook service I was using doesn&rsquo;t support the full Clojure namespace functionality. Not only is figuring that out frustrating but now there is this extra context you need to be aware of when trying to follow along with examples.
 
-I wanted a full Clojure experience that would allow me to organize what I&rsquo;ve read and wrote into bite-sized lessons I can come back to and not lose any context. Otherwise you may find out-of-date comments of past eval results or you are executing code and getting `nil` back unable to remember if it was the intended result or something wrong with the example.
+I wanted a full Clojure experience that would allow me to organize what I&rsquo;ve read and wrote into bite-sized lessons. It needed to let me revisit my notes and not lose any context such as the code that was written, what it does, and what I want to learn from it. It also needs to feel natural to use so retyping code as a string to show along side evaluation results would not cut it. Without such a tool you may often acquire out-of-date comments of past eval results or you are executing code and getting `nil` unable to remember if that was intentional or if the example was accidentally changed.
 
 ## <span class="project__process">Process</span>
 1. First I had to read chapter 8 of Clojure for the Brave and True to learn more about macros
@@ -29,9 +29,9 @@ I wanted a full Clojure experience that would allow me to organize what I&rsquo;
 4. Wrote a quick and dirty version of the macro, pushed it up, asked for feedback in the Clojure slack community.
 5. After receiving positive feedback from the community I refined it and supported more features that I thought would be useful in this problem space.
 6. Wrote unit tests where appropriate.
-7. Designed a logo, just for fun to give the tool a more polished look.
+7. Designed a logo, for fun, to give the library a more polished look.
 
 ## <span class="project__discoveries">Discoveries</span>
-- Got a strong first taste of the power of Clojure macros. They&rsquo;re really powerful!
+- Got a strong first taste of the power of Clojure macros. They&rsquo;re _quite_ powerful!
 - I can work from books a bit faster now :smile:
-- Learned that asking simpler Clojure questions in the Slack helped me learn more than asking complex, tool-specific questions. For instance asking what the best way to concat two lists together I got a lot of great answers.
+- Learned that asking simpler Clojure questions in the Slack helped me learn more, faster, than asking complex, tool-specific questions. For instance asking "What is the best way to concat two lists together?" provided way better answers than "How do I combine two vectors of reitit route collections?".
