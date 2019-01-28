@@ -4,7 +4,6 @@
             [idle-parens.blog.post :refer [render-entry]]))
 
 (defn render [{global-meta :meta posts :entries entry :entry :as data}]
-  (clojure.pprint/pprint entry)
   (base/render
    :title (:site-title global-meta)
    :subtitle (format "idle-parens.blog/page-%s" (:page entry))
