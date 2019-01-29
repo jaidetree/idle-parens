@@ -79,5 +79,8 @@
    :subtitle (:title post)
    :page-title "active-parens/projects"
    :current :projects
+   :meta {:title (:title post)
+          :description (:description post)
+          :url (:canonical-url post)}
    :content (render-entry data
                           :context :project)))

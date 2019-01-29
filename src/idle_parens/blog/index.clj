@@ -8,6 +8,9 @@
      :title (:site-title global-meta)
      :subtitle "idle-parens/blog"
      :current :blog
+     :meta {:title (:site-title global-meta)
+            :description "Eccentric J’s blog on functional programming and software engineering."
+            :url (:base-url global-meta)}
      :content [:div.blog
                [:ul.posts
                 (when first-post

@@ -47,6 +47,9 @@
    :title (:site-title global-meta)
    :subtitle "active-parens/projects"
    :current :projects
+   :meta {:title "Eccentric J’s Projects"
+          :description "Discover the projects I have made while continuing to improve as a developer and engineer."
+          :url (str (:base-url global-meta) "/projects.html")}
    :content [:div.projects
              [:ul.projects__list
               (for [project projects]

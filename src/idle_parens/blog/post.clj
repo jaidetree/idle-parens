@@ -133,5 +133,8 @@
    :subtitle (:title post)
    :current :blog
    :page-title "idle-parens.blog/post"
+   :meta {:title (:title post)
+          :description (:description post)
+          :url (:canonical-url post)}
    :content (render-entry data :content
                           :context :post)))

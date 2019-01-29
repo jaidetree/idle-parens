@@ -83,11 +83,45 @@
                            [:span.media-links__label "Email"]]]])
 
 (defn head
-  [title]
+  [title meta]
   [:head [:title title]
          [:meta {:charset "utf-8"}]
          [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
          [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]
+         [:meta {:name "msapplication-TileColor"
+                 :color "#4f5b55"}]
+         [:meta {:name "theme-color"
+                 :color "#4f5b55"}]
+         [:meta {:property "og:image"
+                 :content "/img/eccentric-j-social.png"}]
+         [:meta {:property "og:image:width"
+                 :content "279"}]
+         [:meta {:property "og:image:height"
+                 :content "279"}]
+         (when meta
+           (list
+            [:meta {:property "og:title"
+                    :content (:title meta)}]
+            [:meta {:property "og:description"
+                    :content (:description meta)}]
+            [:meta {:property "og:url"
+                    :content (:url meta)}]))
+         [:link {:rel "apple-touch-icon"
+                 :sizes "180x180"
+                 :href "/apple-touch-icon.png"}]
+         [:link {:rel "icon"
+                 :type "image/png"
+                 :sizes "32x32"
+                 :href "favicon-32x32.png"}]
+         [:link {:rel "icon"
+                 :type "image/png"
+                 :sizes "16x16"
+                 :href "favicon-16x16.png"}]
+         [:link {:rel "manifest"
+                 :href "/site.webmanifest"}]
+         [:link {:rel "mask-icon"
+                 :href "/safar-pinned-tab.svg"
+                 :color "#5bbad5"}]
          [:link {:rel "stylesheet"
                  :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
          [:link {:rel "stylesheet"
@@ -123,10 +157,11 @@
  (clojure.pprint/pprint
    (format-path "idle-parens.blog/post")))
 
-(defn render [& {:keys [title subtitle page-title content current]}]
+(defn render [& {:keys [title subtitle page-title content current meta] :as opts}]
   (let [home? (= current :blog)]
     (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
-      (head (str (when (and subtitle (not home?)) (str subtitle " | ")) title))
+      (head (str (when (and subtitle (not home?)) (str subtitle " | ")) title)
+            (get opts :meta {}))
       [:body [:div.page
               (drip {:right 30
                      :width 10
