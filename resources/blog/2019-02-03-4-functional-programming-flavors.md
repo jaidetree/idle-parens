@@ -1,7 +1,7 @@
 ---
 type: post
-title: "My Functional Programming Experience"
-description: My journey climbing the functional programming mountain.
+title: "Functional Programming Flavors"
+description: How can you categorize the major functional programming languages?
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA

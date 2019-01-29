@@ -226,7 +226,9 @@
                [:img.selfie
                 {:src "/img/eccentric-j.jpg"
                  :alt "Eccentric J Selfie"}]
-               "I've been designing and developing personal and commercial projects for about a decade now. I got started by learning how to hack online computer games by rewriting values to known memory addresses, since then I've found my passion in web app development. Currently, I live in New York City employed as a lead engineer at "
+               "I've been designing and developing personal and commercial projects for about a decade now.
+                I got started by learning how to hack online computer games by rewriting values to known memory addresses, since then my passion is in web app development.
+                Currently, I live in New York City employed as a lead engineer at "
                [:a {:href "https://venuebook.com"}
                 "VenueBook"]
                " where I am responsible for software architecture, development, and product design."]]

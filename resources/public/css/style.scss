@@ -27,7 +27,12 @@ a, a:hover {
 
 p {
   font-size: rems(20px);
-  line-height: 2;
+  line-height: 1.8;
+  margin-bottom: rems(32px);
+}
+
+strong {
+  font-weight: bold;
 }
 
 // Layout
@@ -382,6 +387,7 @@ p {
 .post__content h5 {
   padding: rems(3px);
   margin-bottom: rems(32px);
+  text-align: left;
   &:not(:first-child) {
     margin-top: rems(64px);
   }
@@ -404,9 +410,56 @@ p {
 .post__content ul, ol {
   font-size: rems(18px);
   text-align: left;
+  margin-bottom: rems(32px);
 }
 .post__content li {
   margin-bottom: rems(16px);
+}
+.post__content blockquote {
+  background: darken($gray, 5);
+  padding: rems(16px);
+}
+.post__content blockquote p {
+  font-size: rems(18px);
+  font-style: italic;
+  line-height: 1.5;
+}
+.post__content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.post__content code {
+  text-align: left;
+}
+.post__content .disclaimer {
+  position: relative;
+  margin: rems(64px) 0;
+  padding: rems(32px);
+  padding-left: rems(148px);
+  border-radius: rems(10px);
+  background: #fafffe;
+}
+.post__content .disclaimer::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: rems(120px);
+  border-top-left-radius: rems(10px);
+  border-bottom-left-radius: rems(10px);
+  background: $slate;
+  content: '';
+}
+.post__content .disclaimer::after {
+  @extend %icon;
+  position: absolute;
+  left: rems(32px);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: rems(48px);
+  color: #fff;
+  font-size: rems(48px);
+  content: '\f071';
 }
 .post__content a.brand::before,
 .post__content a.icon::before {
@@ -422,7 +475,10 @@ p {
 .post__meta {
   color: $gray-teal;
 }
-.post__meta > span {
+.post.full .post__meta{
+  margin-right: rems(40px);
+}
+.post__meta > span:not(:last-child) {
   white-space: nowrap;
   margin-right: rems(16px);
 }
@@ -513,7 +569,7 @@ p {
   color: $gray;
 }
 .profile--bg_dark .profile__quote {
-  color: black(20%);
+  color: $gray;
 }
 .profile--bg_dark .profile__quote::before {
   opacity: 0.5;

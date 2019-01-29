@@ -55,15 +55,17 @@
      (format-date (:date-published post))]
     [:span.post__time.icon.fa-clock
      (format-time (:date-published post))]]
-   [:span.post__meta.pr-5
+   [:span.post__meta
      [:span.post__ttr.icon.fa-stopwatch
       (str (:ttr post) " min. read")]
-     [:span.post__author.icon.fa-user
-      (if (:url author)
-        [:a {:href (:url author) :target "_blank"}
-         (:name author)]
-        [:a {:href (str "mailto:" (:author-email post) :target "_blank")}
-         (:author post)])]]])
+     (when (or full?
+               (not= (:author-email post) "jayzawrotny@gmail.com"))
+       [:span.post__author.icon.fa-user
+        (if (:url author)
+          [:a {:href (:url author) :target "_blank"}
+           (:name author)]
+          [:a {:href (str "mailto:" (:author-email post) :target "_blank")}
+           (:author post)])])]])
 
 (defn render-header
   [post author full?]
@@ -110,6 +112,7 @@
   (let [full? (= content :content)
         author (resolve-author (:authors global-meta) post)]
     [:article.post
+     {:class (when full? "full")}
      (render-header post author full?)
      (when content
        [:section.post__content
