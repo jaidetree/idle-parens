@@ -42,17 +42,17 @@
     (assoc entry :rendered html)))
 
 (def +emoji-defaults+ {:out-dir "public"
-                       :out-ext ".html"
                        :filterer identity
+                       :extensions #{".html" ".xml"}
                        :meta {}})
 
 (deftask emoji
-  ""
-  []
+  "Parses emoji shortcodes into emoji unicode characters."
+  [_ extensions LIST #{str} "List of extensions to parse emojis in"]
   (let [options (merge +emoji-defaults+ *opts*)]
     (content-task
      {:render-form-fn (fn [data] `(process-emoji ~data))
-      :paths-fn #(content-paths % (assoc options :extensions [".html"]))
+      :paths-fn #(content-paths % options)
       :passthru-fn content-passthru
       :task-name "emoji"
       :tracer :idle-parens.tasks/emoji

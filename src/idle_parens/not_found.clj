@@ -5,7 +5,7 @@
   [{global-meta :meta posts :entries}]
   (base/render
    :current :about
-   :title "404 Not Found"
+   :title (:site-title global-meta)
    :subtitle "^error/404-not-found"
    :content [:div.error-404
              [:div.cat-track

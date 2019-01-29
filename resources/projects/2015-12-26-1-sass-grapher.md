@@ -10,7 +10,6 @@ date-modified: 2019-01-27T12:12:00-5:00
 date-published: 2015-12-26T11:15:00-5:00
 in-language: en
 uuid: c9fda229-3698-4e19-b580-613eba2cf7be
-draft: true
 bg: "#af5c5c"
 fg: "#fff"
 github: eccentric-j/gulp-sass-grapher

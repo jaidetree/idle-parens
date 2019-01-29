@@ -87,6 +87,7 @@
     (perun/global-metadata)
     (html prod?)
     (build-meta prod?)
+    (seo-files prod?)
     (blog-pages prod?)
     (project-pages prod?)
     (static-pages prod?)
@@ -98,7 +99,6 @@
   (let [prod? true]
    (pipeline
      (generate-site :prod? prod?)
-     (seo-files prod?)
      (cljs :ids ["prod"])
      (sass :output-style :compressed :source-map false)
      (sift :include [#".edn"] :invert true)
@@ -112,7 +112,6 @@
     (clean :dir "target/dev")
     (watch)
     (generate-site :prod? false)
-    (seo-files false)
     (cljs :ids ["dev"])
     (sass :output-style :expanded :source-map true)
     (sift :move {#"public" "dev"})
