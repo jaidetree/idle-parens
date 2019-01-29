@@ -130,7 +130,7 @@
   opacity: 1.0;
 }
 .navbar__active a {
-  -webkit-animation: slide-to-right 500ms ease forwards;
+  animation: slide-to-right 500ms ease forwards;
 }
 .navbar__active::before,
 .navbar__active::after {
