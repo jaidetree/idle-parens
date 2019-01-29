@@ -1,7 +1,7 @@
 ---
 type: project
 title: File Prompt
-description: A node JS command-line-interface (CLI) to quickly select group of commands to pipe to other sources.
+description: A node JS command-line-interface (CLI) to quickly select files to stream through build pipelines.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
