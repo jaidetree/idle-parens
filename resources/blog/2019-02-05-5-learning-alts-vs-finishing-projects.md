@@ -11,7 +11,6 @@ date-published: 2019-01-31T18:00:00-5:00
 headline:
 in-language: en
 keywords: a,b,c
-canonical-url: http://blog.hashobject.com/celebrare-gutture
 uuid: 3c111950-fd0e-48a1-8907-f8445601db04
 tags:
  - lorem

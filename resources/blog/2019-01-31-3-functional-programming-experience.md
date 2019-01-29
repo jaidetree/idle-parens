@@ -11,7 +11,6 @@ date-published: 2019-01-28T19:31:00-5:00
 headline:
 in-language: en
 keywords: a,b,c
-canonical-url: http://blog.hashobject.com/celebrare-gutture
 uuid: db151ec4-50b8-42f9-b20e-2153cb5d93f2
 tags:
  - clojure

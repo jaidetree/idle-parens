@@ -10,7 +10,6 @@ date-modified: 2019-01-29T14:05:00-5:00
 date-published: 2019-01-25T18:00:00-5:00
 in-language: en
 keywords: a,b,c
-canonical-url: http://blog.hashobject.com/celebrare-gutture
 uuid: a811549b-242e-46dc-8813-27c9d20e5a9d
 tags:
  - blog
