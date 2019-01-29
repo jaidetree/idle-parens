@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-01-23T14:02:00-5:00
-date-modified: 2019-01-28T19:34:00-5:00
+date-modified: 2019-01-29T13:24:00-5:00
 date-published: 2019-01-28T19:31:00-5:00
 headline:
 in-language: en
@@ -95,7 +95,7 @@ A metaphor I really like to use is the Lego Great-Ball-Contraptions:
 
 You have many different machines (functions) that operate on balls (common data types). In OOP the equivalent would be wrapping each ball in a new container so another machine can work with it then either unwrapping it or wrapping another container over the ball’s container for the next machine.
 
-## OOP is not the devil but I fear it none the less
+## OOP is not evil but what we have done with it could be
 
 For the record I don’t despise OOP or think FP itself is what lead to my improvement, it’s more that I gained a new way of thinking and solving problems. I think there are contexts where OOP is the right choice (especially game programming) but there’s a lot of places where we reach for OOP or imperative programming that could be better tackled with a FP or FP-inspired approach.
 
