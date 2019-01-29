@@ -9,6 +9,23 @@
   }
 }
 
+@keyframes move {
+  0% {
+    left: 0;
+  }
+  49.99% {
+    left: 100%;
+    transform: scaleX(1);
+  }
+  50%  {
+    transform:  scaleX(-1);
+  }
+  100% {
+    left: 0;
+    transform: scaleX(-1);
+  }
+}
+
 // BASE
 // ---------------------------------------------------------------------------
 body {
@@ -193,6 +210,18 @@ strong {
 }
 .callout .borders {
   border-color: #fff;
+}
+
+.cat-track {
+  position: relative;
+  margin-right: rems(64px);
+  height: rems(64px);
+}
+.cat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: move 6000ms ease forwards infinite;
 }
 
 .drip {

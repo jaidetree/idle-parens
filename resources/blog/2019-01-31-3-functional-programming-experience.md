@@ -1,7 +1,7 @@
 ---
 type: post
 title: "My Functional Programming Experience"
-description: My journey climbing the functional programming mountain.
+description: I climbed the mountain of madness only to find the peaks smell a lot like functional programming.
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
@@ -20,7 +20,7 @@ tags:
 ---
 # Discovering Functional Programming
 
-I first encountered the phrase "Functional Programming" when learning about Redux for JS. My first question was "Isn’t all programming functional?" then I began researching it and got genuinely curious and found the motivation to study it further. Now about 2 years into it I can confirm it has made me a better programmer and engineer.
+I first encountered the phrase "Functional Programming" when learning about Redux for JS. My first question was "Isn’t all programming functional?" then I began researching it and got genuinely curious and found the motivation to study it further. Now about 2 years into it I can confirm it has deeply impacted how I think, work, and the trajectory of my career.
 
 When I started learning I was really in the weeds with OOP and wanted to abstract, generalize, and use all those fancy OOP patterns everywhere it made sense. The problem is whenever you create a custom class in most languages, it’s incompatible with everything else. Even in JS if I extend an array class it’s often treated as a separate type. So you often have to write more classes to make two classes talk to each other.
 
@@ -101,7 +101,7 @@ For the record I don’t despise OOP or think FP itself is what lead to my impro
 
 <blockquote class="disclaimer">
 
-  **Disclaimer**: Originally drafted as a response I wrote to a reddit question:
+  **Disclaimer**: Originally my response to a reddit question:
   [Is it true that learning functional programming makes you a better programmer?](https://www.reddit.com/r/elixir/comments/ac7m4t/is_it_true_that_by_learning_functional_language/)
 
 </blockquote>

@@ -62,7 +62,8 @@
 (defn static-pages
   [prod?]
   (pipeline
-    (perun/static :renderer 'idle-parens.about/render :page "about.html")))
+    (perun/static :renderer 'idle-parens.about/render :page "about.html")
+    (perun/static :renderer 'idle-parens.not-found/render :page "404.html")))
 
 (defn seo-files
   [prod?]
@@ -111,6 +112,7 @@
     (clean :dir "target/dev")
     (watch)
     (generate-site :prod? false)
+    (seo-files false)
     (cljs :ids ["dev"])
     (sass :output-style :expanded :source-map true)
     (sift :move {#"public" "dev"})
