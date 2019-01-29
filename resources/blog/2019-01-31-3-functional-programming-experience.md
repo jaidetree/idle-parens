@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-01-23T14:02:00-5:00
-date-modified: 2019-01-29T13:24:00-5:00
+date-modified: 2019-01-29T13:52:00-5:00
 date-published: 2019-01-28T19:31:00-5:00
 headline:
 in-language: en
@@ -50,7 +50,7 @@ There’s two major camps that functional programming falls into:
 
 ### Dynamic Languages
 
-Languages like Elixir and Clojure fall into this camp. They leverage dynamic types and focus on creating pipelines of functions to transform data. These languages also tend to be more side-effect friendly with looser restrictions but agreed upon naming conventions to denote when side effects happen. Generally that have a more practical nature to them focusing on getting work done.
+Languages like Elixir and Clojure fall into this camp. They leverage dynamic types and focus on creating pipelines of functions to transform data. These languages also tend to be more side-effect friendly with looser restrictions but agreed upon naming conventions to denote when side effects happen. Generally these languages have a more practical nature to them focusing on getting work done.
 
 ### Static Languages
 
