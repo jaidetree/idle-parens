@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-01-18T13:20:00-5:00
-date-modified: 2019-01-28T19:35:00-5:00
+date-modified: 2019-01-29T14:05:00-5:00
 date-published: 2019-01-25T18:00:00-5:00
 in-language: en
 keywords: a,b,c
@@ -18,7 +18,7 @@ tags:
 ---
 # Why even make a blog in 2019?
 
-Likely lost in the void, I know, but I want to share some thoughts on functional programming and professional software engineering that mean a lot to me. Kind reddit commenters have unexpectedly encouraged me to publish some of my meatier posts in functional programming subreddits. Now I have a place to publish them to.
+Likely lost in the void, I know, but I want to share some thoughts on functional programming and professional software engineering that mean a lot to me. Kind reddit commenters have [unexpectedly](https://www.reddit.com/r/elixir/comments/ac7m4t/is_it_true_that_by_learning_functional_language/ed7qaqz/) [encouraged](https://www.reddit.com/r/Clojure/comments/9ycubu/is_learning_clojure_a_good_idea_for_me/ea1b42n/) me to publish some of my meatier posts in functional programming subreddits. Now I have a place to publish them to.
 
 # What will this blog cover?
 
