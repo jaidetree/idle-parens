@@ -2,7 +2,7 @@
   :source-paths #{"src"}
   :resource-paths #{"resources"}
   :dependencies '[[boot/core "2.8.2" :scope "provided"]
-                  [perun "0.4.2-SNAPSHOT"]
+                  [idle-parens/perun "0.4.2-SNAPSHOT"]
                   [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
                   [org.clojure/clojurescript "1.10.439"]
                   [pandeiro/boot-http "0.6.3-SNAPSHOT"]
