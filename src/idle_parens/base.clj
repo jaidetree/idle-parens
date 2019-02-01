@@ -57,7 +57,9 @@
              :class "bg-slate"
              :top 0})]
      [:ul.navbar__list
-      [:li.navbar__item {:class (when (= current :blog) "navbar__active")}
+      [:li.navbar__item {:class (when (or (= current :blog)
+                                          (= current :post))
+                                 "navbar__active")}
                         [:a {:href "/"}
                             "idle-parens"
                             [:span.navbar__label "(blog)"]]]

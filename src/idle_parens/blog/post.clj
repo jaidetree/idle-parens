@@ -131,7 +131,7 @@
   (base/render
    :title (:site-title global-meta)
    :subtitle (:title post)
-   :current :blog
+   :current :post
    :page-title "idle-parens.blog/post"
    :meta {:title (:title post)
           :description (:description post)
