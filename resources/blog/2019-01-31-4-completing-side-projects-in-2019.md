@@ -1,12 +1,12 @@
 ---
 type: post
-title: How do you finish big side project?
+title: How do you finish big side projects?
 description: I was unable to finish any big side projects last year. How can I turn this around?
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-01-31T00:13:00-5:00
-date-modified: 2019-02-01T00:27:00-5:00
+date-modified: 2019-02-01T00:43:00-5:00
 date-published: 2019-02-01T00:27:00-5:00
 in-language: en
 uuid: e46eaeb3-d5d5-4fc8-ba4d-de37cf869a07
