@@ -22,6 +22,10 @@ I've always wanted to make rich, expressive terminal-user-interface applications
 
 Earlier this year someone posted a link to https://github.com/denisdoro/floki and it totally blew my mind! It's a JSON browser written in ClojureScript using Reframe, Reagent, React, and Blessed with graphical windows and keyboard navigation. I had no idea [blessed](https://github.com/chjj/blessed) even existed! I knew I had to make a template out of Denis' stack so others like myself can quickly make our own awesome terminal user interface applications.
 
+The project can be found at:
+
+https://github.com/eccentric-j/cljs-tui-template
+
 ## Why ClojureScript?
 
 This is the first question most people will likely ask upon discovering this project. At this time however, I no longer believe in "best-tool-for-the-job". It's such a personal, relative, and temporary measure so I would rather not incite a language war trying to suggest how ClojureScript could be objectively better than any other language. Instead it's currently the language I enjoy the most. Its ethos gels with mine and I enjoy the development process it overs and I hope this project inspires curiosity to give it a shot. That said I will share my reasons for enjoying it so much.
