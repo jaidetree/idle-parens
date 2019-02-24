@@ -5,8 +5,8 @@ description: A ClojureScript terminal-user-interface template built on web techn
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-02-24T11:48:00-5:00
-date-modified: 2019-02-24T11:48:00-5:00
-date-published: 2019-02-24T11:48:00-5:00
+date-modified: 2019-02-24T18:30:00-5:00
+date-published: 2019-02-24T18:30:00-5:00
 in-language: en
 uuid: fcc2a75d-7d23-4f00-9cb4-9a87b112895b
 bg: "#ff00ff"
