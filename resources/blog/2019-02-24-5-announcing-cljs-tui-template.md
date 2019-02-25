@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-02-23T01:09:00-5:00
-date-published: 2019-02-24T18:30:00-5:00
+date-modified: 2019-02-24T23:00:00-5:00
 date-published: 2019-02-24T18:30:00-5:00
 in-language: en
 uuid: 406fbf95-11d3-476b-8435-0c3c07fbff66
@@ -37,16 +37,16 @@ Functional programming provides strong principles that guide all implementation 
 Clojure's syntax is very different than traditional c-family languages since it's in the LISP family. It was very jarring to me when I first encountered it, but I love it now. I will one day write an entire article about Clojure syntax but what in short it's very consistent. There's very few pieces to it and no operator precedence to memorize, forms have a strong visual structure to them I find easy to scan and can be edited quickly as structured data with simple keystrokes in well-suited editors.
 
 ## Strong, Dynamic Typing
-I understand the value strong, static typing brings but I personally prefer focusing my attention on getting an app to work versus writing specifications to prove that my program could work. ClojureScript makes JS a bit closer to a strongly typed, dynamic language which I feel offers a lot of flexibility but also more certainty than the loose, dynamic typing found in vanilla JS.
+I understand the value strong, static typing brings, but I personally prefer focusing my attention on getting an app to work versus writing specifications to prove that my program could work. ClojureScript makes JS a bit closer to a strongly typed, dynamic language which I feel offers a lot of flexibility but also more certainty than the loose, dynamic typing found in vanilla JS.
 
 ## Live editing
-Being able to send updates from my editor directly to my app and re-render the views while keeping my app state makes development much faster. It would be great to see a stronger REPL experience make its way into JS.
+Develop faster using the ClojureScript REPL to send code straight from your editor to the app while preserving the runtime app state. It would be great to see a stronger REPL experience make its way into JS.
 
 ## Low boiling point
-While using Clojure I spend far less time reading docs, and more time glancing at source code to solve my problems. That's not to say good documentation isn't valuable, it's just in Clojure I don't often require much of it to make informed progress compared to my experience in other languages.
+Since learning Clojure I spend far less time reading docs, and more time glancing at source code to solve my problems to get cooking faster. That's not to say good documentation isn't valuable, in Clojure I don't often require much of it to make progress compared to my experience in other languages.
 
 ## Faster Startup with ClojureScript
-My reason for choosing ClojureScript over Clojure is that the startup time is significantly faster running on node versus the Java-Virtual-Machine (JVM). When it comes to CLIs or TUIs they should fire up really quick.
+Compared to Clojure, ClojureScript startup time is significantly faster running on node. This is important because CLIs or TUIs should fire up quickly.
 
 # Getting Started
 
