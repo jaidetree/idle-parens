@@ -138,6 +138,20 @@ After reading through a bit more of Reagent's docs I found my solution based on 
 
 This way the handlers are only created when the view is rendered but are destroyed when the view is removed. This means users can make pretty complex UI without having to juggle extra state to determine which set of key listeners to pay attention to. In the example I'm dispatching a reframe event but you can use local reagent atoms as well if you only want to affect local component state. That's how the generated vertical menu view works.
 
-# Final Thoughts
+## Documentation
+
+Once all the builds were configured it is vital to provide good documentation. I want to ensure people familiar and new to Clojure can dive right in and get something up and running. To begin I first created a mind-map outline and went through several iterations of grouping related items together, removing extraneous topics, and rearranging groups until it felt right.
+
+<p align="center">
+  <a href="/img/blog/5-cljs-tui-doc-outline.png" target="_cljs_tui_outline">
+    <img alt="Documentation Mind Map"
+         src="/img/blog/5-cljs-tui-doc-outline.png"
+         width="25%" />
+  </a>
+</p>
+
+When the mind map felt right I then broke each section or large section of text into separate tasks in my project board. From previous projects, I get diminishing returns trying to crank out a lot of docs at once. By writing it in short bursts over time I was able to refine it to my liking before asking others in the Clojure Slack to review it incase I missed anything. There were many times I would come back to a docs section I wrote the day before and find it very rough, verbose, and meandering so it felt good to be able to catch that before exposing it to the public.
+
+## Final Thoughts
 
 All in all it was a great project to dive into ClojureScript as I had a lot of fun and learned a lot while assembling this project together. What most excites me is what people will build with it once it's out there, I see a lot of possibilities.
