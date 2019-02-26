@@ -20,7 +20,7 @@ tags:
 
 I've always wanted to make rich, expressive terminal-user-interface applications such as htop, vim, or tmux but felt deterred by the absurd amount of state that needs to be maintained even for the simplest of visual effects.
 
-Earlier this year someone posted a link to https://github.com/denisdoro/floki and it totally blew my mind! It's a JSON browser written in ClojureScript using Reframe, Reagent, React, and Blessed with graphical windows and keyboard navigation. I had no idea [blessed](https://github.com/chjj/blessed) even existed! I knew I had to make a template out of Denis' stack so others like myself can quickly make our own awesome terminal user interface applications.
+Earlier this year someone posted a link to https://github.com/denisidoro/floki and it totally blew my mind! It's a JSON browser written in ClojureScript using Reframe, Reagent, React, and Blessed with graphical windows and keyboard navigation. I had no idea [blessed](https://github.com/chjj/blessed) even existed! I knew I had to make a template out of Denis' stack so others like myself can quickly make our own awesome terminal user interface applications.
 
 The project can be found at:
 
