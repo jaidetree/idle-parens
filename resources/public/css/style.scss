@@ -224,6 +224,15 @@ strong {
   animation: move 6000ms ease forwards infinite;
 }
 
+.dl--title-size_3 dt {
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+.dl--title-mb_1 dt {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
 .drip {
   position: absolute;
   width: rems(12px);
