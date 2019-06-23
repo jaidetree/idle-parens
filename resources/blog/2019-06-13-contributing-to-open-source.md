@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-06-13T22:13:00-4:00
-date-modified: 2019-06-23T23:16:00-4:00
+date-modified: 2019-06-23T23:18:05-4:00
 date-published: 2019-06-23T22:16:42-4:00
 in-language: en
 uuid: 70384D51-ECA5-422E-B682-A7D2F4D93835
@@ -74,20 +74,20 @@ Before starting this project I felt a bit of doubt and uncertainty. How do I kno
   <dd><p>From reading nREPLs source I learned how to build richer, more complex CLIs.</p></dd>
 
   <dt>Squash commits before merging</dt>
-  <dd><p>Squashing commits into one before merging is a great way to keep git history meaningful. Squashing will also make it easier to debug later if I introduced a bug using a tool like git bisect.</p></dd>
+  <dd><p>Using git rebase to squash commits before merging keeps git history meaningful. Now the whole refactor I did lives in one commit! If I introduced a bug a tool like git bisect can help identify the offending commit quickly.</p></dd>
 </dl>
 
 ## What could I have done better?
 
 Reflecting on the experience, a few areas for improvement come to mind:
 
-1. Don't hog maintainers time, and their time is valuable. A few times I had asked questions that I could have answered by looking at the source. I shouldn't expect them to answer all my questions or guide me through each step either.
-2. Sometimes it's easier to make a change and get it reviewed than to explain it and get pre-approval.
-3. Be more mindful when explaining my design decisions. In some cases I over explained my rationale when it was already known and may have come off as defensive. Too much defensiveness will likely wear people down.
-4. Pace myself better so that I'm not overdoing it one day then recovering the next week. On the days I limited my work on the nREPL to about 20 minutes I had no problem picking it up the next day.
+1. Maintainers' time is valuable. A few times I had asked questions that I could have answered with a little more research. I should try to research answers on my own first before publicly asking questions.
+2. Don't expect step-by-step guidance. Sometimes I should just go for it instead of waiting for step-by-step instructions or pre-approval.
+3. Be more mindful when explaining my design decisions. In some cases I over explained my rationale when it was already known and may have come off defensive. Too much defensiveness will likely wear people down.
+4. Pace myself so that I'm not overworking one day then recovering the week after. On the days I limited my work on the nREPL to about 20 minutes I had no problem picking it up the next day.
 
 ## Final Thoughts
 
-Working with the nREPL maintainers was a great experience! I enjoyed working on the project and learning from them in code review and I hope my refactor will help others create richer REPL experiences. The Clojure community has been very welcoming and I look forward to future projects.
+Overall working with the nREPL maintainers was a great experience! I enjoyed the project and learning from nREPL's maintainers in code reviews.  I hope my contributions are valuable, and my refactor will help others create richer REPL experiences. Given how welcoming and informative the Clojure community is I am looking forward to contributing to other projects.
 
 I want to give a major shout out to [Bozhidar Bastov](https://metaredux.com/) (aka bbatsov). He was responsive, open, and helpful in guiding my inexperienced hands in the refactor. His stewardship is a great example of how to lead an open-source project.
