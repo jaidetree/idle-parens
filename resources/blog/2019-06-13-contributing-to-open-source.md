@@ -90,4 +90,4 @@ Reflecting on the experience, a few areas for improvement come to mind:
 
 Overall working with the nREPL maintainers was a great experience! I enjoyed the project and learning from nREPL's maintainers in code reviews.  I hope my contributions are valuable, and my refactor will help others create richer REPL experiences. Given how welcoming and informative the Clojure community is I am looking forward to contributing to other projects.
 
-I want to give a major shout out to [Bozhidar Bastov](https://metaredux.com/) (aka bbatsov). He was responsive, open, and helpful in guiding my inexperienced hands in the refactor. His stewardship is a great example of how to lead an open-source project.
+I want to give a major shout out to [Bozhidar Batsov](https://metaredux.com/) (aka bbatsov). He was responsive, open, and helpful in guiding my inexperienced hands in the refactor. His stewardship is a great example of how to lead an open-source project.
