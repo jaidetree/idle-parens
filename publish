@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euox pipefail
+
+git checkout master
+git merge develop
+git push origin master develop
+git checkout develop
