@@ -6,7 +6,7 @@ author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
 date-created: 2019-06-13T22:13:00-4:00
-date-modified: 2019-06-26T22:52:00-4:00
+date-modified: 2019-06-27T15:55:00-4:00
 date-published: 2019-06-23T22:16:42-4:00
 in-language: en
 uuid: 70384D51-ECA5-422E-B682-A7D2F4D93835
@@ -28,7 +28,7 @@ While I have more experience in other languages, I never found myself able to co
 
 ### 1. Clojure makes the intent of functions clear
 
-Clojure encourages developers to build complex systems made up of smaller, pure functions. Pure functions only take input and use it to calculate the output.  They do not affect the outside world and have a clear intent.  In contrast, functions that have many side-effects tend to blur intent.  A Clojure function with unclear intent is an excellent place to start a refactor.  For instance, the original [nREPL cmdline code](https://github.com/nrepl/nrepl/blob/054be705c057d352c4eddfceb68fc0c0c17e25aa/src/clojure/nrepl/cmdline.clj#L242) has a lot going on.  It dispatches sub-commands, starts servers, connects to servers, and starts the REPL interface.  This meaty function became my starting point.  Refactoring that function improves the library and also solves my reusability problem as well.
+Clojure encourages developers to write pure and simple functions that can be composed to solve complex problems.  This pattern breaks down harder problems into smaller, more manageable pieces.  Pure functions only use their arguments to calculate and return output.  They do not affect the outside world and have a clear intent.  In contrast, functions that have many side-effects tend to blur intent.  A Clojure function with unclear intent is an excellent place to start a refactor.  For instance, the original [nREPL cmdline code](https://github.com/nrepl/nrepl/blob/054be705c057d352c4eddfceb68fc0c0c17e25aa/src/clojure/nrepl/cmdline.clj#L242) has a lot going on.  It dispatches sub-commands, starts servers, connects to servers, and starts the REPL interface.  This meaty function became my starting point.  Refactoring that function improves the library and also solves my reusability problem as well.
 
 ### 2. Functional Programming Principles Keep People's Efforts in Sync
 
