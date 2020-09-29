@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/clojure:openjdk-11-boot-2.8.3-buster-node-browsers-legacy
+      - image: circleci/clojure:openjdk-8-boot-2.8.2-node-browsers-legacy
     working_directory: ~/idle-parens
     steps:
       - checkout
