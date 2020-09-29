@@ -1,7 +1,7 @@
 ---
 type: post
 title: "Our biggest obstacles are in our own minds"
-description: "What is the biggest obstacle that hinds as software engineers? It may be exactly what we imagine."
+description: "What is the biggest obstacle that hinders us as software engineers? It may be exactly what we imagine."
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
