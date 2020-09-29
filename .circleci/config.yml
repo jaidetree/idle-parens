@@ -26,7 +26,7 @@ jobs:
             git config user.name ${GIT_USER_NAME}
       - add_ssh_keys:
           fingerprints:
-            - "fc:61:02:7a:a5:ef:6b:0c:71:90:15:e8:62:63:94:03"
+            - "ac:6d:13:43:b0:8a:e5:55:f1:e6:30:96:be:25:f3:a3"
       - run:
           name: Deploy docs to gh-pages branch
           command: |
