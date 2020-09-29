@@ -2,14 +2,15 @@
   :source-paths #{"src"}
   :resource-paths #{"resources"}
   :dependencies '[[boot/core "2.8.2" :scope "provided"]
-                  [idle-parens/perun "0.4.2-SNAPSHOT"]
+                  [perun "0.4.3-SNAPSHOT"]
                   [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
                   [org.clojure/clojurescript "1.10.439"]
-                  [pandeiro/boot-http "0.6.3-SNAPSHOT"]
+                  [pandeiro/boot-http "0.8.3"]
                   [deraen/boot-livereload "0.2.1"]
                   [deraen/boot-sass "0.3.1"]
                   [adzerk/boot-cljs "2.1.5" :scope "test"]
-                  [org.clojure/tools.namespace "0.3.0-alpha4"]])
+                  [org.clojure/tools.namespace "0.3.0-alpha4"]
+                  [javax.xml.bind/jaxb-api "2.4.0-b180830.0359"]])
 
 (require '[boot.core :as boot]
          '[clojure.string :as str]
