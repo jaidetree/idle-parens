@@ -232,10 +232,6 @@
                [:a {:href "https://venuebook.com"}
                 "VenueBook"]
                " where I am responsible for software architecture, development, and product design."]]
-             [:div.callout
-              [:div.borders.padding.mb-0
-                [:h3 "Looking for Engineers"]
-                [:p "VenueBook is hiring both a senior Clojure developer and a senior Python\\Devops engineer. Please reach out if you are interested or know someone who might be."]]]
              (interests)
              (skills)
              (education)]))
