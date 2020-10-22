@@ -228,8 +228,7 @@
                  :alt "Eccentric J Selfie"}]
                "I've been designing and developing personal and commercial projects for about a decade now.
                 I got started by learning how to hack online computer games by rewriting values to known memory addresses, since then my passion is in web app development.
-                Currently, I live in New York City working as a professional engineer."
-               "My current focus is on software architecture, development, and product design."]]
+                Currently, I live in New York City and work as a professional software engineer. My current focus is on software architecture, development, and product design."]]
              (interests)
              (skills)
              (education)]))
