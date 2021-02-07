@@ -21,11 +21,11 @@ A few days back in the Doom Emacs Discord, I daydreamed about a Clojure implemen
 
 ## It's Alive!
 
-After a bit of trial and error plus some help from Didibus in the Clojurian's Slack, I got a cgi-script running a Clojure file through Babashka! A few refinements and a sample db later: https://cgi.eccentric-j.com/metal.clj. This article breaks down the process to share what I learned and answer some predicted questions you may have.
+After a bit of trial and error plus some help from Didibus in the Clojurians' Slack, I got a cgi-script running a Clojure file through Babashka! A few refinements and a sample db later: https://cgi.eccentric-j.com/metal.clj. This article breaks down the process to share what I learned and answer some predicted questions you may have.
 
 <blockquote class="disclaimer">
 
-  **Disclaimer**: The credit for  this idea goes to Taco ([Elais Player](https://elais.codes/)) and [rushsteve1](https://rushsteve1.us) from the Doom Emacs Discord. Also big thanks to Borkdude ([Michiel Borkent](https://michielborkent.nl)) for creating [Babashka](https://github.com/babashka/babashka) and providing support. Also thanks to [Didibus](https://www.rubberducking.com/) of the Clojurians' Slack for helping me figure out how to run my first test Clojure cgi script.
+  **Disclaimer**: The credit for this idea goes to Taco ([Elais Player](https://elais.codes/)) and [rushsteve1](https://rushsteve1.us) from the Doom Emacs Discord. Also big thanks to Borkdude ([Michiel Borkent](https://michielborkent.nl)) for creating [Babashka](https://github.com/babashka/babashka) and providing support. Also thanks to [Didibus](https://www.rubberducking.com/) of the Clojurians' Slack for helping me figure out how to run my first test Clojure cgi script.
 
 </blockquote>
 
@@ -56,14 +56,12 @@ The purpose of this simple project is to demonstrate querying a database, instal
 
 https://cgi.eccentric-j.com/metal.clj [[Source on Github](https://github.com/eccentric-j/clj-cgi-example)]
 
-
-
 ## Requirements
 
 1. A host that supports cgi-scripts
 2. The Babashka static binary
 3. The Babashka PostgreSQL pod static binary
-4. Jars or a single uberjar of Clojure libraries
+4. Working with Libaries
 5. Create a postgres database and example table
 6. A Clojure script to return an HTML response
 
@@ -175,7 +173,60 @@ ALTER TABLE ONLY metal_bands
 
 Ensure the user you created has at least read access to the table. If managed through cPanel it's easy to miss that. After you create a user, add it to the db.
 
-## Adding libraries like HoneySQL
+## Working with Libraries
+
+To develop more sophisticated scripts, thare are plenty of mature libraries available in the Clojure ecosystem to leverage. To use them with the web scripts, there are three routes to choose from.
+
+### Uberjar all deps
+
+This method creates a single jar that contains all the project libraries from a deps.edn file.
+
+#### Pros
+
+If multiple libraries share dependencies, the uberjar will factor out the common dependencies.
+
+#### Cons
+
+If you anticipate having multiple Clojure web scripts on a shared host, an uberjar for each project will consume more storage.
+
+### Uberjar individual libraries
+
+Use Babashka's uberjar functionality to create separate jars for each library. This allows you to share it in a `lib` folder outside of your project directory and reuse them across multiple projects in a shared hosting account. This is the method this guide will walk through it in the next section.
+
+#### Pros
+
+Reuse libraries across projects by creating individual jars for each one.
+
+#### Cons
+
+If those libraries have dependencies, and they share the same dependencies, then the jars will contain duplicated code which may affect performance and storage.
+
+#### Why did I choose this option?
+
+Libraries like Honeysql, Hiccup, and Gaka, do not have any dependencies beyond Clojure which we will remove from the uberjar since that comes with Babashka. Since I want to continue making experiments I felt having those libraries readily available would speed up the process and be the most flexible.
+
+### Uberscript the entire application
+
+To optimize performance, Babashka can bundle libraries and the web scripts together by reading through the `require` calls. Additionally, [carve](https://github.com/borkdude/carve) can trim away the unused code resulting in smaller bundle sizes which should result in faster performance when requesting the script from the browser.
+
+Modify the command below to create an uberscript for your project. Note that we will be modifying the classpath dynamically in our main request script so you will need to take that into account when supplying the classpath string to `bb`.
+
+
+```bash
+bb --classpath "your-lib1.jar:yourlib2.jar:src" --main foo --uberscript uber.clj
+```
+
+See https://book.babashka.org/#_uberscript to learn more about this process.
+
+#### Pros
+
+Smallest bundle size resulting in faster performance
+
+#### Cons
+
+Requires a more complex build process: generate an uberscript, then carve out unused code on every change to the web scripts. Web scripts will not be individually available on the server so devs can't ssh in and test individual script files or make on-the-fly changes. They will need access to the source and run those build steps.
+
+### Creating an uberjar for Honeysql
 
 To query the bands from the db, we could write a raw SQL query string but where is the fun in that? Clojure offers HoneySQL, a library for writing SQL queries as structured data. If using our own VM, local computer, or VPS, we could use a tool like `clj` and `deps.edn` to automatically download and install the libraries we need. Depending on your shared host, that's not going to work. Fear not though for all is not lost! We can specify libraries in a local deps.edn and use Clojure's `clj` CLI with Babashka to create an uberjar.
 
@@ -196,13 +247,23 @@ To query the bands from the db, we could write a raw SQL query string but where 
 
     ```bash
     bb -cp $(clojure -Aremove-clojure -Spath) --uberjar honeysql.jar
-
     ```
 
 3. Upload this file to your lib directory as suggested when uploading the PostgreSQL pod such as `~/lib/honeysql.jar`.
 
 We are going to add files from that folder to Babashka's classpaths. This approach creates a shared folder of libraries and pods multiple projects can use. If you would prefer to keep libraries separate you could create an uberjar with all your code and libraries bundled together. I intend on making multiple projects with this technique so I'm going with the shared lib directory and creating individual jars for now.
 
+To make this process simpler I've drafted a script called "depjar" that uses Babashka to create individual jars from deps.edn:
+
+https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar
+
+You can use it by running:
+
+```bash
+clj-cgi-example/depjar/depjar.clj .
+```
+
+To process your deps.edn and create jars for each dependency.
 
 ## The Clojure Files
 
@@ -237,9 +298,9 @@ I have named this file `metal.clj`.
 
 ;; Add jars and current directory to classpath to import library code
 
-(add-classpath (s/join "::" [CWD                      ;; (2)
-                             (lib "gaka.jar")
-                             (lib "honeysql.jar")]))
+(add-classpath (s/join ":" [CWD                       ;; (2)
+                            (lib "gaka.jar")
+                            (lib "honeysql.jar")]))
 (pods/load-pod (lib "pod-babashka-postgres"))
 
 ;; Require our main page code
@@ -440,7 +501,7 @@ Lastly, lets create a `metal/style.clj` with a rems helper function.
 
 ## Testing & Debugging
 
-When everything works, it just works. Visit the `https://yourhost.domain/metal.clj` script and the page should render. If there is even a slight error you are likely going to get a generic 500 error response. Your host might be logging these around your home folder, or you may find a logging page in the hosting cPanel. This will be your first goto to figuring out what went wrong. The most common error you will likely run into is not setting the permission of your public Clojure scripts to `755`. Fix that by running a bash command like `chmod +x metal.clj` on the server.
+When everything works, it just works. Visit the `https://yourhost.tld/metal.clj` script and the page should render. If there is even a slight error you are likely going to get a generic 500 error response. Your host might be logging these around your home folder, or you may find a logging page in the hosting cPanel. This will be your first goto to figuring out what went wrong. The most common error you will likely run into is not setting the permission of your public Clojure scripts to `755`. Fix that by running a bash command like `chmod +x metal.clj` on the server.
 
 If logging is not revealing the problem, another way to go about debugging is to run the script through the shell on your host. Simply ssh into your host and run `./metal.clj`. It should output the desired HTML response. This will produce much more helpful output if a runtime error occurs. Be aware though that different environment variables change depending on if the script is running through the cgi-bin from the browser request or locally from a terminal.
 
@@ -477,7 +538,7 @@ In my github repo for the example project, there is a script for bundling a libr
 
 1. Clone my example repo from https://github.com/eccentric-j/clj-cgi-example
 2. Enter into the directory `cd clj-cgi-example`
-3. Run the depjar script `./scripts/depjar.clj honeysql/honeysql 1.0.444 honeysql.jar`
+3. Run the depjar script `./depjar/depjar.clj honeysql/honeysql 1.0.444 honeysql.jar`
 4. Upload the newly created `honeysql.jar` to your server and you are good to go.
 
 ### How do I create config files that I can load in my Clojure scripts but not expose to the web?
