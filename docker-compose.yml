@@ -1,0 +1,6 @@
+blog:
+ build: .
+ volumes:
+   - ".:/src:rw"
+ ports:
+   - "9000:9000"

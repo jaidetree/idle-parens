@@ -31,7 +31,7 @@
 body {
   @extend %copy;
   color: $slate;
-  background: $gray;
+  background: $bone;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -77,7 +77,6 @@ strong {
 }
 .main {
   position: relative;
-  padding-top: rems(480px);
   z-index: 3;
 }
 .sidebar {
@@ -141,7 +140,9 @@ strong {
 .author__links-item:not(:last-child) {
   margin-right: rems(32px);
 }
-
+.color-bone {
+    color: $bone;
+}
 .bg-teal {
   background: $teal;
   &::after {
@@ -312,14 +313,14 @@ strong {
   font-size: rems(10px);
   letter-spacing: rems(0.35px);
   text-transform: uppercase;
-  color: $light-slate;
+  color: $bone;
 }
 .media-links__item .icon,
 .media-links__item .brand {
   display: block;
   text-align: center;
   font-size: rems(28px);
-  color: $light-slate;
+  color: $bone;
   transition: all 250ms ease-in-out;
 }
 .media-links__label {
@@ -327,7 +328,7 @@ strong {
 }
 .media-links__item:hover .icon,
 .media-links__item:hover .brand {
-  color: $teal;
+  color: $neon-pink;
 }
 
 .navbar {
@@ -346,7 +347,7 @@ strong {
 .page__title {
   position: relative;
   padding: rems(16px);
-  color: $gray;
+  color: $slate-purple;
   font-size: rems(24px);
 }
 .page__title::before,
@@ -453,7 +454,7 @@ strong {
   margin-bottom: rems(16px);
 }
 .post__content blockquote {
-  background: darken($gray, 5);
+  background: darken($bone, 5);
   padding: rems(16px);
 }
 .post__content blockquote p {
@@ -536,15 +537,10 @@ strong {
 }
 .profile__logo {
   display: block;
-  position: absolute;
-  top: rems(-140px);
-  left: 0;
-  right: 0;
-  width: rems(140px);
+  width: rems(160px);
   margin: auto;
   margin-bottom: rems(16px);
   transition: all 250ms ease-in-out;
-  filter:  brightness(40%) grayscale(100%);
   z-index: 3;
 }
 .profile__title {
@@ -567,7 +563,7 @@ strong {
   justify-content: center;
   padding: 0;
   list-style: none;
-  color: $gray-teal;
+  color: $bone;
 }
 .profile__trade:not(:first-child):before {
   @extend %icon;
@@ -583,7 +579,7 @@ strong {
   position: relative;
   padding-left: rems(32px);
   text-align: left;
-  color: black(50%);
+  color: black(45%);
   font-style: italic;
   font-size: rems(22px);
 }
@@ -592,33 +588,15 @@ strong {
   @extend %icon;
   position: absolute;
   padding-right: rems(10px);
-  color: $teal;
+  color: $neon-pink;
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.4;
   content: "\f10d";
 }
 .profile__quote::before {
   left: rems(-3px);
   top: rems(-4px);
   font-size: rems(30px);
-}
-.profile--bg_dark .profile__trades {
-  color: $gray;
-}
-.profile--bg_dark .profile__quote {
-  color: $gray;
-}
-.profile--bg_dark .profile__quote::before {
-  opacity: 0.5;
-  z-index: -1;
-}
-.profile--bg_dark .profile__logo {
-  filter: grayscale(100%);
-  opacity: 0.4;
-}
-.profile--bg_dark .profile__title:hover .profile__logo {
-  filter: grayscale(100%);
-  opacity: 0.9;
 }
 
 .projects__list {

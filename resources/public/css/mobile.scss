@@ -23,25 +23,23 @@
 
 // Layout
 // ---------------------------------------------------------------------------
+.layout {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+}
 .sidebar {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: auto;
-  padding-top: rems(176px);
+  background: $slate-purple;
+  margin: 0;
+  width: 100%;
 }
 .sidebar__inner {
-  width: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
+  align-items: center;
 }
 
 .layout .sidebar {
-  position: absolute;
-  top: rems(256px);
-  left: rems(32px);
-  right: rems(32px);
   z-index: 4;
 }
 .main {
@@ -60,7 +58,7 @@
   padding: 0;
   border-top: 1px solid $slate;
   border-bottom: 2px solid $slate;
-  background: $gray;
+  background: $bone;
   z-index: 4;
   overflow: hidden;
 }
@@ -116,7 +114,7 @@
   display: block;
   padding: rems(8px);
   color: $gray-teal;
-  background: $gray;
+  background: $bone;
   text-decoration: none;
   transform: translateX(0);
   z-index: 3;
@@ -153,6 +151,7 @@
 
 .page__title {
   margin-bottom: rems(32px);
+  color: $slate-purple;
   text-align: center;
 }
 

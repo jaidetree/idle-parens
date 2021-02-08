@@ -17,51 +17,43 @@
 .layout {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
-  margin-left: rems(32px);
-  margin-right: rems(360px);
+  justify-content: flex-start;
+  margin-left: rems(452px);
+  margin-right: rems(32px);
 }
 .main {
   position: relative;
   flex: 0 1 auto;
   width: 100%;
-  max-width: rems(784px);
+  max-width: rems(900px);
   padding-top: 0;
   z-index: 3;
 }
 .sidebar {
-  left: rems(32px);
+  position: fixed;
+  top: 0;
+  left: 0;
   bottom: 0;
-  right: rems(32px);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  transform: translateY(0);
-
-  @media (max-height: #{rems(739px)}) {
-    position: absolute;
-    top: 0;
-    padding-top: rems(190px);
-  }
-  @media (min-height: #{rems(740px)}) {
-    position: fixed;
-    top: rems(10px);
-    padding-top: rems(180px);
-  }
+  width: rems(420px);
+  background: $slate-purple;
+  filter: brightness(80%) grayscale(50%);
+  transition: filter 1000ms ease-in-out;
+  overflow: auto;
 }
-.sidebar__margin {
-  width: 100%;
-  max-width: rems(784px);
-  flex: 0 1 auto;
+.sidebar:hover {
+  filter: brightness(100%) grayscale(0%);
 }
 .sidebar__inner {
   position: relative;
-  width: rems(320px);
-  flex: 0 0 auto;
+  border-top: rems(10px) solid $teal;
+  background: $slate-purple;
+  width: rems(420px);
+  min-height: 100%;
+  padding: 0 rems(32px);
   z-index: 5;
-}
-.hero .sidebar {
-  bottom: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
 }
 
 // Blocks
@@ -78,8 +70,8 @@
 .navbar {
   margin-bottom: rems(16px);
   padding: 0;
-  border-top: 1px solid $slate;
-  border-bottom: 2px solid $slate;
+  border-top: 1px solid $teal;
+  border-bottom: 2px solid $teal;
   z-index: 200;
 }
 
@@ -87,7 +79,7 @@
 .media-links a {
   display: block;
   text-decoration: none;
-  color: $gray-teal;
+  color: $bone;
 }
 
 .navbar a {
@@ -106,14 +98,15 @@
   position: relative;
   padding: rems(8px);
   opacity: 0.75;
-  color: $gray-teal;
+  color: $neon-pink;
   font-size: rems(18px);
   font-weight: 600;
   letter-spacing: rems(2px);
   transition: opacity 250ms ease;
 }
 .navbar__item:hover,
-.navbar__item:active {
+.navbar__item:active,
+.navbar__active {
   opacity: 1.0;
 }
 .navbar__item:hover a {
@@ -141,7 +134,7 @@
 .navbar__item:active {
   background: $gray-teal;
   &, a {
-    color: $gray;
+    color: $bone;
   }
 }
 .navbar__item a {
@@ -150,7 +143,6 @@
   transition: all 250ms ease-in-out;
 }
 .navbar__item:not(:last-child) {
-  border-bottom: 1px solid $light-slate;
 }
 .navbar__label {
   @extend %copy;
@@ -158,14 +150,10 @@
   font-size: rems(15px);
 }
 
-.page__header {
-  height: rems(416px);
-}
 .page__title {
-  position: absolute;
-  bottom: 0;
   margin-bottom: rems(16px);
   font-size: rems(50px);
+  color: $slate-purple;
 }
 .page__title::before,
 .page__title::after {

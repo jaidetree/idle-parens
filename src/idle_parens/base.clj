@@ -26,7 +26,9 @@
    [:h1.profile__title [:a {:href "/"}
                         [:img.profile__logo {:src "/img/eccentric-j-logo.svg"
                                              :alt "Eccentric J's Logo"}]
-                        title]]
+                        [:span.color-bone
+                         "eccentric"]
+                        " J"]]
    [:ul.profile__trades [:li.profile__trade "Engineer"]
                         [:li.profile__trade "Designer"]
                         [:li.profile__trade "Artist"]]
@@ -42,19 +44,19 @@
              :right 5
              :height 5
              :max-height 30
-             :class "bg-slate"
+             :class "bg-teal"
              :top 0})
       (drip {:width 3
              :right 12
              :height 8
              :max-height 48
-             :class "bg-slate"
+             :class "bg-teal"
              :top 0})
       (drip {:width 8
              :right 20
              :height 4
              :max-height 60
-             :class "bg-slate"
+             :class "bg-teal"
              :top 0})]
      [:ul.navbar__list
       [:li.navbar__item {:class (when (or (= current :blog)
@@ -177,11 +179,6 @@
                      :width 5
                      :height 10
                      :class "bg-teal"})
-              [:div.hero
-               [:div.sidebar
-                [:div.sidebar__margin]
-                [:div.sidebar__inner
-                 (profile {:title title :class "profile--bg_dark"})]]]
               [:div.layout
                [:div.main
                 [:header.page__header
@@ -190,9 +187,8 @@
                 [:div.content
                   content]]
                [:aside.sidebar
-                [:div.sidebar__margin]
                 [:div.sidebar__inner
-                 (profile {:title title :class "not-mobile"})
+                 (profile {:title title})
                  (navbar {:current current})
                  (media-links)]]]]
 
