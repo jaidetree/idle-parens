@@ -89,62 +89,106 @@
 (defn head
   [title meta]
   [:head [:title title]
-         [:meta {:charset "utf-8"}]
-         [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
-         [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]
-         [:meta {:name "msapplication-TileColor"
-                 :color "#4f5b55"}]
-         [:meta {:name "theme-color"
-                 :color "#4f5b55"}]
-         [:meta {:property "og:image"
-                 :content "/img/eccentric-j-social.png"}]
-         [:meta {:property "og:image:width"
-                 :content "279"}]
-         [:meta {:property "og:image:height"
-                 :content "279"}]
-         (when meta
-           (list
-            [:meta {:property "og:title"
-                    :content (:title meta)}]
-            [:meta {:property "og:description"
-                    :content (:description meta)}]
-            [:meta {:property "og:url"
-                    :content (:url meta)}]))
-         [:link {:rel "apple-touch-icon"
-                 :sizes "180x180"
-                 :href "/apple-touch-icon.png"}]
-         [:link {:rel "icon"
-                 :type "image/png"
-                 :sizes "32x32"
-                 :href "/favicon-32x32.png"}]
-         [:link {:rel "icon"
-                 :type "image/png"
-                 :sizes "16x16"
-                 :href "/favicon-16x16.png"}]
-         [:link {:rel "manifest"
-                 :href "/site.webmanifest"}]
-         [:link {:rel "mask-icon"
-                 :href "/safari-pinned-tab.svg"
-                 :color "#5bbad5"}]
-         [:link {:rel "stylesheet"
-                 :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
-         [:link {:rel "stylesheet"
-                 :href "https://use.fontawesome.com/releases/v5.6.3/css/all.css"}]
-         [:link {:rel "stylesheet"
-                 :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css"}]
-         [:link {:rel "stylesheet"
-                 :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro"}]
-         [:link {:rel "stylesheet"
-                 :href "/css/style.css"}]
-         [:link {:rel "stylesheet"
-                 :media "screen and (max-width: 929px)"
-                 :href "/css/mobile.css"}]
-         [:link {:rel "stylesheet"
-                 :media "screen and (min-width: 768px) and (max-width: 929px)"
-                 :href "/css/tablet.css"}]
-         [:link {:rel "stylesheet"
-                 :media "screen and (min-width: 930px)"
-                 :href "/css/desktop.css"}]])
+   [:meta {:charset "utf-8"}]
+   [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
+   [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]
+   [:meta {:property "og:image"
+           :content "/img/eccentric-j-social.png"}]
+   [:meta {:property "og:image:width"
+           :content "279"}]
+   [:meta {:property "og:image:height"
+           :content "279"}]
+   [:meta {:name "msapplication-TileColor" :content "#68F3CB"}]
+   [:meta {:name "msapplication-TileImage" :content "/ms-icon-144x144.png"}]
+   [:meta {:name "theme-color" :content "#68F3CB"}]
+   (when meta
+     (list
+      [:meta {:property "og:title"
+              :content (:title meta)}]
+      [:meta {:property "og:description"
+              :content (:description meta)}]
+      [:meta {:property "og:url"
+              :content (:url meta)}]))
+   [:link {:rel "apple-touch-icon"
+           :sizes "57x57"
+           :href "/apple-icon-57x57.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "60x60"
+           :href "/apple-icon-60x60.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "72x72"
+           :href "/apple-icon-72x72.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "76x76"
+           :href "/apple-icon-76x76.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "114x114"
+           :href "/apple-icon-114x114.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "120x120"
+           :href "/apple-icon-120x120.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "144x144"
+           :href "/apple-icon-144x144.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "152x152"
+           :href "/apple-icon-152x152.png"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "180x180"
+           :href "/apple-icon-180x180.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "192x192"
+           :href "/android-icon-192x192.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "32x32"
+           :href "/android-icon-32x32.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "96x96"
+           :href "/android-icon-96x96.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "16x16"
+           :href "/android-icon-16x16.png"}]
+   [:link {:rel "manifest"
+           :href "/manifest.json"}]
+   [:link {:rel "apple-touch-icon"
+           :sizes "180x180"
+           :href "/apple-touch-icon.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "32x32"
+           :href "/favicon-32x32.png"}]
+   [:link {:rel "icon"
+           :type "image/png"
+           :sizes "16x16"
+           :href "/favicon-16x16.png"}]
+   [:link {:rel "manifest"
+           :href "/site.webmanifest"}]
+   [:link {:rel "mask-icon"
+           :href "/safari-pinned-tab.svg"
+           :color "#5bbad5"}]
+   [:link {:rel "stylesheet"
+           :href "//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"}]
+   [:link {:rel "stylesheet"
+           :href "https://use.fontawesome.com/releases/v5.6.3/css/all.css"}]
+   [:link {:rel "stylesheet"
+           :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css"}]
+   [:link {:rel "stylesheet"
+           :href "//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro"}]
+   [:link {:rel "stylesheet"
+           :href "/css/style.css"}]
+   [:link {:rel "stylesheet"
+           :media "screen and (max-width: 929px)"
+           :href "/css/mobile.css"}]
+   [:link {:rel "stylesheet"
+           :media "screen and (min-width: 768px) and (max-width: 929px)"
+           :href "/css/tablet.css"}]
+   [:link {:rel "stylesheet"
+           :media "screen and (min-width: 930px)"
+           :href "/css/desktop.css"}]])
 
 (defn format-path
   [title]

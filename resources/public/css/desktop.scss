@@ -36,7 +36,6 @@
   bottom: 0;
   width: rems(420px);
   background: $slate-purple;
-  filter: brightness(80%) grayscale(50%);
   transition: filter 1000ms ease-in-out;
   overflow: auto;
 }
