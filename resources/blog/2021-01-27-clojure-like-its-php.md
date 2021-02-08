@@ -5,9 +5,9 @@ description: "Run Clojure even on the cheapest shared web hosting using Babashka
 author: Eccentric J
 author-email: jayzawrotny@gmail.com
 location: New York, USA
-date-created: 2021-01-27T20:00:00-4:00
-date-modified: 2021-01-27T20:00:00-4:00
-date-published: 2021-01-27T20:00:00-4:00
+date-created: 2021-02-09T20:00:00-4:00
+date-modified: 2021-02-09T20:00:00-4:00
+date-published: 2021-02-09T20:00:00-4:00
 in-language: en
 uuid: E6C63B20-E6DF-48B0-83A6-3506AB12A118
 tags:
@@ -177,9 +177,29 @@ Ensure the user you created has at least read access to the table. If managed th
 
 To develop more sophisticated scripts, thare are plenty of mature libraries available in the Clojure ecosystem to leverage. To use them with the web scripts, there are three routes to choose from.
 
+A good number of Clojure libraries are compatible with Babashka available for use. Consult to see the known list of compatible libraries:
+
+https://github.com/babashka/babashka/blob/master/doc/projects.md
+
+
 ### Uberjar all deps
 
 This method creates a single jar that contains all the project libraries from a deps.edn file.
+
+Babashka and the Clojure CLIs can install deps and create an uberjar from a deps.edn
+
+```bash
+bb -cp $(clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+```
+
+If you are on Windows you can use replace the calls to Clojure to the Clojure CLIs built into Babashka.
+
+
+```bash
+bb -cp $(bb --clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+```
+
+The `-Awithout-clojure` is using an alias from deps.edn that removes Clojure core from the jar, this is an optimization because Babashka already provides the Clojure core itself.
 
 #### Pros
 
@@ -260,7 +280,7 @@ https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar
 You can use it by running:
 
 ```bash
-clj-cgi-example/depjar/depjar.clj .
+clj-cgi-example/depjar/depjar.clj ./deps.edn
 ```
 
 To process your deps.edn and create jars for each dependency.
@@ -333,7 +353,6 @@ Now lets create a source file that actually renders some content! For this proje
    [honeysql.core :as sql]
    [pod.babashka.postgresql :as pg]
    [gaka.core :refer [css]]
-   [metal.guide :as guide]
    [metal.style :refer [rems]]))
 
 ;; Load secrets for the db
@@ -396,8 +415,20 @@ Now lets create a source file that actually renders some content! For this proje
         :padding "0"
         :max-width "1100px"}]
       [:.cards__item
-       {:flex "0 0 320px"
-        :margin "1rem"}]
+       {:background-color "#FFF"
+        :flex "0 0 320px"
+        :box-sizing "border-box"
+        :position "relative"
+        :margin "1rem"
+        :box-shadow "0 0 10px 0 rgba(0, 0, 0, 0.2)"}]
+      [:.card
+       {:box-sizing :border-box
+        :width "320px"
+        :display "block"
+        :position :relative
+        :text-align :left
+        :border-bottom-left-radius "5px"
+        :border-bottom-right-radius "5px"}]
       [:.rank
        {:position :absolute
         :right "-16px"
@@ -412,17 +443,6 @@ Now lets create a source file that actually renders some content! For this proje
         :font-size (rems 14)
         :font-style :italic
         :color "#666"}]
-      [:.card
-       {:background-color "#FFF"
-        :box-sizing :border-box
-        :width "320px"
-        :height "100%"
-        :display "block"
-        :position :relative
-        :text-align :left
-        :border-bottom-left-radius "5px"
-        :border-bottom-right-radius "5px"
-        :box-shadow "0 0 10px 0 rgba(0, 0, 0, 0.2)"}]
       [:.card__body
        {:padding "1rem"}]
       [:.detail
@@ -476,18 +496,16 @@ Now lets create a source file that actually renders some content! For this proje
     [:link {:rel "preconnect"
             :href "https://fonts.gstatic.com"}]
     [:link {:rel "stylesheet"
-            :href "https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"}]
+            :href "https://fonts.googleapis.com/css2?family=Metal+Mania&family=Sriracha&display=swap"}]
     [:link {:rel "stylesheet"
             :href "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css"}]
-    [:style (raw-string style)]
+    [:style (raw-string style)]]]
    [:body
     [:div#page
      example]
     [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"}]
     [:script {:src "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js"}]
-    [:script "hljs.initHighlightingOnLoad();"]
-    ]]])
-```
+    [:script "hljs.initHighlightingOnLoad();"]]])```
 
 Lastly, lets create a `metal/style.clj` with a rems helper function.
 
@@ -538,8 +556,9 @@ In my github repo for the example project, there is a script for bundling a libr
 
 1. Clone my example repo from https://github.com/eccentric-j/clj-cgi-example
 2. Enter into the directory `cd clj-cgi-example`
-3. Run the depjar script `./depjar/depjar.clj honeysql/honeysql 1.0.444 honeysql.jar`
-4. Upload the newly created `honeysql.jar` to your server and you are good to go.
+3. Create a deps.edn file with your libraries
+3. Run the depjar script `./depjar/depjar.clj ./deps.edn`
+4. Upload the newly created jar files to your server and you are good to go :rocket:
 
 ### How do I create config files that I can load in my Clojure scripts but not expose to the web?
 
