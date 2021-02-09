@@ -65,13 +65,9 @@ strong {
 .page {
   border-top: rems(10px) solid $teal;
 }
-.hero {
+.sidebar {
   position: absolute;
-  top: rems(10px);
-  left: 0;
-  right: 0;
-  height: rems(576px);
-  background: $slate url(/img/hero-bg.png) 50% 50% no-repeat;
+  background: $slate-purple url(/img/hero-bg.png) 50% 0% no-repeat;
   background-size: cover;
   z-index: 2;
 }

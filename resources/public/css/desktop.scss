@@ -35,17 +35,11 @@
   left: 0;
   bottom: 0;
   width: rems(420px);
-  background: $slate-purple;
-  transition: filter 1000ms ease-in-out;
   overflow: auto;
-}
-.sidebar:hover {
-  filter: brightness(100%) grayscale(0%);
 }
 .sidebar__inner {
   position: relative;
   border-top: rems(10px) solid $teal;
-  background: $slate-purple;
   width: rems(420px);
   min-height: 100%;
   padding: 0 rems(32px);
