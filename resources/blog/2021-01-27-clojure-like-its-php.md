@@ -17,7 +17,7 @@ tags:
 ---
 
 
-A few days back in the Doom Emacs Discord, I daydreamed about a Clojure implementation that compiles to PHP. I felt nostalgic for the days of writing code and uploading it to the server well before containerization, continuous integration, and complex build scripts became the norm. Clojure, much like working with Ruby or Python, are slightly different beasts that require more powerful hosting capabilities and runtimes to support web apps. Deploying and running those web servers cost more time, money, and often both. Thankfully, Taco and Rushsteve responded and pointed out that Clojure could serve requests as a cgi-bin script running through Babashka. Sounding almost too good to be true, I had to give this a shot!
+A few days back in the Doom Emacs Discord, I daydreamed about a Clojure implementation that compiles to PHP. I felt nostalgic for the days of writing code and uploading it to the server well before containerization, continuous integration, and complex build scripts became the norm. Clojure, Ruby, and Python require a continuously running proces to serve requests. Deploying and running those web servers cost more time, money, and often both. Thankfully, Taco and Rushsteve responded and pointed out that Clojure could serve requests as a cgi-bin script running through Babashka. Sounding almost too good to be true, I had to give this a shot!
 
 ## It's Alive!
 
